@@ -1,0 +1,7 @@
+interface:
+  display_name: "EGN Domain Stories"
+  short_description: "Parse Egon stories into readable text"
+  default_prompt: "Use $egn-to-text to explain this Egon domain story."
+
+policy:
+  allow_implicit_invocation: true

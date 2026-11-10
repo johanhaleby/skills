@@ -1,0 +1,30 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: domain-storytelling
+        run: |
+          python3 skills/domain-storytelling/scripts/test_story2egn.py
+          python3 skills/domain-storytelling/scripts/test_story_board.py
+          node skills/domain-storytelling/scripts/test-story-board.cjs
+      - name: egn-to-text
+        run: python3 skills/egn-to-text/scripts/test_egn2text.py

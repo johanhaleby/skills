@@ -1,0 +1,776 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1373" height="1366" viewBox="-815 -890 1373 1366" style="background-color:#ffffff" version="1.2">
+<rect x="-815" y="-890" width="1373" height="1366" fill="#ffffff"/>
+<defs><marker id="tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1b1b1b"/></marker></defs>
+<g font-family="Helvetica Neue,Helvetica,Arial,sans-serif">
+<text x="-725" y="-856" font-size="24" font-weight="600" fill="#1b1b1b">Refund a disputed parking</text>
+<text x="-725" y="-832" font-size="13" fill="#6b6b6b">Everything inside Support is manual today.</text>
+<rect x="-478" y="-78" width="546" height="418" rx="14" fill="none" stroke="#6b6b6b" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="-466" y="-58" font-size="16" font-weight="600" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Support</text>
+<rect x="342" y="-328" width="136" height="668" rx="14" fill="none" stroke="#6b6b6b" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="354" y="-308" font-size="16" font-weight="600" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Back office</text>
+<path d="M-413 -212 L-427 -38" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-420" y="-134" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">calls about</text><circle cx="-421" cy="-110" r="14" fill="#1b1b1b"/><text x="-421" y="-106" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">1</text>
+<path d="M-427 38 L-413 212" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-420" y="116" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
+<path d="M-381 212 L-279 78" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-330" y="136" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">opens</text><circle cx="-366" cy="192" r="14" fill="#1b1b1b"/><text x="-366" y="197" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">2</text>
+<path d="M-212 34 L-38 6" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-125" y="11" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">in</text>
+<path d="M0 -38 L0 -152" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="82" y="-104" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">pulls</text><circle cx="0" cy="-55" r="14" fill="#1b1b1b"/><text x="0" y="-50" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">3</text>
+<path d="M-372 237 L-218 183" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-333" y="257" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">approves</text><circle cx="-315" cy="183" r="14" fill="#1b1b1b"/><text x="-315" y="188" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">4</text>
+<path d="M-142 134 L-38 36" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-90" y="76" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">in</text>
+<path d="M38 28 L152 112" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="95" y="61" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">hands</text><circle cx="74" cy="14" r="14" fill="#1b1b1b"/><text x="74" y="19" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">5</text>
+<path d="M228 159 L372 231" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="300" y="186" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
+<path d="M413 212 L427 38" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="420" y="116" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">transfers</text><circle cx="415" cy="187" r="14" fill="#1b1b1b"/><text x="415" y="192" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">6</text>
+<path d="M427 -38 L413 -212" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="420" y="-134" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">via</text>
+<path d="M372 -270 L38 -450" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="205" y="-369" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">confirms</text><circle cx="323" cy="-297" r="14" fill="#1b1b1b"/><text x="323" y="-292" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">7</text>
+<path d="M-38 -450 L-372 -270" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-205" y="-369" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
+<path d="M-271 2 L-389 -212" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="-311" y="-125" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">is raised by</text>
+<path d="M-38 -155 L-212 5" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="-125" y="-84" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">evidences</text>
+<path d="M-200 132 L-230 78" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="-177" y="82" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">settles</text>
+<path d="M-218 183 L-372 237" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="-278" y="282" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">is approved by</text>
+<path d="M-468 0 L-620 0" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
+<path d="M-195 208 L-250 350" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
+<path d="M0 -508 L0 -660" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
+<g transform="translate(-436.8,-279.0) scale(2.231)" fill="#1b1b1b"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></g>
+<text x="-410" y="-207" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Driver</text>
+<g transform="translate(-436.8,221.0) scale(2.231)" fill="#1b1b1b"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></g>
+<text x="-410" y="293" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Agent</text>
+<g transform="translate(-26.8,-29.0) scale(2.231)" fill="#1b1b1b"><path d="M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/></g>
+<text x="0" y="43" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Case tool</text>
+<g transform="translate(383.2,221.0) scale(2.231)" fill="#1b1b1b"><path d="M0 0h24v24H0z" fill="none"/><path d="M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.33 13 1 14.08 1 16.25V19h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-4 4.5h-10v-1.25c0-.54 2.56-1.75 5-1.75s5 1.21 5 1.75v1.25zm9 0H14v-1.25c0-.46-.2-.86-.52-1.22.88-.3 1.96-.53 3.02-.53 2.44 0 5 1.21 5 1.75v1.25zM7.5 12c1.93 0 3.5-1.57 3.5-3.5S9.43 5 7.5 5 4 6.57 4 8.5 5.57 12 7.5 12zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 5.5c1.93 0 3.5-1.57 3.5-3.5S18.43 5 16.5 5 13 6.57 13 8.5s1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/></g>
+<text x="410" y="293" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Finance</text>
+<g transform="translate(383.2,-279.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></g>
+<text x="410" y="-207" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Bank</text>
+<g transform="translate(-456.8,-29.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0,0h24v24H0V0z"/><path d="M6.54,5C6.6,5.89,6.75,6.76,6.99,7.59l-1.2,1.2C5.38,7.59,5.12,6.32,5.03,5H6.54 M16.4,17.02c0.85,0.24,1.72,0.39,2.6,0.45 v1.49c-1.32-0.09-2.59-0.35-3.8-0.75L16.4,17.02 M7.5,3H4C3.45,3,3,3.45,3,4c0,9.39,7.61,17,17,17c0.55,0,1-0.45,1-1v-3.49	c0-0.55-0.45-1-1-1c-1.24,0-2.45-0.2-3.57-0.57c-0.1-0.04-0.21-0.05-0.31-0.05c-0.26,0-0.51,0.1-0.71,0.29l-2.2,2.2 c-2.83-1.45-5.15-3.76-6.59-6.59l2.2-2.2C9.1,8.31,9.18,7.92,9.07,7.57C8.7,6.45,8.5,5.25,8.5,4C8.5,3.45,8.05,3,7.5,3L7.5,3z"/></g>
+<text x="-430" y="43" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Charge</text>
+<g transform="translate(-276.8,11.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0,0h24v24H0V0z"/><path d="M9.17,6l2,2H20v10L4,18V6H9.17 M10,4H4C2.9,4,2.01,4.9,2.01,6L2,18c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V8c0-1.1-0.9-2-2-2 h-8L10,4L10,4z"/></g>
+<text x="-250" y="83" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Dispute</text>
+<g transform="translate(-26.8,-219.0) scale(2.231)" fill="#1b1b1b"><path opacity=".87" fill="none" d="M0 0h24v24H0V0z"/><path d="M3 5v14h17V5H3zm4 2v2H5V7h2zm-2 6v-2h2v2H5zm0 2h2v2H5v-2zm13 2H9v-2h9v2zm0-4H9v-2h9v2zm0-4H9V7h9v2z"/></g>
+<text x="0" y="-147" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Session log</text>
+<g transform="translate(-206.8,141.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M15 18.5c-2.51 0-4.68-1.42-5.76-3.5H15v-2H8.58c-.05-.33-.08-.66-.08-1s.03-.67.08-1H15V9H9.24C10.32 6.92 12.5 5.5 15 5.5c1.61 0 3.09.59 4.23 1.57L21 5.3C19.41 3.87 17.3 3 15 3c-3.92 0-7.24 2.51-8.48 6H3v2h3.06c-.04.33-.06.66-.06 1s.02.67.06 1H3v2h3.52c1.24 3.49 4.56 6 8.48 6 2.31 0 4.41-.87 6-2.3l-1.78-1.77c-1.13.98-2.6 1.57-4.22 1.57z"/></g>
+<text x="-180" y="213" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Refund</text>
+<g transform="translate(163.2,111.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></g>
+<text x="190" y="183" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Payout</text>
+<g transform="translate(403.2,-29.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M15 18.5c-2.51 0-4.68-1.42-5.76-3.5H15v-2H8.58c-.05-.33-.08-.66-.08-1s.03-.67.08-1H15V9H9.24C10.32 6.92 12.5 5.5 15 5.5c1.61 0 3.09.59 4.23 1.57L21 5.3C19.41 3.87 17.3 3 15 3c-3.92 0-7.24 2.51-8.48 6H3v2h3.06c-.04.33-.06.66-.06 1s.02.67.06 1H3v2h3.52c1.24 3.49 4.56 6 8.48 6 2.31 0 4.41-.87 6-2.3l-1.78-1.77c-1.13.98-2.6 1.57-4.22 1.57z"/></g>
+<text x="430" y="43" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Money</text>
+<g transform="translate(-26.8,-499.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z"/><path d="M9 21h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.58 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2zM9 9l4.34-4.34L12 10h9v2l-3 7H9V9zM1 9h4v12H1z"/></g>
+<text x="0" y="-427" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Transfer</text>
+<path d="M-725 -35 H-529 L-515 -21 V35 H-725 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
+<text x="-715" y="-10" font-size="15" fill="#1b1b1b">Roughly a fifth of these</text>
+<text x="-715" y="9" font-size="15" fill="#1b1b1b">arrive by email instead.</text>
+<path d="M-355 315 H-159 L-145 329 V385 H-355 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
+<text x="-345" y="340" font-size="15" fill="#1b1b1b">Anything over 500 kr needs</text>
+<text x="-345" y="359" font-size="15" fill="#1b1b1b">a second approver.</text>
+<path d="M-105 -704 H91 L105 -690 V-616 H-105 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
+<text x="-95" y="-680" font-size="15" fill="#1b1b1b">Takes two banking days, and</text>
+<text x="-95" y="-660" font-size="15" fill="#1b1b1b">the driver is not told</text>
+<text x="-95" y="-642" font-size="15" fill="#1b1b1b">that.</text>
+</g></svg>
+<!-- <DST>
+{
+  "domain": {
+    "name": "default",
+    "actors": {
+      "Person": "<svg viewBox=\"0 0 24 26\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z\"/><path d=\"M0 0h24v24H0z\" fill=\"none\"/></svg>",
+      "Group": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"48\" viewBox=\"0 0 24 26\"><path d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.33 13 1 14.08 1 16.25V19h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-4 4.5h-10v-1.25c0-.54 2.56-1.75 5-1.75s5 1.21 5 1.75v1.25zm9 0H14v-1.25c0-.46-.2-.86-.52-1.22.88-.3 1.96-.53 3.02-.53 2.44 0 5 1.21 5 1.75v1.25zM7.5 12c1.93 0 3.5-1.57 3.5-3.5S9.43 5 7.5 5 4 6.57 4 8.5 5.57 12 7.5 12zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 5.5c1.93 0 3.5-1.57 3.5-3.5S18.43 5 16.5 5 13 6.57 13 8.5s1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z\"/></svg>",
+      "System": "<svg viewBox=\"0 0 24 26\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z\"/></svg>",
+      "Business": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 26\"><path fill=\"none\" d=\"M0 0h24v24H0V0z\"/><path d=\"M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z\"/></svg>"
+    },
+    "workObjects": {
+      "Document": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 26\"><path fill=\"none\" d=\"M0 0h24v24H0V0z\"/><path d=\"M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z\"/></svg>",
+      "Folder": "<svg viewBox=\"0 0 24 26\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"none\" d=\"M0,0h24v24H0V0z\"/><path d=\"M9.17,6l2,2H20v10L4,18V6H9.17 M10,4H4C2.9,4,2.01,4.9,2.01,6L2,18c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V8c0-1.1-0.9-2-2-2 h-8L10,4L10,4z\"/></svg>",
+      "Call": "<svg viewBox=\"0 0 24 26\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"none\" d=\"M0,0h24v24H0V0z\"/><path d=\"M6.54,5C6.6,5.89,6.75,6.76,6.99,7.59l-1.2,1.2C5.38,7.59,5.12,6.32,5.03,5H6.54 M16.4,17.02c0.85,0.24,1.72,0.39,2.6,0.45 v1.49c-1.32-0.09-2.59-0.35-3.8-0.75L16.4,17.02 M7.5,3H4C3.45,3,3,3.45,3,4c0,9.39,7.61,17,17,17c0.55,0,1-0.45,1-1v-3.49\tc0-0.55-0.45-1-1-1c-1.24,0-2.45-0.2-3.57-0.57c-0.1-0.04-0.21-0.05-0.31-0.05c-0.26,0-0.51,0.1-0.71,0.29l-2.2,2.2 c-2.83-1.45-5.15-3.76-6.59-6.59l2.2-2.2C9.1,8.31,9.18,7.92,9.07,7.57C8.7,6.45,8.5,5.25,8.5,4C8.5,3.45,8.05,3,7.5,3L7.5,3z\"/></svg>",
+      "Email": "<svg viewBox=\"0 0 24 26\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"none\" d=\"M0,0h24v24H0V0z\"/><path fill-opacity=\"0.9\" d=\"M12,1.95c-5.52,0-10,4.48-10,10s4.48,10,10,10h5v-2h-5c-4.34,0-8-3.66-8-8s3.66-8,8-8s8,3.66,8,8v1.43 c0,0.79-0.71,1.57-1.5,1.57S17,14.17,17,13.38v-1.43c0-2.76-2.24-5-5-5s-5,2.24-5,5s2.24,5,5,5c1.38,0,2.64-0.56,3.54-1.47 c0.65,0.89,1.77,1.47,2.96,1.47c1.97,0,3.5-1.6,3.5-3.57v-1.43C22,6.43,17.52,1.95,12,1.95z M12,14.95c-1.66,0-3-1.34-3-3 s1.34-3,3-3s3,1.34,3,3S13.66,14.95,12,14.95z\"/></svg>",
+      "Conversation": "<svg height=\"48\" viewBox=\"0 0 24 26\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 0h24v24H0V0z\" fill=\"none\"/><path d=\"M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z\"/></svg>",
+      "Info": "<svg height=\"48\" viewBox=\"0 0 24 26\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z\"/></svg>",
+      "View-List": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 26\"><path opacity=\".87\" fill=\"none\" d=\"M0 0h24v24H0V0z\"/><path d=\"M3 5v14h17V5H3zm4 2v2H5V7h2zm-2 6v-2h2v2H5zm0 2h2v2H5v-2zm13 2H9v-2h9v2zm0-4H9v-2h9v2zm0-4H9V7h9v2z\"/></svg>",
+      "Euro": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 26\"><path fill=\"none\" d=\"M0 0h24v24H0V0z\"/><path d=\"M15 18.5c-2.51 0-4.68-1.42-5.76-3.5H15v-2H8.58c-.05-.33-.08-.66-.08-1s.03-.67.08-1H15V9H9.24C10.32 6.92 12.5 5.5 15 5.5c1.61 0 3.09.59 4.23 1.57L21 5.3C19.41 3.87 17.3 3 15 3c-3.92 0-7.24 2.51-8.48 6H3v2h3.06c-.04.33-.06.66-.06 1s.02.67.06 1H3v2h3.52c1.24 3.49 4.56 6 8.48 6 2.31 0 4.41-.87 6-2.3l-1.78-1.77c-1.13.98-2.6 1.57-4.22 1.57z\"/></svg>",
+      "Credit-Card": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 26\"><path fill=\"none\" d=\"M0 0h24v24H0V0z\"/><path d=\"M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z\"/></svg>",
+      "Thumb-up": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 26\"><path fill=\"none\" d=\"M0 0h24v24H0V0zm0 0h24v24H0V0z\"/><path d=\"M9 21h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.58 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2zM9 9l4.34-4.34L12 10h9v2l-3 7H9V9zM1 9h4v12H1z\"/></svg>"
+    }
+  },
+  "dst": [
+    {
+      "type": "domainStory:actorPerson",
+      "name": "Driver",
+      "id": "shape_0001",
+      "x": -448,
+      "y": -288
+    },
+    {
+      "type": "domainStory:actorPerson",
+      "name": "Agent",
+      "id": "shape_0002",
+      "x": -448,
+      "y": 212
+    },
+    {
+      "type": "domainStory:actorSystem",
+      "name": "Case tool",
+      "id": "shape_0003",
+      "x": -38,
+      "y": -38
+    },
+    {
+      "type": "domainStory:actorGroup",
+      "name": "Finance",
+      "id": "shape_0004",
+      "x": 372,
+      "y": 212
+    },
+    {
+      "type": "domainStory:actorBusiness",
+      "name": "Bank",
+      "id": "shape_0005",
+      "x": 372,
+      "y": -288
+    },
+    {
+      "type": "domainStory:workObjectCall",
+      "name": "Charge",
+      "id": "shape_0006",
+      "x": -468,
+      "y": -38
+    },
+    {
+      "type": "domainStory:workObjectFolder",
+      "name": "Dispute",
+      "id": "shape_0007",
+      "x": -288,
+      "y": 2
+    },
+    {
+      "type": "domainStory:workObjectView-List",
+      "name": "Session log",
+      "id": "shape_0008",
+      "x": -38,
+      "y": -228
+    },
+    {
+      "type": "domainStory:workObjectEuro",
+      "name": "Refund",
+      "id": "shape_0009",
+      "x": -218,
+      "y": 132
+    },
+    {
+      "type": "domainStory:workObjectCredit-Card",
+      "name": "Payout",
+      "id": "shape_0010",
+      "x": 152,
+      "y": 102
+    },
+    {
+      "type": "domainStory:workObjectEuro",
+      "name": "Money",
+      "id": "shape_0011",
+      "x": 392,
+      "y": -38
+    },
+    {
+      "type": "domainStory:workObjectThumb-up",
+      "name": "Transfer",
+      "id": "shape_0012",
+      "x": -38,
+      "y": -508
+    },
+    {
+      "type": "domainStory:group",
+      "name": "Support",
+      "id": "shape_0013",
+      "pickedColor": "black",
+      "x": -478,
+      "y": -78,
+      "width": 546,
+      "height": 418
+    },
+    {
+      "type": "domainStory:group",
+      "name": "Back office",
+      "id": "shape_0014",
+      "pickedColor": "black",
+      "x": 342,
+      "y": -328,
+      "width": 136,
+      "height": 668
+    },
+    {
+      "type": "domainStory:textAnnotation",
+      "name": "",
+      "id": "shape_0015",
+      "x": -725,
+      "y": -35,
+      "text": "Roughly a fifth of these arrive by email instead.",
+      "number": 70,
+      "width": 210,
+      "height": 70
+    },
+    {
+      "type": "domainStory:textAnnotation",
+      "name": "",
+      "id": "shape_0016",
+      "x": -355,
+      "y": 315,
+      "text": "Anything over 500 kr needs a second approver.",
+      "number": 70,
+      "width": 210,
+      "height": 70
+    },
+    {
+      "type": "domainStory:textAnnotation",
+      "name": "",
+      "id": "shape_0017",
+      "x": -105,
+      "y": -704,
+      "text": "Takes two banking days, and the driver is not told that.",
+      "number": 89,
+      "width": 210,
+      "height": 89
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "calls about",
+      "id": "connection_0018",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": -410,
+            "y": -250
+          },
+          "x": -413,
+          "y": -212
+        },
+        {
+          "original": {
+            "x": -430,
+            "y": 0
+          },
+          "x": -426,
+          "y": -38
+        }
+      ],
+      "source": "shape_0001",
+      "target": "shape_0006",
+      "multipleNumberAllowed": false,
+      "number": 1
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "to",
+      "id": "connection_0019",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": -430,
+            "y": 0
+          },
+          "x": -426,
+          "y": 38
+        },
+        {
+          "original": {
+            "x": -410,
+            "y": 250
+          },
+          "x": -413,
+          "y": 212
+        }
+      ],
+      "source": "shape_0006",
+      "target": "shape_0002",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "opens",
+      "id": "connection_0020",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": -410,
+            "y": 250
+          },
+          "x": -381,
+          "y": 212
+        },
+        {
+          "original": {
+            "x": -250,
+            "y": 40
+          },
+          "x": -278,
+          "y": 78
+        }
+      ],
+      "source": "shape_0002",
+      "target": "shape_0007",
+      "multipleNumberAllowed": false,
+      "number": 2
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "in",
+      "id": "connection_0021",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": -250,
+            "y": 40
+          },
+          "x": -212,
+          "y": 33
+        },
+        {
+          "original": {
+            "x": 0,
+            "y": 0
+          },
+          "x": -38,
+          "y": 6
+        }
+      ],
+      "source": "shape_0007",
+      "target": "shape_0003",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "pulls",
+      "id": "connection_0022",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": 0,
+            "y": 0
+          },
+          "x": 0,
+          "y": -38
+        },
+        {
+          "original": {
+            "x": 0,
+            "y": -190
+          },
+          "x": 0,
+          "y": -152
+        }
+      ],
+      "source": "shape_0003",
+      "target": "shape_0008",
+      "multipleNumberAllowed": false,
+      "number": 3
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "approves",
+      "id": "connection_0023",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": -410,
+            "y": 250
+          },
+          "x": -372,
+          "y": 236
+        },
+        {
+          "original": {
+            "x": -180,
+            "y": 170
+          },
+          "x": -218,
+          "y": 183
+        }
+      ],
+      "source": "shape_0002",
+      "target": "shape_0009",
+      "multipleNumberAllowed": false,
+      "number": 4
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "in",
+      "id": "connection_0024",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": -180,
+            "y": 170
+          },
+          "x": -142,
+          "y": 134
+        },
+        {
+          "original": {
+            "x": 0,
+            "y": 0
+          },
+          "x": -38,
+          "y": 35
+        }
+      ],
+      "source": "shape_0009",
+      "target": "shape_0003",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "hands",
+      "id": "connection_0025",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": 0,
+            "y": 0
+          },
+          "x": 38,
+          "y": 28
+        },
+        {
+          "original": {
+            "x": 190,
+            "y": 140
+          },
+          "x": 152,
+          "y": 112
+        }
+      ],
+      "source": "shape_0003",
+      "target": "shape_0010",
+      "multipleNumberAllowed": false,
+      "number": 5
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "to",
+      "id": "connection_0026",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": 190,
+            "y": 140
+          },
+          "x": 228,
+          "y": 159
+        },
+        {
+          "original": {
+            "x": 410,
+            "y": 250
+          },
+          "x": 372,
+          "y": 231
+        }
+      ],
+      "source": "shape_0010",
+      "target": "shape_0004",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "transfers",
+      "id": "connection_0027",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": 410,
+            "y": 250
+          },
+          "x": 413,
+          "y": 212
+        },
+        {
+          "original": {
+            "x": 430,
+            "y": 0
+          },
+          "x": 426,
+          "y": 38
+        }
+      ],
+      "source": "shape_0004",
+      "target": "shape_0011",
+      "multipleNumberAllowed": false,
+      "number": 6
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "via",
+      "id": "connection_0028",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": 430,
+            "y": 0
+          },
+          "x": 426,
+          "y": -38
+        },
+        {
+          "original": {
+            "x": 410,
+            "y": -250
+          },
+          "x": 413,
+          "y": -212
+        }
+      ],
+      "source": "shape_0011",
+      "target": "shape_0005",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "confirms",
+      "id": "connection_0029",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": 410,
+            "y": -250
+          },
+          "x": 372,
+          "y": -270
+        },
+        {
+          "original": {
+            "x": 0,
+            "y": -470
+          },
+          "x": 38,
+          "y": -449
+        }
+      ],
+      "source": "shape_0005",
+      "target": "shape_0012",
+      "multipleNumberAllowed": false,
+      "number": 7
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "to",
+      "id": "connection_0030",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": 0,
+            "y": -470
+          },
+          "x": -38,
+          "y": -449
+        },
+        {
+          "original": {
+            "x": -410,
+            "y": -250
+          },
+          "x": -372,
+          "y": -270
+        }
+      ],
+      "source": "shape_0012",
+      "target": "shape_0001",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "is raised by",
+      "id": "connection_0031",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": -250,
+            "y": 40
+          },
+          "x": -270,
+          "y": 2
+        },
+        {
+          "original": {
+            "x": -410,
+            "y": -250
+          },
+          "x": -389,
+          "y": -212
+        }
+      ],
+      "source": "shape_0007",
+      "target": "shape_0001",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "evidences",
+      "id": "connection_0032",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": 0,
+            "y": -190
+          },
+          "x": -38,
+          "y": -155
+        },
+        {
+          "original": {
+            "x": -250,
+            "y": 40
+          },
+          "x": -212,
+          "y": 5
+        }
+      ],
+      "source": "shape_0008",
+      "target": "shape_0007",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "settles",
+      "id": "connection_0033",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": -180,
+            "y": 170
+          },
+          "x": -200,
+          "y": 132
+        },
+        {
+          "original": {
+            "x": -250,
+            "y": 40
+          },
+          "x": -229,
+          "y": 78
+        }
+      ],
+      "source": "shape_0009",
+      "target": "shape_0007",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "is approved by",
+      "id": "connection_0034",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": -180,
+            "y": 170
+          },
+          "x": -218,
+          "y": 183
+        },
+        {
+          "original": {
+            "x": -410,
+            "y": 250
+          },
+          "x": -372,
+          "y": 236
+        }
+      ],
+      "source": "shape_0009",
+      "target": "shape_0002",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:connection",
+      "name": "",
+      "id": "connection_0035",
+      "waypoints": [
+        {
+          "original": {
+            "x": -430,
+            "y": 0
+          },
+          "x": -430,
+          "y": 0
+        },
+        {
+          "original": {
+            "x": -620,
+            "y": 0
+          },
+          "x": -620,
+          "y": 0
+        }
+      ],
+      "source": "shape_0006",
+      "target": "shape_0015"
+    },
+    {
+      "type": "domainStory:connection",
+      "name": "",
+      "id": "connection_0036",
+      "waypoints": [
+        {
+          "original": {
+            "x": -180,
+            "y": 170
+          },
+          "x": -180,
+          "y": 170
+        },
+        {
+          "original": {
+            "x": -250,
+            "y": 350
+          },
+          "x": -250,
+          "y": 350
+        }
+      ],
+      "source": "shape_0009",
+      "target": "shape_0016"
+    },
+    {
+      "type": "domainStory:connection",
+      "name": "",
+      "id": "connection_0037",
+      "waypoints": [
+        {
+          "original": {
+            "x": 0,
+            "y": -470
+          },
+          "x": 0,
+          "y": -470
+        },
+        {
+          "original": {
+            "x": 0,
+            "y": -660
+          },
+          "x": 0,
+          "y": -660
+        }
+      ],
+      "source": "shape_0012",
+      "target": "shape_0017"
+    },
+    {
+      "info": "AS-IS · fine-grained · digitalized\nEverything inside Support is manual today."
+    },
+    {
+      "version": "3.0.0"
+    }
+  ]
+}
+ </DST> -->

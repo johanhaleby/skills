@@ -1,0 +1,257 @@
+{
+  "title": "Grant a building permit",
+  "scope": {
+    "granularity": "fine-grained",
+    "time": "AS-IS",
+    "purity": "digitalized"
+  },
+  "description": "Deliberately oversized: twenty sentences is past the point where one story helps.",
+  "actors": [
+    {
+      "name": "Applicant",
+      "icon": "Person"
+    },
+    {
+      "name": "Case officer",
+      "icon": "Person"
+    },
+    {
+      "name": "Registry",
+      "icon": "System"
+    },
+    {
+      "name": "Inspector",
+      "icon": "Person"
+    },
+    {
+      "name": "Committee",
+      "icon": "Group"
+    },
+    {
+      "name": "Treasury",
+      "icon": "Business"
+    }
+  ],
+  "sentences": [
+    {
+      "n": 1,
+      "from": "Applicant",
+      "verb": "files",
+      "object": {
+        "name": "Application",
+        "icon": "Document"
+      },
+      "prep": "to",
+      "to": "Registry"
+    },
+    {
+      "n": 2,
+      "from": "Registry",
+      "verb": "assigns",
+      "object": {
+        "name": "Case",
+        "icon": "Folder"
+      },
+      "prep": "to",
+      "to": "Case officer"
+    },
+    {
+      "n": 3,
+      "from": "Case officer",
+      "verb": "checks",
+      "object": {
+        "name": "Checklist",
+        "icon": "View-List"
+      },
+      "prep": "to",
+      "to": "Registry"
+    },
+    {
+      "n": 4,
+      "from": "Case officer",
+      "verb": "requests",
+      "object": {
+        "name": "Site visit",
+        "icon": "Place"
+      },
+      "prep": "to",
+      "to": "Inspector"
+    },
+    {
+      "n": 5,
+      "from": "Inspector",
+      "verb": "photographs",
+      "object": {
+        "name": "Site",
+        "icon": "Picture-as-PDF"
+      },
+      "prep": "to",
+      "to": "Registry"
+    },
+    {
+      "n": 6,
+      "from": "Inspector",
+      "verb": "writes",
+      "object": {
+        "name": "Site report",
+        "icon": "Document"
+      },
+      "prep": "to",
+      "to": "Case officer"
+    },
+    {
+      "n": 7,
+      "from": "Case officer",
+      "verb": "requests",
+      "object": {
+        "name": "Fee estimate",
+        "icon": "Euro"
+      },
+      "prep": "to",
+      "to": "Treasury"
+    },
+    {
+      "n": 8,
+      "from": "Treasury",
+      "verb": "returns",
+      "object": {
+        "name": "Fee estimate",
+        "icon": "Euro"
+      },
+      "prep": "to",
+      "to": "Case officer"
+    },
+    {
+      "n": 9,
+      "from": "Case officer",
+      "verb": "invoices",
+      "object": {
+        "name": "Fee",
+        "icon": "Credit-Card"
+      },
+      "prep": "to",
+      "to": "Applicant"
+    },
+    {
+      "n": 10,
+      "from": "Applicant",
+      "verb": "pays",
+      "object": {
+        "name": "Fee",
+        "icon": "Euro"
+      },
+      "prep": "to",
+      "to": "Treasury"
+    },
+    {
+      "n": 11,
+      "from": "Treasury",
+      "verb": "confirms",
+      "object": {
+        "name": "Payment",
+        "icon": "Thumb-up"
+      },
+      "prep": "to",
+      "to": "Registry"
+    },
+    {
+      "n": 12,
+      "from": "Case officer",
+      "verb": "compiles",
+      "object": {
+        "name": "Dossier",
+        "icon": "Briefcase"
+      },
+      "prep": "to",
+      "to": "Committee"
+    },
+    {
+      "n": 13,
+      "from": "Committee",
+      "verb": "reviews",
+      "object": {
+        "name": "Dossier",
+        "icon": "Assessment"
+      },
+      "prep": "to",
+      "to": "Registry"
+    },
+    {
+      "n": 14,
+      "from": "Committee",
+      "verb": "votes on",
+      "object": {
+        "name": "Decision",
+        "icon": "Thumb-up-down"
+      },
+      "prep": "to",
+      "to": "Registry"
+    },
+    {
+      "n": 15,
+      "from": "Registry",
+      "verb": "drafts",
+      "object": {
+        "name": "Permit",
+        "icon": "Document"
+      },
+      "prep": "to",
+      "to": "Case officer"
+    },
+    {
+      "n": 16,
+      "from": "Case officer",
+      "verb": "signs",
+      "object": {
+        "name": "Permit",
+        "icon": "How-To-Reg"
+      },
+      "prep": "to",
+      "to": "Registry"
+    },
+    {
+      "n": 17,
+      "from": "Registry",
+      "verb": "notifies",
+      "object": {
+        "name": "Decision letter",
+        "icon": "Email"
+      },
+      "prep": "to",
+      "to": "Applicant"
+    },
+    {
+      "n": 18,
+      "from": "Registry",
+      "verb": "publishes",
+      "object": {
+        "name": "Notice",
+        "icon": "Info"
+      },
+      "prep": "to",
+      "to": "Committee"
+    },
+    {
+      "n": 19,
+      "from": "Applicant",
+      "verb": "collects",
+      "object": {
+        "name": "Permit",
+        "icon": "Document"
+      },
+      "prep": "to",
+      "to": "Case officer"
+    },
+    {
+      "n": 20,
+      "from": "Registry",
+      "verb": "archives",
+      "object": {
+        "name": "Case",
+        "icon": "Folder"
+      },
+      "prep": "to",
+      "to": "Committee"
+    }
+  ]
+}

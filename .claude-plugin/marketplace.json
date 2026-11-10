@@ -1,0 +1,13 @@
+{
+  "name": "johanhaleby-skills",
+  "owner": { "name": "Johan Haleby" },
+  "plugins": [
+    {
+      "name": "domain-storytelling",
+      "description": "Draw a business process as Domain Stories that open at egon.io, and read existing Egon.io files back as text.",
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/domain-storytelling", "./skills/egn-to-text"]
+    }
+  ]
+}

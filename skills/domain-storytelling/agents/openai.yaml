@@ -1,0 +1,7 @@
+interface:
+  display_name: "Domain Storytelling"
+  short_description: "Model a business process as domain stories and render them"
+  default_prompt: "Use $domain-storytelling to draw this process as a domain story."
+
+policy:
+  allow_implicit_invocation: true

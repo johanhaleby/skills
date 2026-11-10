@@ -1,0 +1,25 @@
+{
+  "title": "Settle a day of parkings",
+  "scope": { "granularity": "coarse-grained", "time": "AS-IS", "purity": "digitalized" },
+  "description": "The platform touches almost every step, which is itself the finding.",
+  "actors": [
+    { "name": "Driver", "icon": "Person" },
+    { "name": "Platform", "icon": "System", "note": "Everything routes through Platform. That is what makes it hard to change." },
+    { "name": "Operator", "icon": "Group" },
+    { "name": "Bank", "icon": "Business" }
+  ],
+  "sentences": [
+    { "n": 1, "from": "Driver", "verb": "starts", "object": { "name": "Parking", "icon": "Time" }, "prep": "in", "to": "Platform" },
+    { "n": 2, "from": "Platform", "verb": "reserves", "object": { "name": "Amount", "icon": "Euro" }, "prep": "with", "to": "Bank" },
+    { "n": 3, "from": "Driver", "verb": "stops", "object": { "name": "Parking", "icon": "Time" }, "prep": "in", "to": "Platform" },
+    { "n": 4, "from": "Platform", "verb": "prices", "object": { "name": "Session", "icon": "Assessment" } },
+    { "n": 5, "from": "Platform", "verb": "captures", "object": { "name": "Payment", "icon": "Credit-Card" }, "prep": "from", "to": "Bank" },
+    { "n": 6, "from": "Platform", "verb": "issues", "object": { "name": "Receipt", "icon": "Receipt" }, "prep": "to", "to": "Driver" },
+    { "n": 7, "from": "Platform", "verb": "compiles", "object": { "name": "Day report", "icon": "Assessment", "id": "report" }, "prep": "for", "to": "Operator" },
+    { "n": 8, "from": "Operator", "verb": "disputes", "object": { "name": "Line item", "icon": "Problem" }, "prep": "with", "to": "Platform" },
+    { "n": 9, "from": "Platform", "verb": "pays out", "object": { "name": "Settlement", "icon": "Euro" }, "prep": "to", "to": "Operator" }
+  ],
+  "relations": [
+    { "from": "report", "verb": "covers", "to": "Operator" }
+  ]
+}

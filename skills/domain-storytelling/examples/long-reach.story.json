@@ -1,0 +1,26 @@
+{
+  "title": "Onboard a fleet customer",
+  "scope": { "granularity": "coarse-grained", "time": "TO-BE", "purity": "digitalized" },
+  "description": "Sales opens the case and signs it off nine steps later.",
+  "actors": [
+    { "name": "Sales", "icon": "Person" },
+    { "name": "Fleet manager", "icon": "Person" },
+    { "name": "Credit bureau", "icon": "Courthouse" },
+    { "name": "CRM", "icon": "System" },
+    { "name": "Billing", "icon": "System" }
+  ],
+  "sentences": [
+    { "n": 1, "from": "Sales", "verb": "opens", "object": { "name": "Case", "icon": "Folder", "id": "case" }, "prep": "in", "to": "CRM" },
+    { "n": 2, "from": "Fleet manager", "verb": "submits", "object": { "name": "Application", "icon": "Document" }, "prep": "to", "to": "CRM" },
+    { "n": 3, "from": "CRM", "verb": "requests", "object": { "name": "Credit check", "icon": "Assessment" }, "prep": "from", "to": "Credit bureau" },
+    { "n": 4, "from": "Credit bureau", "verb": "returns", "object": { "name": "Rating", "icon": "Thumb-up-down" }, "prep": "to", "to": "CRM" },
+    { "n": 5, "from": "CRM", "verb": "drafts", "object": { "name": "Contract", "icon": "Document" }, "prep": "for", "to": "Fleet manager" },
+    { "n": 6, "from": "Fleet manager", "verb": "signs", "object": { "name": "Contract", "icon": "How-To-Reg" }, "prep": "back to", "to": "CRM" },
+    { "n": 7, "from": "CRM", "verb": "opens", "object": { "name": "Account", "icon": "Business" }, "prep": "in", "to": "Billing" },
+    { "n": 8, "from": "Billing", "verb": "issues", "object": { "name": "First invoice", "icon": "Euro" }, "prep": "to", "to": "Fleet manager" },
+    { "n": 9, "from": "Sales", "verb": "closes", "object": { "name": "Case", "icon": "Folder" }, "prep": "in", "to": "CRM" }
+  ],
+  "relations": [
+    { "from": "case", "verb": "belongs to", "to": "Fleet manager" }
+  ]
+}

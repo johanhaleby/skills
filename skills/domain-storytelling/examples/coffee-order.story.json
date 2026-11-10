@@ -1,0 +1,20 @@
+{
+  "title": "Order coffee",
+  "scope": { "granularity": "coarse-grained", "time": "AS-IS", "purity": "digitalized" },
+  "description": "The typical case: one customer, paying by card, drinking in.",
+  "actors": [
+    { "name": "Customer", "icon": "Person" },
+    { "name": "Barista", "icon": "Person" },
+    { "name": "Point of sale", "icon": "System" }
+  ],
+  "sentences": [
+    { "n": 1, "from": "Customer", "verb": "orders", "object": { "name": "Flat white", "icon": "Dining" }, "prep": "from", "to": "Barista" },
+    { "n": 2, "from": "Barista", "verb": "rings up", "object": { "name": "Order", "icon": "Document", "id": "order" }, "prep": "in", "to": "Point of sale" },
+    { "n": 3, "from": "Customer", "verb": "taps", "object": { "name": "Card", "icon": "Credit-Card" }, "prep": "on", "to": "Point of sale" },
+    { "n": 4, "from": "Point of sale", "verb": "prints", "object": { "name": "Receipt", "icon": "Receipt" }, "prep": "for", "to": "Customer" },
+    { "n": 5, "from": "Barista", "verb": "brews", "object": { "name": "Coffee", "icon": "Dining" }, "prep": "for", "to": "Customer" }
+  ],
+  "relations": [
+    { "from": "order", "verb": "is billed to", "to": "Customer" }
+  ]
+}

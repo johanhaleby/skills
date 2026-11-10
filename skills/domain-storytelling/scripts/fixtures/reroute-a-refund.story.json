@@ -1,0 +1,20 @@
+{
+  "title": "Reroute a refund & notify",
+  "scope": { "granularity": "fine-grained", "time": "TO-BE", "purity": "digitalized" },
+  "description": "Large refunds now need a second approver before the payout.",
+  "actors": [
+    { "name": "Driver", "icon": "Person", "note": "Never sees the internal approval." },
+    { "name": "Case tool & log", "icon": "System" },
+    { "name": "Agent", "icon": "Person" }
+  ],
+  "sentences": [
+    { "n": 1, "from": "Driver", "verb": "files", "object": { "name": "Claim", "icon": "Document" }, "prep": "with", "to": "Case tool & log" },
+    { "n": 2, "from": "Case tool & log", "verb": "routes", "object": { "name": "Refund <500 kr", "icon": "Euro", "id": "refund" }, "prep": "to", "to": "Agent",
+      "changed": true, "note": "New: over 500 kr goes to a second approver." },
+    { "n": 3, "from": "Agent", "verb": "approves", "object": { "name": "Approval", "icon": "Thumb-up" }, "changed": true },
+    { "n": 4, "from": "Agent", "verb": "pays out", "object": { "name": "Payout", "icon": "Credit-Card" }, "prep": "to", "to": "Driver" }
+  ],
+  "relations": [
+    { "from": "refund", "verb": "is owed to", "to": "Driver" }
+  ]
+}

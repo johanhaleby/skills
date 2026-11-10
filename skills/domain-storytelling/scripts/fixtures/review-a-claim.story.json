@@ -1,0 +1,28 @@
+{
+  "title": "Review a claim",
+  "scope": { "granularity": "fine-grained", "time": "AS-IS", "purity": "pure" },
+  "description": "Steps 3 and 3 happen at the same time.",
+  "actors": [
+    { "name": "Claimant", "icon": "Person" },
+    { "name": "Intake desk", "icon": "Group", "note": "Staffed on weekdays only." },
+    { "name": "Assessor", "icon": "Person" },
+    { "name": "Archive", "icon": "System" }
+  ],
+  "sentences": [
+    { "n": 1, "from": "Claimant", "verb": "submits", "object": { "name": "Claim form", "icon": "Document", "id": "form" }, "prep": "to", "to": "Intake desk",
+      "note": "Paper forms are scanned first." },
+    { "n": 2, "from": "Intake desk", "verb": "forwards", "object": { "name": "Case file", "icon": "Folder", "id": "file" }, "prep": "to", "to": "Assessor" },
+    { "n": 3, "from": "Assessor", "verb": "archives", "object": { "name": "Copy", "icon": "Printer", "id": "copy" }, "prep": "in", "to": "Archive" },
+    { "n": 3, "from": "Assessor", "verb": "informs", "object": { "name": "Decision", "icon": "Email" }, "prep": "of", "to": "Claimant",
+      "note": "Sent the same day." },
+    { "n": 4, "from": "Claimant", "verb": "replies", "to": "Assessor" }
+  ],
+  "relations": [
+    { "from": "form", "verb": "is part of", "to": "file" },
+    { "from": "copy", "verb": "mirrors", "to": "file" }
+  ],
+  "groups": [
+    { "name": "Front office", "members": ["Intake desk"] },
+    { "name": "Back office", "members": ["Assessor", "Archive"] }
+  ]
+}

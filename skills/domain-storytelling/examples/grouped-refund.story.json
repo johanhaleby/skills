@@ -1,0 +1,34 @@
+{
+  "title": "Refund a disputed parking",
+  "scope": { "granularity": "fine-grained", "time": "AS-IS", "purity": "digitalized" },
+  "description": "Everything inside Support is manual today.",
+  "actors": [
+    { "name": "Driver", "icon": "Person" },
+    { "name": "Agent", "icon": "Person" },
+    { "name": "Case tool", "icon": "System" },
+    { "name": "Finance", "icon": "Group" },
+    { "name": "Bank", "icon": "Business" }
+  ],
+  "sentences": [
+    { "n": 1, "from": "Driver", "verb": "calls about", "object": { "name": "Charge", "icon": "Call" }, "prep": "to", "to": "Agent",
+      "note": "Roughly a fifth of these arrive by email instead." },
+    { "n": 2, "from": "Agent", "verb": "opens", "object": { "name": "Dispute", "icon": "Folder", "id": "dispute" }, "prep": "in", "to": "Case tool" },
+    { "n": 3, "from": "Case tool", "verb": "pulls", "object": { "name": "Session log", "icon": "View-List", "id": "log" } },
+    { "n": 4, "from": "Agent", "verb": "approves", "object": { "name": "Refund", "icon": "Euro", "id": "refund" }, "prep": "in", "to": "Case tool",
+      "note": "Anything over 500 kr needs a second approver." },
+    { "n": 5, "from": "Case tool", "verb": "hands", "object": { "name": "Payout", "icon": "Credit-Card" }, "prep": "to", "to": "Finance" },
+    { "n": 6, "from": "Finance", "verb": "transfers", "object": { "name": "Money", "icon": "Euro" }, "prep": "via", "to": "Bank" },
+    { "n": 7, "from": "Bank", "verb": "confirms", "object": { "name": "Transfer", "icon": "Thumb-up" }, "prep": "to", "to": "Driver",
+      "note": "Takes two banking days, and the driver is not told that." }
+  ],
+  "relations": [
+    { "from": "dispute", "verb": "is raised by", "to": "Driver" },
+    { "from": "log", "verb": "evidences", "to": "dispute" },
+    { "from": "refund", "verb": "settles", "to": "dispute" },
+    { "from": "refund", "verb": "is approved by", "to": "Agent" }
+  ],
+  "groups": [
+    { "name": "Support", "members": ["Agent", "Case tool"] },
+    { "name": "Back office", "members": ["Finance", "Bank"] }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Dispatch a parking fine",
+  "scope": { "granularity": "fine-grained", "time": "AS-IS", "purity": "digitalized" },
+  "description": "Steps 3 and 3 happen at the same time; neither waits for the other.",
+  "actors": [
+    { "name": "Warden", "icon": "Person" },
+    { "name": "Fine service", "icon": "System" },
+    { "name": "Print partner", "icon": "Business" },
+    { "name": "Motorist", "icon": "Person" }
+  ],
+  "sentences": [
+    { "n": 1, "from": "Warden", "verb": "photographs", "object": { "name": "Vehicle", "icon": "Car" }, "prep": "into", "to": "Fine service" },
+    { "n": 2, "from": "Fine service", "verb": "raises", "object": { "name": "Fine", "icon": "Euro", "id": "fine" } },
+    { "n": 3, "from": "Fine service", "verb": "queues", "object": { "name": "Print job", "icon": "Printer" }, "prep": "with", "to": "Print partner" },
+    { "n": 3, "from": "Fine service", "verb": "sends", "object": { "name": "Notice", "icon": "Email" }, "prep": "to", "to": "Motorist" },
+    { "n": 4, "from": "Motorist", "verb": "pays", "object": { "name": "Payment", "icon": "Credit-Card" }, "prep": "into", "to": "Fine service" }
+  ],
+  "relations": [
+    { "from": "fine", "verb": "is owed by", "to": "Motorist" }
+  ]
+}
