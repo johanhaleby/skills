@@ -1,6 +1,5 @@
 # Skills
 
-Agent skills I've written for Claude Code and Codex.
 
 | Skill | What it does |
 | --- | --- |
