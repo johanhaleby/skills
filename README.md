@@ -8,6 +8,10 @@
 
 `domain-storytelling` uses `egn-to-text` to read stories that already exist, so install both.
 
+This is what `domain-storytelling` draws for [`coffee-order.story.json`](skills/domain-storytelling/examples/coffee-order.story.json), a five-sentence story about ordering a coffee. The matching [`.egn`](skills/domain-storytelling/examples/Order%20coffee.egn) file opens at [egon.io](https://egon.io) for further editing.
+
+![Order coffee drawn as a domain story. The customer orders a flat white from the barista, who rings up the order, the customer taps a card on the point of sale, which prints a receipt, and the barista brews the coffee](skills/domain-storytelling/examples/Order%20coffee.egn.svg)
+
 ## Installing
 
 In Claude Code, add this repository as a plugin marketplace and install the plugin:
