@@ -1748,6 +1748,20 @@ class ReadsAChainBackFromADrawnStory(unittest.TestCase):
         spec, _ = self.converted(elements)
         self.assertEqual({"object": {"name": "Property data", "icon": "Document"}}, spec["sentences"][0]["chain"][0])
 
+    def test_a_later_sentence_sharing_the_first_object_warns_that_it_lost_the_continuation(self):
+        elements = [{"type": "domainStory:actorPerson", "id": "a", "name": "Buyer"},
+                    {"type": "domainStory:actorPerson", "id": "s", "name": "Seller"},
+                    {"type": "domainStory:workObjectDocument", "id": "q", "name": "Quote"},
+                    {"type": "domainStory:workObjectDocument", "id": "d", "name": "Property data"},
+                    {"type": "domainStory:activity", "id": "x1", "name": "requests", "number": "1", "source": "a", "target": "q"},
+                    {"type": "domainStory:activity", "id": "x2", "name": "accepts", "number": "2", "source": "a", "target": "q"},
+                    {"type": "domainStory:activity", "id": "x3", "name": "based on", "source": "q", "target": "d"},
+                    {"type": "domainStory:activity", "id": "x4", "name": "from", "source": "d", "target": "s"}]
+        spec, warnings = self.converted(elements)
+        self.assertEqual((["Property data"], ["sentence 2 starts at 'Quote', which an earlier sentence already "
+                                              "continued from, so it kept no chain or destination"]),
+                         ([h["object"]["name"] for h in spec["sentences"][0]["chain"]], warnings))
+
     def test_a_note_on_a_hop_is_dropped_with_a_warning(self):
         import egn2spec
         elements = self.drawn(("actor", "buys", "ticket", "1"),

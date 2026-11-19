@@ -203,6 +203,12 @@ def convert(path):
                 f"sentence {step['number']} leaves {last['name']!r} by "
                 f"{len(candidates)} arrows, so it kept no preposition"
             )
+        # Sentences that start at one work object share what leaves it, and the first sentence takes
+        # it. A later one that finds it already taken keeps nothing after the object, so say so.
+        if "chain" not in sentence and "to" not in sentence and any(
+                id(c) in consumed for c in by_source.get(target["id"], [])):
+            warnings.append(f"sentence {step['number']} starts at {target['name']!r}, which an earlier "
+                            f"sentence already continued from, so it kept no chain or destination")
         if target["id"] in notes:
             sentence["note"] = notes[target["id"]]
         sentences.append((sentence, target["id"]))
