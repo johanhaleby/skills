@@ -107,7 +107,8 @@ def load_spec(path: Path) -> dict:
 
 SPEC_KEYS = {"title", "scope", "description", "actors", "sentences", "relations", "groups"}
 ACTOR_KEYS = {"name", "icon", "note", "at"}
-SENTENCE_KEYS = {"n", "from", "verb", "object", "prep", "to", "note", "changed"}
+SENTENCE_KEYS = {"n", "from", "verb", "object", "chain", "prep", "to", "note", "changed"}
+CHAIN_KEYS = {"prep", "object"}
 OBJECT_KEYS = {"name", "icon", "id", "at"}
 RELATION_KEYS = {"from", "to", "verb"}
 GROUP_KEYS = {"name", "members"}
@@ -156,8 +157,12 @@ def validate(spec: dict, icons: dict) -> None:
         _require(s.get("from") in seen, f"{where}: 'from' names undeclared actor {s.get('from')!r}")
         if s.get("to") is not None:
             _require(s["to"] in seen, f"{where}: 'to' names undeclared actor {s['to']!r}")
-        obj = s.get("object")
-        if obj is not None:
+        _require(not s.get("chain") or s.get("object"), f"{where}: a chain continues a work object, so it needs one")
+        for h in s.get("chain") or []:
+            _no_strays(h, CHAIN_KEYS, f"{where}: chain")
+            _require(h.get("object"), f"{where}: every chain hop needs a work object")
+        hops = [s.get("object")] + [h.get("object") for h in s.get("chain") or []]
+        for obj in (o for o in hops if o is not None):
             _no_strays(obj, OBJECT_KEYS, f"{where}: work object")
             _require(obj.get("name"), f"{where}: work object needs a name")
             _require(obj.get("icon") in icons, f"{where}: unknown icon {obj.get('icon')!r}")
@@ -172,7 +177,7 @@ def validate(spec: dict, icons: dict) -> None:
                 _require(oid not in wo_ids, f"{where}: work object id {oid!r} is already used")
                 _require(oid not in seen, f"{where}: work object id {oid!r} collides with an actor name")
                 wo_ids[oid] = obj
-        else:
+        if s.get("object") is None:
             _require(s.get("to"), f"{where}: a sentence without a work object must still have a 'to'")
 
     used = {s.get("from") for s in sentences} | {s.get("to") for s in sentences}
@@ -287,8 +292,20 @@ def build(spec):
         wo.steps.add(n)
         nodes[key] = wo
         edges.append(Edge(src, wo, s.get("verb", ""), n, changed=changed, step=n))
+        # A sentence can pass through several work objects, as in the book's "based on" arrows.
+        # Each hop is a shape of its own, reached by an unnumbered arrow carrying its preposition.
+        last = wo
+        for j, h in enumerate(s.get("chain") or []):
+            o = h["object"]
+            hk = o.get("id") or f"__wo{i}_{j}"
+            hop = Node(hk, "wo", o["name"], o["icon"], o.get("at"), changed=changed)
+            hop.spoke = wo.spoke
+            hop.steps.add(n)
+            nodes[hk] = hop
+            edges.append(Edge(last, hop, h.get("prep", ""), changed=changed, step=n))
+            last = hop
         if s.get("to"):
-            edges.append(Edge(wo, nodes[s["to"]], s.get("prep", ""), changed=changed, step=n))
+            edges.append(Edge(last, nodes[s["to"]], s.get("prep", ""), changed=changed, step=n))
         if s.get("note"):
             notes.append(Note(f"__note{len(notes)}", s["note"], wo, (n,)))
 
@@ -1137,6 +1154,52 @@ def place(nodes, edges, notes, seating=None):
     assign_labels(nodes, edges, notes)
     if seating is None:
         _keep_the_best_seating(nodes, edges, notes)
+        _make_room_for_notes(nodes, edges, notes)
+
+
+# A note whose centre sits further than this from its shape's centre reads as a note on
+# whichever shape is nearest to it.
+NOTE_NEAR = SOLO_REACH + 160
+# Small steps, so the picture grows only as much as the notes need.
+ROOM_STEP = 1.06
+ROOM_TRIES = 12
+
+
+def _far_notes(notes):
+    return [n for n in notes if math.hypot(n.cx - n.anchor.cx, n.cy - n.anchor.cy) > NOTE_NEAR]
+
+
+def _redraw_at(nodes, edges, notes, home, f):
+    # A pin is the author's choice, so it keeps its place while the rest spreads.
+    for n in nodes.values():
+        if not n.pinned:
+            n.cx, n.cy = _snap(home[n.key][0] * f), _snap(home[n.key][1] * f)
+    assign_routes(nodes, edges)
+    _place_notes(nodes, notes, edges)
+    assign_labels(nodes, edges, notes)
+
+
+def _make_room_for_notes(nodes, edges, notes):
+    """Spread the picture until every note fits beside its own shape.
+
+    The note search walks outwards until a leader line is clear, so in a crowded picture it
+    can put a note on the far side, next to shapes it has nothing to do with. Scaling every
+    position about the centre opens the gaps instead. The first scale with no far note wins,
+    and when none gets there the smallest scale with the fewest far notes is kept.
+    """
+    if not notes or not _far_notes(notes):
+        return
+    home = {n.key: (n.cx, n.cy) for n in nodes.values()}
+    best = (len(_far_notes(notes)), 1.0)
+    for i in range(1, ROOM_TRIES + 1):
+        f = ROOM_STEP ** i
+        _redraw_at(nodes, edges, notes, home, f)
+        far = len(_far_notes(notes))
+        if far < best[0]:
+            best = (far, f)
+        if far == 0:
+            return
+    _redraw_at(nodes, edges, notes, home, best[1])
 
 
 def _seatings(nodes, edges):

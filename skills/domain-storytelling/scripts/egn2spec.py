@@ -105,6 +105,7 @@ def convert(path):
     for relation in data["relations"]:
         by_source.setdefault(relation["source"]["id"], []).append(relation)
 
+    numbered_targets = {step["target"]["id"] for step in data["steps"]}
     ids, consumed, sentences = set(), set(), []
     for step in data["steps"]:
         target = step["target"]
@@ -117,9 +118,32 @@ def convert(path):
             "verb": step["verb"],
             "object": {"name": target["name"], "icon": icon_for(target["kind"])},
         }
+        # A sentence can pass through further work objects before it reaches an actor, as
+        # in "purchases a ticket based on data from the property from the landlord". A hop
+        # is a work object no numbered arrow points at, reached by the only arrow that
+        # leaves the previous one.
+        last = target
+        while True:
+            outgoing = [c for c in by_source.get(last["id"], []) if id(c) not in consumed]
+            if any(c["target"]["kind"].startswith("actor") for c in outgoing):
+                break
+            hops = [c for c in outgoing if c["target"]["id"] not in numbered_targets
+                    and (c["target"]["name"] or "").strip()]
+            if len(hops) != 1 or len(outgoing) != 1:
+                break
+            hop = hops[0]["target"]
+            link = {"object": {"name": hop["name"], "icon": icon_for(hop["kind"])}}
+            if hops[0]["verb"]:
+                link["prep"] = hops[0]["verb"]
+            sentence.setdefault("chain", []).append(link)
+            consumed.add(id(hops[0]))
+            if hop["id"] in notes:
+                warnings.append(f"dropped the note on {hop['name']!r} in sentence "
+                                f"{step['number']}, since a note belongs to the sentence's first work object")
+            last = hop
         # The `to` of a sentence is an actor, so an arrow leaving the work object
         # for another work object is a relation somebody drew, not a preposition.
-        candidates = [c for c in by_source.get(target["id"], [])
+        candidates = [c for c in by_source.get(last["id"], [])
                       if c["target"]["kind"].startswith("actor")]
         # The .egn stores a preposition arrow and a drawn relation the same way, so this
         # guesses from the label. A single arrow labelled with a plain preposition, among
@@ -134,7 +158,7 @@ def convert(path):
             consumed.add(id(candidates[0]))
         elif len(candidates) > 1:
             warnings.append(
-                f"sentence {step['number']} leaves {target['name']!r} by "
+                f"sentence {step['number']} leaves {last['name']!r} by "
                 f"{len(candidates)} arrows, so it kept no preposition"
             )
         if target["id"] in notes:

@@ -327,6 +327,33 @@ class RefusesBadSpecs(unittest.TestCase):
                               "object": {"name": "Guest", "icon": "Person"}}]
         S.validate(spec, ICONS["icons"])
 
+    def test_a_chain_on_a_sentence_without_an_object(self):
+        spec = broken()
+        del spec["sentences"][0]["object"]
+        spec["sentences"][0]["chain"] = [{"prep": "based on", "object": {"name": "Rate card", "icon": "Folder"}}]
+        self.assert_rejected(spec, "chain")
+
+    def test_a_chain_hop_without_an_object(self):
+        spec = broken()
+        spec["sentences"][0]["chain"] = [{"prep": "based on"}]
+        self.assert_rejected(spec, "hop")
+
+    def test_a_misspelled_chain_hop_field(self):
+        spec = broken()
+        spec["sentences"][0]["chain"] = [{"verb": "based on", "object": {"name": "Rate card", "icon": "Folder"}}]
+        self.assert_rejected(spec, "'verb'")
+
+    def test_a_chain_hop_drawn_with_an_actors_icon(self):
+        spec = broken()
+        spec["sentences"][0]["chain"] = [{"prep": "based on", "object": {"name": "Rate card", "icon": "Person"}}]
+        self.assert_rejected(spec, "Person")
+
+    def test_a_chain_hop_id_already_used_by_another_work_object(self):
+        spec = broken()
+        spec["sentences"][0]["chain"] = [{"prep": "based on",
+                                         "object": {"name": "Rate card", "icon": "Folder", "id": "coffee"}}]
+        self.assert_rejected(spec, "coffee")
+
     def test_dangling_group_member(self):
         self.assert_rejected(broken(groups=[{"name": "X", "members": ["Nobody"]}]), "Nobody")
 
@@ -1426,6 +1453,202 @@ class ListsEveryIconInTheSpec(unittest.TestCase):
     def test_the_list_holds_exactly_the_icons_the_generator_draws(self):
         listed = [n.strip("`") for n in self.listed()]
         self.assertEqual(sorted(ICONS["icons"]), sorted(listed))
+
+
+class DrawsASentenceThroughSeveralWorkObjects(unittest.TestCase):
+
+    BASED_ON = {
+        "title": "Buy a ticket",
+        "actors": [{"name": "Buyer", "icon": "Person"}, {"name": "Seller", "icon": "Person"}],
+        "sentences": [
+            {"n": 1, "from": "Buyer", "verb": "buys",
+             "object": {"name": "Ticket", "icon": "Document"},
+             "chain": [{"prep": "based on", "object": {"name": "Property data", "icon": "Folder"}},
+                       {"prep": "with", "object": {"name": "Voucher", "icon": "Receipt"}}],
+             "prep": "from", "to": "Seller"},
+        ],
+    }
+
+    def arrows(self, spec=None):
+        _, edges, _, _ = model(spec or self.BASED_ON)
+        return [(e.src.name, e.dst.name, e.label, e.number) for e in edges]
+
+    def test_every_hop_is_a_work_object_shape_of_its_own(self):
+        nodes, _, _, _ = model(self.BASED_ON)
+        self.assertEqual(["Ticket", "Property data", "Voucher"],
+                         [n.name for n in nodes.values() if n.kind == "wo"])
+
+    def test_the_arrows_run_from_the_actor_through_each_object_to_the_other_actor(self):
+        self.assertEqual([("Buyer", "Ticket"), ("Ticket", "Property data"),
+                          ("Property data", "Voucher"), ("Voucher", "Seller")],
+                         [(src, dst) for src, dst, _, _ in self.arrows()])
+
+    def test_only_the_first_arrow_carries_the_sequence_number(self):
+        self.assertEqual([1, None, None, None], [number for _, _, _, number in self.arrows()])
+
+    def test_the_arrow_into_a_hop_carries_that_hops_preposition(self):
+        self.assertEqual(["buys", "based on", "with"], [label for _, _, label, _ in self.arrows()][:3])
+
+    def test_the_arrow_to_the_other_actor_carries_the_sentence_preposition(self):
+        self.assertEqual(("Voucher", "Seller", "from", None), self.arrows()[-1])
+
+    def test_a_sentence_without_a_chain_still_draws_two_arrows(self):
+        spec = json.loads(json.dumps(self.BASED_ON))
+        del spec["sentences"][0]["chain"]
+        self.assertEqual([("Buyer", "Ticket", "buys", 1), ("Ticket", "Seller", "from", None)],
+                         self.arrows(spec))
+
+    def test_a_hop_takes_an_id_a_relation_can_point_at(self):
+        spec = json.loads(json.dumps(self.BASED_ON))
+        spec["sentences"][0]["chain"][0]["object"]["id"] = "data"
+        spec["relations"] = [{"from": "data", "verb": "belongs to", "to": "Seller"}]
+        S.validate(spec, ICONS["icons"])
+
+    def test_the_written_story_exports_the_hops_as_unnumbered_activities(self):
+        payload = json.loads(render(self.BASED_ON, ("egn",))["Buy a ticket.egn"])
+        elements = payload["dst"]
+        names = {e["id"]: e["name"] for e in elements if e.get("type", "").startswith("domainStory:workObject")}
+        between_objects = [(names[e["source"]], names[e["target"]], e["name"], e.get("number"))
+                           for e in elements if e.get("type") == "domainStory:activity"
+                           and e["source"] in names and e["target"] in names]
+        self.assertEqual([("Ticket", "Property data", "based on", None),
+                          ("Property data", "Voucher", "with", None)], between_objects)
+
+
+class ReadsAChainBackFromADrawnStory(unittest.TestCase):
+
+    def drawn(self, *activities):
+        shapes = [("actor", "actorPerson", "Buyer"), ("ticket", "workObjectDocument", "Ticket"),
+                  ("data", "workObjectFolder", "Property data"), ("seller", "actorPerson", "Seller")]
+        elements = [{"type": f"domainStory:{kind}", "id": key, "name": name} for key, kind, name in shapes]
+        elements += [{"type": "domainStory:activity", "id": f"a{i}", "name": verb, "number": number,
+                      "source": source, "target": target}
+                     for i, (source, verb, target, number) in enumerate(activities)]
+        return elements
+
+    def convert(self, *activities):
+        import egn2spec
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "Buy a ticket.egn"
+            path.write_text(json.dumps({"dst": self.drawn(*activities)}), encoding="utf-8")
+            return egn2spec.convert(path)
+
+    def chained(self):
+        return self.convert(("actor", "buys", "ticket", "1"),
+                            ("ticket", "based on data from", "data", None),
+                            ("data", "from", "seller", None))
+
+    def test_an_unnumbered_arrow_to_another_work_object_is_a_hop(self):
+        spec, _ = self.chained()
+        self.assertEqual([{"prep": "based on data from", "object": {"name": "Property data", "icon": "Folder"}}],
+                         spec["sentences"][0]["chain"])
+
+    def test_the_sentence_reaches_the_actor_the_last_hop_leaves_for(self):
+        spec, _ = self.chained()
+        self.assertEqual(("from", "Seller"), (spec["sentences"][0]["prep"], spec["sentences"][0]["to"]))
+
+    def test_the_hop_is_one_sentence_and_not_a_relation(self):
+        spec, warnings = self.chained()
+        self.assertEqual((1, [], False), (len(spec["sentences"]), warnings, "relations" in spec))
+
+    def test_an_object_a_numbered_arrow_points_at_is_not_a_hop(self):
+        spec, _ = self.convert(("actor", "buys", "ticket", "1"),
+                               ("seller", "sends", "data", "2"),
+                               ("ticket", "based on data from", "data", None))
+        self.assertNotIn("chain", spec["sentences"][0])
+
+    def test_a_note_on_a_hop_is_dropped_with_a_warning(self):
+        import egn2spec
+        elements = self.drawn(("actor", "buys", "ticket", "1"),
+                              ("ticket", "based on", "data", None),
+                              ("data", "from", "seller", None))
+        elements += [{"type": "domainStory:textAnnotation", "id": "n1", "text": "Fetched nightly."},
+                     {"type": "domainStory:connection", "id": "c1", "source": "data", "target": "n1"}]
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "Buy a ticket.egn"
+            path.write_text(json.dumps({"dst": elements}), encoding="utf-8")
+            _, warnings = egn2spec.convert(path)
+        self.assertEqual(["dropped the note on 'Property data' in sentence 1, since a note belongs "
+                          "to the sentence's first work object"], warnings)
+
+    def test_a_chain_survives_a_round_trip(self):
+        import egn2spec
+        chain = [{"prep": "based on", "object": {"name": "Property data", "icon": "Folder"}},
+                 {"prep": "with", "object": {"name": "Voucher", "icon": "Receipt"}}]
+        spec = json.loads(json.dumps(DrawsASentenceThroughSeveralWorkObjects.BASED_ON))
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "Buy a ticket.egn"
+            path.write_text(render(spec, ("egn",))["Buy a ticket.egn"], encoding="utf-8")
+            back, warnings = egn2spec.convert(path)
+        self.assertEqual((chain, "from", "Seller", []),
+                         (back["sentences"][0]["chain"], back["sentences"][0]["prep"],
+                          back["sentences"][0]["to"], warnings))
+
+
+class MakesRoomForNotesInACrowdedPicture(unittest.TestCase):
+    """A note the search pushed to the far side reads as a note on whichever shape is nearest."""
+
+    NOTE = "A fairly long note text that wraps over several lines in the picture."
+
+    CROWDED = {
+        "title": "R1",
+        "actors": [{"name": "A0", "icon": "System"}, {"name": "A1", "icon": "Person"},
+                   {"name": "A2", "icon": "System"}],
+        "sentences": [
+            {"n": 1, "from": "A1", "verb": "does", "object": {"name": "Thing 0", "icon": "Document"},
+             "note": NOTE, "to": "A0", "prep": "to"},
+            {"n": 2, "from": "A1", "verb": "does", "object": {"name": "Thing 1", "icon": "Dining"},
+             "note": NOTE},
+            {"n": 3, "from": "A1", "verb": "does", "object": {"name": "Thing 2", "icon": "Place"},
+             "note": NOTE, "to": "A2", "prep": "to"},
+            {"n": 4, "from": "A1", "verb": "does", "object": {"name": "Thing 3", "icon": "Folder"},
+             "note": NOTE, "to": "A0", "prep": "to"},
+            {"n": 5, "from": "A0", "verb": "does", "object": {"name": "Thing 4", "icon": "Key"},
+             "note": NOTE, "to": "A1", "prep": "to"},
+        ],
+    }
+
+    def placed(self, spec, room=True):
+        spec = json.loads(json.dumps(spec))
+        S.validate(spec, ICONS["icons"])
+        nodes, edges, notes, _ = S.build(spec)
+        if room:
+            S.place(nodes, edges, notes)
+        else:
+            with mock.patch.object(S, "_make_room_for_notes"):
+                S.place(nodes, edges, notes)
+        return nodes, notes
+
+    def positions(self, nodes):
+        return {key: (n.cx, n.cy) for key, n in nodes.items()}
+
+    def test_the_story_crowds_a_note_away_when_nothing_makes_room(self):
+        _, notes = self.placed(self.CROWDED, room=False)
+        self.assertNotEqual([], S._far_notes(notes))
+
+    def test_every_note_sits_beside_its_own_shape(self):
+        _, notes = self.placed(self.CROWDED)
+        self.assertEqual([], [n.name for n in S._far_notes(notes)])
+
+    def test_the_shapes_move_apart_to_make_the_room(self):
+        spread, _ = self.placed(self.CROWDED)
+        crowded, _ = self.placed(self.CROWDED, room=False)
+        self.assertNotEqual(self.positions(crowded), self.positions(spread))
+
+    def test_a_pinned_shape_keeps_its_position_when_the_picture_spreads(self):
+        spec = json.loads(json.dumps(self.CROWDED))
+        spec["sentences"][2]["object"]["at"] = [-1, -1]
+        spread, notes = self.placed(spec)
+        crowded, _ = self.placed(spec, room=False)
+        pinned = next(key for key, n in spread.items() if n.pinned)
+        self.assertEqual(
+            (self.positions(crowded)[pinned], True),
+            ((spread[pinned].cx, spread[pinned].cy), self.positions(crowded) != self.positions(spread)))
+
+    def test_a_story_whose_notes_already_fit_is_not_spread(self):
+        fitting, _ = self.placed(STORY)
+        untouched, _ = self.placed(STORY, room=False)
+        self.assertEqual(self.positions(untouched), self.positions(fitting))
 
 
 if __name__ == "__main__":

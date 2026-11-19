@@ -40,7 +40,7 @@ envelope. The spec only carries the story.
 | `description` | no | One or two lines under the title. Say what the story assumes. |
 | `actors` | yes | `name`, `icon`, optional `note`, optional `at`. Declared once each. An icon an actor holds is that story's actor icon, and no work object may reuse it. |
 | `sentences` | yes | See below. |
-| `relations` | no | Unnumbered structural arrows: `from`, `to`, optional `verb`. |
+| `relations` | no | Unnumbered structural arrows between shapes the sentences already draw: `from`, `to`, optional `verb`. A work object that a sentence passes through belongs in that sentence's `chain` instead. |
 | `groups` | no | `name` and `members`: a labelled boundary for a subdomain or team. |
 
 ### Sentences
@@ -51,7 +51,8 @@ envelope. The spec only carries the story.
 | `from` | yes | The actor doing it. An actor name, never a work object. |
 | `verb` | yes | The domain's own word, on the numbered arrow. |
 | `object` | usually | `name`, `icon`, optional `id`, optional `at`. The icon has to be one no actor in this story holds, so reach for one of the work-object icons in `notation.md`. |
-| `prep` | no | Label on the second arrow: `to`, `in`, `from`, `via`. Reads as part of the sentence. |
+| `chain` | no | Further work objects the sentence passes through, in order, each `{ "prep": "based on", "object": { ... } }`. Each hop is drawn as its own shape, and the arrow into it carries its `prep` and no number. Needs an `object` to continue from. |
+| `prep` | no | Label on the arrow to `to`: `to`, `in`, `from`, `via`. With a `chain`, that arrow leaves the last hop. Reads as part of the sentence. |
 | `to` | no | The actor receiving it. Omit for a sentence that ends at the work object. |
 | `note` | no | An annotation, attached to that sentence's work object. Drawn in full, so the shape grows to fit instead of the text being cut. |
 | `changed` | no | `true` marks this sentence as the part a change touches. See below. |
@@ -89,7 +90,7 @@ Actors are addressed by name, because there is exactly one of each.
 Work objects are not. The notation draws a separate shape for every activity, so two
 sentences both naming `Order` are two different shapes and the bare name means nothing.
 Give a work object an `id` when a `relation` or a `group` needs to point at it, and use
-that id. A declared `id` is checked against the other ids and against the actor names, so
+that id. A `chain` hop takes an `id` the same way. A declared `id` is checked against the other ids and against the actor names, so
 those cannot collide.
 
 A work object's `name` is not an address and is never compared, so an actor and a work
@@ -116,6 +117,7 @@ The generator fails loudly rather than drawing something wrong:
 - an actor declared but never used in a sentence
 - a `relation` or `group` member that is neither an actor name nor a work object `id`
 - a sentence with neither an `object` nor a `to`
+- a `chain` on a sentence without an `object`, or a hop without one
 - a work object drawn with an icon an actor in the same story already uses, since one
   glyph would then stand for two kinds and nothing in the picture says which
 - a field the generator does not read, at any level of the file. An invented
