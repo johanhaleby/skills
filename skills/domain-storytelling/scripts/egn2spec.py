@@ -117,8 +117,9 @@ def convert(path):
     ids = {p["name"] for p in data["participants"] if p["kind"].startswith("actor")}
     consumed, sentences = set(), []
 
-    def eligible_hops(shape):
+    def eligible_hops(shape, visited=()):
         return [c for c in by_source.get(shape["id"], []) if id(c) not in consumed
+                and c["target"]["id"] not in visited
                 and not c["target"]["kind"].startswith("actor")
                 and c["target"]["id"] not in numbered_targets and (c["target"]["name"] or "").strip()]
 
@@ -131,7 +132,7 @@ def convert(path):
             return False
         if leaves_for_actor(shape):
             return True
-        hops = eligible_hops(shape)
+        hops = eligible_hops(shape, seen | {shape["id"]})
         return len(hops) == 1 and leads_to_actor(hops[0]["target"], seen | {shape["id"]})
 
     # A chain hop is a shape a sentence draws, so a relation can point at it as well.
@@ -157,19 +158,19 @@ def convert(path):
         own = {target["id"]}
         visited = own | {shape_id for _, shape_id in hop_shapes}
         while True:
-            hops = eligible_hops(last)
+            # An arrow back to a shape the sentence already passed is a relation, so it does not
+            # count against the one forward hop.
+            hops = eligible_hops(last, visited)
             # An arrow to an actor ends the chain, unless the single hop still leads to one,
             # in which case that arrow is a relation somebody drew and the relation pass keeps it.
             if len(hops) != 1 or (leaves_for_actor(last) and not leads_to_actor(hops[0]["target"], visited)):
                 break
             hop = hops[0]["target"]
-            if hop["id"] in visited:
-                break
             visited.add(hop["id"])
             own.add(hop["id"])
             link = {"object": {"name": hop["name"], "icon": icon_for(hop["kind"])}}
-            if hops[0]["verb"]:
-                link["prep"] = hops[0]["verb"]
+            if hops[0]["label"]:
+                link["prep"] = hops[0]["label"]
             sentence.setdefault("chain", []).append(link)
             hop_shapes.append((link["object"], hop["id"]))
             consumed.add(id(hops[0]))

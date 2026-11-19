@@ -122,7 +122,7 @@ def extract(path: Path) -> dict:
             verb = (e.get("name") or "").strip() or "→"
             source, target = e.get("source"), e.get("target")
             item = {"number": e.get("number"), "source": label(source),
-                    "verb": verb, "target": label(target),
+                    "verb": verb, "label": (e.get("name") or "").strip(), "target": label(target),
                     "parallel": bool(e.get("multipleNumberAllowed")),
                     "text": f"{fmt(source)} {verb} {fmt(target)}"}
             (steps if has_number(e.get("number")) else relations).append(item)

@@ -1711,6 +1711,43 @@ class ReadsAChainBackFromADrawnStory(unittest.TestCase):
         S.validate(spec, ICONS["icons"])
         self.assertEqual("voucher-2", spec["sentences"][0]["chain"][0]["object"]["id"])
 
+    def converted(self, elements):
+        import egn2spec
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "Buy a ticket.egn"
+            path.write_text(json.dumps({"dst": elements}), encoding="utf-8")
+            return egn2spec.convert(path)
+
+    def test_an_arrow_back_to_an_earlier_hop_does_not_end_the_chain(self):
+        elements = [{"type": "domainStory:actorPerson", "id": "a", "name": "Buyer"},
+                    {"type": "domainStory:actorPerson", "id": "s", "name": "Seller"},
+                    {"type": "domainStory:workObjectDocument", "id": "t", "name": "Ticket"},
+                    {"type": "domainStory:workObjectDocument", "id": "d", "name": "Property data"},
+                    {"type": "domainStory:workObjectDocument", "id": "v", "name": "Voucher"},
+                    {"type": "domainStory:workObjectDocument", "id": "r", "name": "Receipt"},
+                    {"type": "domainStory:activity", "id": "x1", "name": "buys", "number": "1", "source": "a", "target": "t"},
+                    {"type": "domainStory:activity", "id": "x2", "name": "based on", "source": "t", "target": "d"},
+                    {"type": "domainStory:activity", "id": "x3", "name": "with", "source": "d", "target": "v"},
+                    {"type": "domainStory:activity", "id": "x4", "name": "and", "source": "v", "target": "r"},
+                    {"type": "domainStory:activity", "id": "x5", "name": "from", "source": "r", "target": "s"},
+                    {"type": "domainStory:activity", "id": "x6", "name": "mirrors", "source": "v", "target": "d"}]
+        spec, _ = self.converted(elements)
+        sentence = spec["sentences"][0]
+        self.assertEqual((["Property data", "Voucher", "Receipt"], "Seller", [("voucher", "mirrors", "property-data")]),
+                         ([h["object"]["name"] for h in sentence["chain"]], sentence["to"],
+                          [(r["from"], r["verb"], r["to"]) for r in spec.get("relations", [])]))
+
+    def test_a_hop_drawn_without_a_label_has_no_preposition(self):
+        elements = [{"type": "domainStory:actorPerson", "id": "a", "name": "Buyer"},
+                    {"type": "domainStory:actorPerson", "id": "s", "name": "Seller"},
+                    {"type": "domainStory:workObjectDocument", "id": "t", "name": "Ticket"},
+                    {"type": "domainStory:workObjectDocument", "id": "d", "name": "Property data"},
+                    {"type": "domainStory:activity", "id": "x1", "name": "buys", "number": "1", "source": "a", "target": "t"},
+                    {"type": "domainStory:activity", "id": "x2", "name": "", "source": "t", "target": "d"},
+                    {"type": "domainStory:activity", "id": "x3", "name": "from", "source": "d", "target": "s"}]
+        spec, _ = self.converted(elements)
+        self.assertEqual({"object": {"name": "Property data", "icon": "Document"}}, spec["sentences"][0]["chain"][0])
+
     def test_a_note_on_a_hop_is_dropped_with_a_warning(self):
         import egn2spec
         elements = self.drawn(("actor", "buys", "ticket", "1"),
