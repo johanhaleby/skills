@@ -6,14 +6,14 @@
 <text x="-538" y="-356" font-size="13" fill="#6b6b6b">Steps 3 and 3 happen at the same time; neither waits for the other.</text>
 <path d="M-462 -170 L-278 -120" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-370" y="-154" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">photographs</text><circle cx="-440" cy="-145" r="14" fill="#1b1b1b"/><text x="-440" y="-140" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">1</text>
 <path d="M-202 -93 L-38 -17" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-120" y="-64" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">into</text>
-<path d="M0 -38 L0 -152" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="0" y="-85" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">raises</text><circle cx="0" cy="-55" r="14" fill="#1b1b1b"/><text x="0" y="-50" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">2</text>
-<path d="M38 -10 L222 -60" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="142" y="-47" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">queues</text><circle cx="65" cy="-17" r="14" fill="#1b1b1b"/><text x="65" y="-12" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">3</text>
-<path d="M298 -87 L462 -163" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="380" y="-134" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">with</text>
-<path d="M11 38 L39 142" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="8" y="102" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">sends</text><circle cx="61" cy="99" r="14" fill="#1b1b1b"/><text x="61" y="104" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">3</text>
-<path d="M39 218 L11 312" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-6" y="221" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
-<path d="M-22 312 L-78 218" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-102" y="286" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">pays</text><circle cx="-30" cy="298" r="14" fill="#1b1b1b"/><text x="-30" y="303" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">4</text>
-<path d="M-79 142 L-21 38" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-85" y="62" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">into</text>
-<path d="M0 -152 C190 3 190 157 0 312" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="142" y="71" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">is owed by</text>
+<path d="M0 -38 L0 -138" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="0" y="-89" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">raises</text><circle cx="0" cy="-53" r="14" fill="#1b1b1b"/><text x="0" y="-48" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">2</text>
+<path d="M38 -10 L222 -60" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="130" y="-44" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">queues</text><circle cx="65" cy="-17" r="14" fill="#1b1b1b"/><text x="65" y="-12" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">3</text>
+<path d="M298 -87 L442 -153" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="370" y="-129" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">with</text>
+<path d="M15 52 L39 142" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="31" y="101" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">sends</text><circle cx="16" cy="124" r="14" fill="#1b1b1b"/><text x="16" y="129" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">3</text>
+<path d="M35 232 L11 312" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-8" y="225" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
+<path d="M-22 312 L-69 233" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-27" y="252" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">pays</text><circle cx="-29" cy="300" r="14" fill="#1b1b1b"/><text x="-29" y="305" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">4</text>
+<path d="M-79 142 L-29 52" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-73" y="77" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">into</text>
+<path d="M0 -138 C190 12 190 162 0 312" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="142" y="78" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">is owed by</text>
 <g transform="translate(-526.8,-209.0) scale(2.231)" fill="#1b1b1b"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></g>
 <text x="-500" y="-137" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Warden</text>
 <g transform="translate(-26.8,-29.0) scale(2.231)" fill="#1b1b1b"><path d="M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/></g>
@@ -195,7 +195,7 @@
             "y": -190
           },
           "x": 0,
-          "y": -152
+          "y": -138
         }
       ],
       "source": "shape_0002",
@@ -250,8 +250,8 @@
             "x": 500,
             "y": -180
           },
-          "x": 462,
-          "y": -162
+          "x": 442,
+          "y": -153
         }
       ],
       "source": "shape_0007",
@@ -269,8 +269,8 @@
             "x": 0,
             "y": 0
           },
-          "x": 10,
-          "y": 38
+          "x": 14,
+          "y": 52
         },
         {
           "original": {
@@ -297,8 +297,8 @@
             "x": 50,
             "y": 180
           },
-          "x": 38,
-          "y": 218
+          "x": 34,
+          "y": 232
         },
         {
           "original": {
@@ -332,8 +332,8 @@
             "x": -100,
             "y": 180
           },
-          "x": -77,
-          "y": 218
+          "x": -69,
+          "y": 232
         }
       ],
       "source": "shape_0004",
@@ -360,8 +360,8 @@
             "x": 0,
             "y": 0
           },
-          "x": -21,
-          "y": 38
+          "x": -28,
+          "y": 51
         }
       ],
       "source": "shape_0009",
@@ -380,7 +380,7 @@
             "y": -190
           },
           "x": 0,
-          "y": -152
+          "y": -138
         },
         {
           "original": {

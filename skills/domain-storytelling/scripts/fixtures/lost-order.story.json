@@ -1,0 +1,151 @@
+{
+ "title": "A lost order closes the case",
+ "scope": {
+  "granularity": "coarse-grained",
+  "time": "TO-BE",
+  "purity": "digitalized"
+ },
+ "description": "Typical case: an order is canceled while the customer has an open case.",
+ "actors": [
+  {
+   "name": "Hub",
+   "icon": "System"
+  },
+  {
+   "name": "Broker",
+   "icon": "System"
+  },
+  {
+   "name": "Mail relay",
+   "icon": "System"
+  },
+  {
+   "name": "Stop handler",
+   "icon": "System"
+  },
+  {
+   "name": "Timer service",
+   "icon": "System"
+  },
+  {
+   "name": "Customer",
+   "icon": "Person"
+  }
+ ],
+ "sentences": [
+  {
+   "n": 1,
+   "from": "Hub",
+   "verb": "removes",
+   "object": {
+    "name": "Standing order",
+    "icon": "Time"
+   },
+   "note": "Note 1."
+  },
+  {
+   "n": 2,
+   "from": "Hub",
+   "verb": "publishes",
+   "object": {
+    "name": "Order canceled",
+    "icon": "Email"
+   },
+   "prep": "to",
+   "to": "Broker",
+   "note": "Note 2."
+  },
+  {
+   "n": 3,
+   "from": "Broker",
+   "verb": "delivers",
+   "object": {
+    "name": "Order canceled",
+    "icon": "Email"
+   },
+   "prep": "to",
+   "to": "Mail relay"
+  },
+  {
+   "n": 3,
+   "from": "Broker",
+   "verb": "delivers",
+   "object": {
+    "name": "Order canceled",
+    "icon": "Email"
+   },
+   "prep": "to",
+   "to": "Stop handler",
+   "note": "Note 3."
+  },
+  {
+   "n": 4,
+   "from": "Mail relay",
+   "verb": "emails",
+   "object": {
+    "name": "Notice",
+    "icon": "Conversation"
+   },
+   "prep": "to",
+   "to": "Customer"
+  },
+  {
+   "n": 5,
+   "from": "Stop handler",
+   "verb": "terminates",
+   "object": {
+    "name": "Case",
+    "icon": "Document"
+   },
+   "prep": "in",
+   "to": "Hub",
+   "note": "Note 4."
+  },
+  {
+   "n": 6,
+   "from": "Hub",
+   "verb": "sets",
+   "object": {
+    "name": "Closing time",
+    "icon": "Hourglass"
+   },
+   "prep": "for",
+   "to": "Customer",
+   "note": "Note 5."
+  },
+  {
+   "n": 7,
+   "from": "Hub",
+   "verb": "publishes",
+   "object": {
+    "name": "Case closed",
+    "icon": "Thumb-down"
+   },
+   "prep": "to",
+   "to": "Broker",
+   "note": "Note 6."
+  },
+  {
+   "n": 8,
+   "from": "Hub",
+   "verb": "books",
+   "object": {
+    "name": "Deadline",
+    "icon": "Calendar"
+   },
+   "prep": "in",
+   "to": "Timer service"
+  },
+  {
+   "n": 9,
+   "from": "Stop handler",
+   "verb": "acknowledges",
+   "object": {
+    "name": "Order canceled",
+    "icon": "Email"
+   },
+   "prep": "to",
+   "to": "Broker"
+  }
+ ]
+}

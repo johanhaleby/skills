@@ -8,22 +8,22 @@
 <text x="-466" y="-58" font-size="16" font-weight="600" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Support</text>
 <rect x="342" y="-328" width="136" height="668" rx="14" fill="none" stroke="#6b6b6b" stroke-width="1.5" stroke-dasharray="7 5"/>
 <text x="354" y="-308" font-size="16" font-weight="600" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Back office</text>
-<path d="M-413 -212 L-427 -38" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-420" y="-134" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">calls about</text><circle cx="-421" cy="-110" r="14" fill="#1b1b1b"/><text x="-421" y="-106" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">1</text>
-<path d="M-427 38 L-413 212" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-420" y="116" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
-<path d="M-381 212 L-279 78" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-330" y="136" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">opens</text><circle cx="-366" cy="192" r="14" fill="#1b1b1b"/><text x="-366" y="197" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">2</text>
+<path d="M-414 -198 L-427 -38" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-421" y="-127" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">calls about</text><circle cx="-422" cy="-105" r="14" fill="#1b1b1b"/><text x="-422" y="-100" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">1</text>
+<path d="M-426 52 L-413 212" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-419" y="123" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
+<path d="M-381 212 L-283 84" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-332" y="139" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">opens</text><circle cx="-367" cy="193" r="14" fill="#1b1b1b"/><text x="-367" y="198" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">2</text>
 <path d="M-212 34 L-38 6" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-125" y="11" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">in</text>
-<path d="M0 -38 L0 -152" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="82" y="-104" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">pulls</text><circle cx="0" cy="-55" r="14" fill="#1b1b1b"/><text x="0" y="-50" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">3</text>
+<path d="M0 -38 L0 -138" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="82" y="-97" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">pulls</text><circle cx="0" cy="-53" r="14" fill="#1b1b1b"/><text x="0" y="-48" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">3</text>
 <path d="M-372 237 L-218 183" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-333" y="257" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">approves</text><circle cx="-315" cy="183" r="14" fill="#1b1b1b"/><text x="-315" y="188" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">4</text>
-<path d="M-142 134 L-38 36" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-90" y="76" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">in</text>
-<path d="M38 28 L152 112" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="95" y="61" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">hands</text><circle cx="74" cy="14" r="14" fill="#1b1b1b"/><text x="74" y="19" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">5</text>
+<path d="M-142 134 L-42 39" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-92" y="78" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">in</text>
+<path d="M41 30 L152 112" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="97" y="62" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">hands</text><circle cx="76" cy="17" r="14" fill="#1b1b1b"/><text x="76" y="22" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">5</text>
 <path d="M228 159 L372 231" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="300" y="186" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
-<path d="M413 212 L427 38" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="420" y="116" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">transfers</text><circle cx="415" cy="187" r="14" fill="#1b1b1b"/><text x="415" y="192" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">6</text>
-<path d="M427 -38 L413 -212" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="420" y="-134" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">via</text>
+<path d="M413 212 L426 52" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="419" y="123" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">transfers</text><circle cx="415" cy="189" r="14" fill="#1b1b1b"/><text x="415" y="194" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">6</text>
+<path d="M427 -38 L414 -198" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="421" y="-127" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">via</text>
 <path d="M372 -270 L38 -450" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="205" y="-369" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">confirms</text><circle cx="323" cy="-297" r="14" fill="#1b1b1b"/><text x="323" y="-292" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">7</text>
 <path d="M-38 -450 L-372 -270" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-205" y="-369" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
-<path d="M-271 2 L-389 -212" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="-311" y="-125" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">is raised by</text>
-<path d="M-38 -155 L-212 5" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="-125" y="-84" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">evidences</text>
-<path d="M-200 132 L-230 78" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="-177" y="82" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">settles</text>
+<path d="M-271 2 L-381 -198" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="-307" y="-118" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">is raised by</text>
+<path d="M-50 -144 L-212 5" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="-131" y="-79" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">evidences</text>
+<path d="M-200 132 L-222 92" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="-176" y="84" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">settles</text>
 <path d="M-218 183 L-372 237" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="-278" y="282" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">is approved by</text>
 <path d="M-468 0 L-620 0" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
 <path d="M-195 208 L-250 350" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
@@ -235,8 +235,8 @@
             "x": -410,
             "y": -250
           },
-          "x": -413,
-          "y": -212
+          "x": -414,
+          "y": -198
         },
         {
           "original": {
@@ -263,8 +263,8 @@
             "x": -430,
             "y": 0
           },
-          "x": -426,
-          "y": 38
+          "x": -425,
+          "y": 51
         },
         {
           "original": {
@@ -298,8 +298,8 @@
             "x": -250,
             "y": 40
           },
-          "x": -278,
-          "y": 78
+          "x": -283,
+          "y": 83
         }
       ],
       "source": "shape_0002",
@@ -354,7 +354,7 @@
             "y": -190
           },
           "x": 0,
-          "y": -152
+          "y": -138
         }
       ],
       "source": "shape_0003",
@@ -409,8 +409,8 @@
             "x": 0,
             "y": 0
           },
-          "x": -38,
-          "y": 35
+          "x": -41,
+          "y": 39
         }
       ],
       "source": "shape_0009",
@@ -428,8 +428,8 @@
             "x": 0,
             "y": 0
           },
-          "x": 38,
-          "y": 28
+          "x": 41,
+          "y": 30
         },
         {
           "original": {
@@ -491,8 +491,8 @@
             "x": 430,
             "y": 0
           },
-          "x": 426,
-          "y": 38
+          "x": 425,
+          "y": 51
         }
       ],
       "source": "shape_0004",
@@ -519,8 +519,8 @@
             "x": 410,
             "y": -250
           },
-          "x": 413,
-          "y": -212
+          "x": 414,
+          "y": -198
         }
       ],
       "source": "shape_0011",
@@ -601,8 +601,8 @@
             "x": -410,
             "y": -250
           },
-          "x": -389,
-          "y": -212
+          "x": -381,
+          "y": -197
         }
       ],
       "source": "shape_0007",
@@ -620,8 +620,8 @@
             "x": 0,
             "y": -190
           },
-          "x": -38,
-          "y": -155
+          "x": -49,
+          "y": -144
         },
         {
           "original": {
@@ -655,8 +655,8 @@
             "x": -250,
             "y": 40
           },
-          "x": -229,
-          "y": 78
+          "x": -221,
+          "y": 92
         }
       ],
       "source": "shape_0009",
