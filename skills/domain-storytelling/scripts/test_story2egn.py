@@ -1566,6 +1566,24 @@ class ReadsAChainBackFromADrawnStory(unittest.TestCase):
         self.assertEqual(([], [{"from": "Seller", "to": hop["id"], "verb": "owns"}]),
                          (warnings, spec["relations"]))
 
+    def test_an_arrow_back_to_an_earlier_hop_is_a_relation_and_not_another_hop(self):
+        import egn2spec
+        elements = self.drawn(("actor", "buys", "ticket", "1"),
+                              ("ticket", "based on", "data", None),
+                              ("data", "with", "voucher", None),
+                              ("voucher", "refers to", "data", None))
+        elements.append({"type": "domainStory:workObjectDocument", "id": "voucher", "name": "Voucher"})
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "Buy a ticket.egn"
+            path.write_text(json.dumps({"dst": elements}), encoding="utf-8")
+            spec, warnings = egn2spec.convert(path)
+        chain = [h["object"]["name"] for h in spec["sentences"][0]["chain"]]
+        ids = {h["object"]["name"]: h["object"].get("id") for h in spec["sentences"][0]["chain"]}
+        self.assertEqual((["Property data", "Voucher"], ["dropped the actor 'Seller', which no sentence names"],
+                          [{"from": ids["Voucher"], "to": ids["Property data"],
+                                                               "verb": "refers to"}]),
+                         (chain, warnings, spec["relations"]))
+
     def test_a_note_on_a_hop_is_dropped_with_a_warning(self):
         import egn2spec
         elements = self.drawn(("actor", "buys", "ticket", "1"),
@@ -1674,6 +1692,14 @@ class MakesRoomForNotesInACrowdedPicture(unittest.TestCase):
                 mock.patch.object(S, "_far_notes", lambda ns: [] if "f" in seen and seen["f"] > 1 else far_before):
             S._make_room_for_notes(nodes, edges, notes)
         self.assertGreaterEqual(seen["f"], 1.3)
+
+    def test_every_work_object_in_a_chain_shares_its_sentence_with_both_actors(self):
+        spec = json.loads(json.dumps(DrawsASentenceThroughSeveralWorkObjects.BASED_ON))
+        S.validate(spec, ICONS["icons"])
+        nodes, edges, _, _ = S.build(spec)
+        owners = S._owners(edges)
+        self.assertEqual({("Buyer", "Seller")},
+                         {tuple(sorted(a.name for a in owners[id(n)])) for n in nodes.values() if n.kind == "wo"})
 
     def test_a_story_whose_notes_already_fit_is_not_spread(self):
         fitting, _ = self.placed(STORY)

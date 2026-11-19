@@ -337,13 +337,25 @@ STRANGER_STEP = 20   # how far each slide moves it
 
 
 def _owners(edges):
-    """Which actors each work object shares a sentence with."""
+    """Which actors each work object shares a sentence with.
+
+    An arrow only names the actor next to it, so a work object in the middle of a chain
+    would own neither end of its sentence. Its spoke names both, which covers every hop.
+    """
     own = {}
+    actors = {}
     for e in edges:
+        for n in (e.src, e.dst):
+            if n.kind == "actor":
+                actors[n.key] = n
         if e.src.kind == "actor" and e.dst.kind != "actor":
             own.setdefault(id(e.dst), set()).add(e.src)
         if e.dst.kind == "actor" and e.src.kind != "actor":
             own.setdefault(id(e.src), set()).add(e.dst)
+    for e in edges:
+        for n in (e.src, e.dst):
+            if n.kind != "actor":
+                own.setdefault(id(n), set()).update(actors[k] for k in n.spoke if k in actors)
     return own
 
 

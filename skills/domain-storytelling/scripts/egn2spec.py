@@ -125,6 +125,7 @@ def convert(path):
         # is a work object no numbered arrow points at, reached by the only arrow that
         # leaves the previous one.
         last = target
+        visited = {target["id"]}
         while True:
             outgoing = [c for c in by_source.get(last["id"], []) if id(c) not in consumed]
             if any(c["target"]["kind"].startswith("actor") for c in outgoing):
@@ -134,6 +135,9 @@ def convert(path):
             if len(hops) != 1 or len(outgoing) != 1:
                 break
             hop = hops[0]["target"]
+            if hop["id"] in visited:
+                break
+            visited.add(hop["id"])
             link = {"object": {"name": hop["name"], "icon": icon_for(hop["kind"])}}
             if hops[0]["verb"]:
                 link["prep"] = hops[0]["verb"]
