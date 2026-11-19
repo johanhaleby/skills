@@ -433,6 +433,64 @@ class KeepsTheTitleBlockInside(unittest.TestCase):
         self.assertGreater(heights[1], heights[0])
 
 
+LOST_ORDER = json.loads((Path(__file__).resolve().parent / "fixtures" / "lost-order.story.json").read_text())
+
+
+def by_name(nodes, name):
+    return next(n for n in nodes.values() if n.name == name)
+
+
+class KeepsEdgesShortAndOffTheNames(unittest.TestCase):
+    """A hub with a fan of listeners once seated one listener across the board from the
+    work object it sends to, and let arrows run through the names under the icons."""
+
+    def lengths(self, nodes, edges):
+        out = {}
+        for e in edges:
+            pts = S.sample(e.path)
+            run = sum(math.hypot(b[0] - a[0], b[1] - a[1]) for a, b in zip(pts, pts[1:]))
+            out[(e.src.name, e.dst.name)] = (run, math.hypot(e.src.cx - e.dst.cx, e.src.cy - e.dst.cy))
+        return out
+
+    def test_the_fixture_has_no_detour_and_no_edge_through_a_name_or_shape(self):
+        nodes, edges, notes, _ = model(LOST_ORDER)
+        found = S.check_geometry(nodes, edges, notes, "t", quiet=True)
+        self.assertEqual([w for w in found if "detour" in w or " crosses " in w], [])
+
+    def test_no_edge_is_much_longer_than_the_distance_it_connects(self):
+        nodes, edges, _, _ = model(LOST_ORDER)
+        for pair, (run, straight) in self.lengths(nodes, edges).items():
+            self.assertLessEqual(run, 1.15 * straight + 60, pair)
+
+    def test_a_connected_actor_is_not_seated_across_the_board(self):
+        nodes, _, _, _ = model(LOST_ORDER)
+        board = max(math.hypot(a.cx - b.cx, a.cy - b.cy) for a in nodes.values() for b in nodes.values())
+        relay, notice = by_name(nodes, "Mail relay"), by_name(nodes, "Notice")
+        self.assertLess(math.hypot(relay.cx - notice.cx, relay.cy - notice.cy), 0.6 * board)
+
+    def test_check_geometry_flags_a_detour(self):
+        nodes, edges, notes, _ = model(LOST_ORDER)
+        e = next(e for e in edges if (e.src.name, e.dst.name) == ("Mail relay", "Notice"))
+        e.path = S._bow(e, 1, 2.3)
+        found = S.check_geometry(nodes, edges, notes, "t", quiet=True)
+        self.assertTrue(any("detour" in w and "Mail relay" in w for w in found), found)
+
+    def test_check_geometry_flags_an_edge_through_a_name(self):
+        nodes, edges, notes, _ = model(LOST_ORDER)
+        e = next(e for e in edges if e.src.name == "Hub" and e.dst.name == "Standing order")
+        below = by_name(nodes, "Standing order")
+        e.path = ("line", (below.cx, below.cy + 90), (below.cx, below.cy))
+        found = S.check_geometry(nodes, edges, notes, "t", quiet=True)
+        self.assertTrue(any("crosses label 'Standing order'" in w for w in found), found)
+
+    def test_an_edge_leaving_a_work_object_starts_below_its_name(self):
+        nodes, edges, _, _ = model(LOST_ORDER)
+        for e in edges:
+            for n, at in ((e.src, S.sample(e.path)[0]), (e.dst, S.sample(e.path)[-1])):
+                bx, by, bw, bh = n.text_box
+                self.assertFalse(bx < at[0] < bx + bw and by < at[1] < by + bh, (e.src.name, n.name))
+
+
 class KeepsTheDrawingLegible(unittest.TestCase):
     # The one example placement cannot rescue is the oversized one, whose ring is crowded
     # enough that an object stays nearer a stranger wherever it is put. That is the story

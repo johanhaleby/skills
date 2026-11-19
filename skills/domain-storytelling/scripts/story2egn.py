@@ -66,6 +66,9 @@ BAND_CHAR_W = 6.6           # the title band keeps 13px, so it keeps the origina
 NAME_LINE_H = round(15 * TYPE)  # baseline to baseline for a two-line name
 NAME_TOP = round(4 * TYPE)      # shape bottom to first baseline, the name's clearance from the icon
 BADGE_ALONG = 0.16              # where a sequence number parks along its own arrow
+NAME_GAP = 4                   # clearance between a name and an arrow that starts under it
+DETOUR_RATIO = 1.15     # a route this much longer than the straight line is a detour...
+DETOUR_SLACK = 60       # ...once it also wastes this many pixels
 SEATING_LIMIT = 8               # outer actors, past which the seatings outnumber what is worth ranking
 TRIALS = 8                      # seatings worth drawing in full before keeping the one we have
 CANVAS_PAD = 90                 # margin around the drawing, and the band's own left inset
@@ -762,9 +765,28 @@ def border(node, tx, ty):
     return node.cx + dx * s, node.cy + dy * s
 
 
+def _below_the_name(node, tx, ty):
+    """Where an arrow towards (tx, ty) leaves node: the icon's border, or the point past the
+    name when the line runs through the text under the icon."""
+    x, y = border(node, tx, ty)
+    bx, by, bw, bh = node.text_box
+    bx, by, bw, bh = bx - NAME_GAP, by - NAME_GAP, bw + 2 * NAME_GAP, bh + 2 * NAME_GAP
+    span = math.hypot(tx - x, ty - y)
+    if span < 1:
+        return x, y
+    ux, uy = (tx - x) / span, (ty - y) / span
+    reach = min(span / 2, SHAPE + LABEL_H)
+    inside = [d for d in range(int(reach) + 1)
+              if bx < x + ux * d < bx + bw and by < y + uy * d < by + bh]
+    if not inside:
+        return x, y
+    d = inside[-1] + 1
+    return x + ux * d, y + uy * d
+
+
 def endpoints(edge):
-    return (border(edge.src, edge.dst.cx, edge.dst.cy),
-            border(edge.dst, edge.src.cx, edge.src.cy))
+    return (_below_the_name(edge.src, edge.dst.cx, edge.dst.cy),
+            _below_the_name(edge.dst, edge.src.cx, edge.src.cy))
 
 
 def _bow(e, sign, amp):
@@ -790,18 +812,24 @@ def _candidates(e):
             yield _bow(e, sign, amp)
 
 
+def _solid_boxes(n, e):
+    """What an arrow must not run through: a foreign shape and its name, and the name
+    under its own endpoints. An arrow leaves the icon itself, so only its own name is in the way."""
+    if n is e.src or n is e.dst:
+        return [n.text_box]
+    return [n.box, n.text_box]
+
+
 def _hits(r, e, nodes):
     pts = sample(r)
     x0, y0, x1, y1 = _extent(r)
     count = 0
     for n in nodes.values():
-        if n is e.src or n is e.dst:
-            continue
-        bx, by, bw, bh = n.box
-        if x1 <= bx or x0 >= bx + bw or y1 <= by or y0 >= by + bh:
-            continue
-        if any(bx < x < bx + bw and by < y < by + bh for x, y in pts):
-            count += 1
+        for bx, by, bw, bh in _solid_boxes(n, e):
+            if x1 <= bx or x0 >= bx + bw or y1 <= by or y0 >= by + bh:
+                continue
+            if any(bx < x < bx + bw and by < y < by + bh for x, y in pts):
+                count += 1
     return count
 
 
@@ -1175,7 +1203,11 @@ def _keep_the_best_seating(nodes, edges, notes):
 
     def cost():
         layout_only = check_geometry(nodes, edges, [], "", quiet=True)
-        return (len(layout_only) + _crossings(edges),
+        # Faults first. Then the ink spent on arrows, because a seating that sends one arrow
+        # round the whole board is worse than one that keeps every arrow near its two ends.
+        run = sum(math.hypot(b[0] - a[0], b[1] - a[1])
+                  for e in edges for a, b in zip(sample(e.path), sample(e.path)[1:]))
+        return (len(layout_only) + _crossings(edges), round(run),
                 _eye_travel(steps, {n.key: (n.cx, n.cy) for n in nodes.values()}))
 
     def draw_without_notes(seating):
@@ -1231,8 +1263,12 @@ def _eye_travel(steps, seat):
         fx, fy = seat[far] if far in seat else (sx, sy - SOLO_REACH)
         mid = ((sx + fx) / 2, (sy + fy) / 2)
         marks.append(((sx + BADGE_ALONG * (mid[0] - sx), sy + BADGE_ALONG * (mid[1] - sy)), mid))
-    return sum(math.hypot(b[0][0] - a[1][0], b[0][1] - a[1][1])
+    hops = sum(math.hypot(b[0][0] - a[1][0], b[0][1] - a[1][1])
                for a, b in zip(marks, marks[1:]))
+    # Actors a sentence connects should sit near each other, or its arrow crosses the board.
+    spans = sum(math.hypot(seat[src][0] - seat[far][0], seat[src][1] - seat[far][1])
+                for src, far in steps if far in seat)
+    return hops + spans
 
 
 def check_geometry(nodes, edges, notes, title, quiet=False):
@@ -1317,12 +1353,18 @@ def check_geometry(nodes, edges, notes, title, quiet=False):
     for e in edges:
         pts = sample(e.path)
         for n in nodes.values():
-            if n is e.src or n is e.dst:
-                continue
-            bx, by, bw, bh = n.box
-            if any(bx < x < bx + bw and by < y < by + bh for x, y in pts):
-                warnings.append(
-                    f"arrow {e.src.name!r} -> {e.dst.name!r} crosses shape {n.name!r}")
+            for k, (bx, by, bw, bh) in enumerate(_solid_boxes(n, e)):
+                if any(bx < x < bx + bw and by < y < by + bh for x, y in pts):
+                    what = "label" if (k or n is e.src or n is e.dst) else "shape"
+                    warnings.append(
+                        f"arrow {e.src.name!r} -> {e.dst.name!r} crosses {what} {n.name!r}")
+                    break
+        straight = math.hypot(*(a - b for a, b in zip((e.src.cx, e.src.cy), (e.dst.cx, e.dst.cy))))
+        run = sum(math.hypot(b[0] - a[0], b[1] - a[1]) for a, b in zip(pts, pts[1:]))
+        if run - straight > DETOUR_SLACK and run > DETOUR_RATIO * straight:
+            warnings.append(
+                f"arrow {e.src.name!r} -> {e.dst.name!r} takes a detour, "
+                f"{run:.0f}px for nodes {straight:.0f}px apart")
 
     for i, one in enumerate(edges):
         for two in edges[i + 1:]:
