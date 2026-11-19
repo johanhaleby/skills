@@ -1623,6 +1623,23 @@ class ReadsAChainBackFromADrawnStory(unittest.TestCase):
         self.assertEqual(["sentence 1 took 'Property data' as a hop, but another work object outside the "
                           "sentence points at it, so check which sentence it belongs to"], warnings)
 
+    def test_a_generated_hop_id_does_not_take_an_actors_name(self):
+        import egn2spec
+        elements = [{"type": "domainStory:actorPerson", "id": "a", "name": "voucher"},
+                    {"type": "domainStory:actorPerson", "id": "s", "name": "Seller"},
+                    {"type": "domainStory:workObjectDocument", "id": "t", "name": "Ticket"},
+                    {"type": "domainStory:workObjectDocument", "id": "v", "name": "Voucher"},
+                    {"type": "domainStory:activity", "id": "x1", "name": "buys", "number": "1", "source": "a", "target": "t"},
+                    {"type": "domainStory:activity", "id": "x2", "name": "with", "source": "t", "target": "v"},
+                    {"type": "domainStory:activity", "id": "x3", "name": "from", "source": "v", "target": "s"},
+                    {"type": "domainStory:activity", "id": "x4", "name": "for", "source": "s", "target": "v"}]
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "Buy a ticket.egn"
+            path.write_text(json.dumps({"dst": elements}), encoding="utf-8")
+            spec, _ = egn2spec.convert(path)
+        S.validate(spec, ICONS["icons"])
+        self.assertEqual("voucher-2", spec["sentences"][0]["chain"][0]["object"]["id"])
+
     def test_a_note_on_a_hop_is_dropped_with_a_warning(self):
         import egn2spec
         elements = self.drawn(("actor", "buys", "ticket", "1"),

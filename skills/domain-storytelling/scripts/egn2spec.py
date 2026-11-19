@@ -113,7 +113,9 @@ def convert(path):
     for relation in data["relations"]:
         if not relation["source"]["kind"].startswith("actor"):
             reached_by.setdefault(relation["target"]["id"], set()).add(relation["source"]["id"])
-    ids, consumed, sentences = set(), set(), []
+    # A generated id may not equal an actor's name, which the generator rejects.
+    ids = {p["name"] for p in data["participants"] if p["kind"].startswith("actor")}
+    consumed, sentences = set(), []
     # A chain hop is a shape a sentence draws, so a relation can point at it as well.
     hop_shapes = []
     for step in data["steps"]:
