@@ -1584,6 +1584,26 @@ class ReadsAChainBackFromADrawnStory(unittest.TestCase):
                                                                "verb": "refers to"}]),
                          (chain, warnings, spec["relations"]))
 
+    def test_a_hop_another_sentence_imported_is_not_copied(self):
+        import egn2spec
+        elements = self.drawn(("actor", "buys", "ticket", "1"),
+                              ("ticket", "based on", "data", None),
+                              ("data", "from", "seller", None),
+                              ("seller", "sends", "invoice", "2"),
+                              ("invoice", "with", "voucher", None),
+                              ("voucher", "refers to", "data", None))
+        elements += [{"type": "domainStory:workObjectDocument", "id": "voucher", "name": "Voucher"},
+                     {"type": "domainStory:workObjectDocument", "id": "invoice", "name": "Invoice"}]
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "Buy a ticket.egn"
+            path.write_text(json.dumps({"dst": elements}), encoding="utf-8")
+            spec, warnings = egn2spec.convert(path)
+        names = [s["object"]["name"] for s in spec["sentences"]] + \
+                [h["object"]["name"] for s in spec["sentences"] for h in s.get("chain") or []]
+        hops = {h["object"]["name"]: h["object"].get("id") for s in spec["sentences"] for h in s.get("chain") or []}
+        self.assertEqual((1, [], [{"from": hops["Voucher"], "to": hops["Property data"], "verb": "refers to"}]),
+                         (names.count("Property data"), warnings, spec["relations"]))
+
     def test_a_note_on_a_hop_is_dropped_with_a_warning(self):
         import egn2spec
         elements = self.drawn(("actor", "buys", "ticket", "1"),
@@ -1700,6 +1720,14 @@ class MakesRoomForNotesInACrowdedPicture(unittest.TestCase):
         owners = S._owners(edges)
         self.assertEqual({("Buyer", "Seller")},
                          {tuple(sorted(a.name for a in owners[id(n)])) for n in nodes.values() if n.kind == "wo"})
+
+    def test_a_generated_key_does_not_take_a_declared_id(self):
+        spec = json.loads(json.dumps(DrawsASentenceThroughSeveralWorkObjects.BASED_ON))
+        spec["sentences"][0]["object"]["id"] = "__wo0_0"
+        S.validate(spec, ICONS["icons"])
+        nodes, _, _, _ = S.build(spec)
+        self.assertEqual((["Ticket", "Property data", "Voucher"], "Ticket"),
+                         ([n.name for n in nodes.values() if n.kind == "wo"], nodes["__wo0_0"].name))
 
     def test_a_story_whose_notes_already_fit_is_not_spread(self):
         fitting, _ = self.placed(STORY)

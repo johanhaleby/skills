@@ -125,7 +125,9 @@ def convert(path):
         # is a work object no numbered arrow points at, reached by the only arrow that
         # leaves the previous one.
         last = target
-        visited = {target["id"]}
+        # A hop another sentence already imported stays that sentence's, so an arrow
+        # reaching it is left for the relation pass.
+        visited = {target["id"]} | {shape_id for _, shape_id in hop_shapes}
         while True:
             outgoing = [c for c in by_source.get(last["id"], []) if id(c) not in consumed]
             if any(c["target"]["kind"].startswith("actor") for c in outgoing):

@@ -275,6 +275,18 @@ def build(spec):
     for a in spec["actors"]:
         nodes[a["name"]] = Node(a["name"], "actor", a["name"], a["icon"], a.get("at"))
 
+    # An anonymous shape gets a generated key, which must not take one an author declared,
+    # in this sentence or a later one, nor an actor's name.
+    reserved = set(nodes) | {o["id"] for s in spec["sentences"]
+                             for o in [s.get("object")] + [h.get("object") for h in s.get("chain") or []]
+                             if o and o.get("id")}
+
+    def fresh(key):
+        while key in reserved:
+            key += "_"
+        reserved.add(key)
+        return key
+
     for i, s in enumerate(spec["sentences"]):
         n = s.get("n", i + 1)
         src = nodes[s["from"]]
@@ -286,7 +298,7 @@ def build(spec):
         if obj is None:
             edges.append(Edge(src, nodes[s["to"]], s.get("verb", ""), n, changed=changed, step=n))
             continue
-        key = obj.get("id") or f"__wo{i}"
+        key = obj.get("id") or fresh(f"__wo{i}")
         wo = Node(key, "wo", obj["name"], obj["icon"], obj.get("at"), changed=changed)
         wo.spoke = tuple(sorted(k for k in (s["from"], s.get("to")) if k))
         wo.steps.add(n)
@@ -297,7 +309,7 @@ def build(spec):
         last = wo
         for j, h in enumerate(s.get("chain") or []):
             o = h["object"]
-            hk = o.get("id") or f"__wo{i}_{j}"
+            hk = o.get("id") or fresh(f"__wo{i}_{j}")
             hop = Node(hk, "wo", o["name"], o["icon"], o.get("at"), changed=changed)
             hop.spoke = wo.spoke
             hop.steps.add(n)
