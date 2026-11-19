@@ -68,6 +68,9 @@ def expected_tags(spec):
         obj = s.get("object")
         if obj:
             objects[(str(n), obj["name"])] += 1
+            for hop in s.get("chain") or []:
+                objects[(str(n), hop["object"]["name"])] += 1
+                arrows[(str(n), hop.get("prep", ""))] += 1
             if s.get("to"):
                 arrows[(str(n), s.get("prep", ""))] += 1
             if s.get("note"):
@@ -268,6 +271,12 @@ class KeepsTheEgonFilesAsTheyWere(unittest.TestCase):
             for name, r in each_story():
                 if r.source.parent == EXAMPLES:
                     self.assertFalse(any(s.get("changed") for s in r.spec["sentences"]), name)
+
+    def test_the_chained_fixture_marks_a_sentence_whose_hops_must_carry_the_mark(self):
+        spec = STORIES["chained-purchase.story.json"].spec
+        chained = [s for s in spec["sentences"] if s.get("chain") and s.get("changed")]
+        self.assertEqual(1, len(chained))
+        self.assertFalse(any(s.get("chain") for s in spec["sentences"] if s not in chained))
 
     def test_the_other_fixture_has_notes_groups_relations_and_a_parallel_step(self):
         spec = STORIES["review-a-claim.story.json"].spec

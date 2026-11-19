@@ -26,7 +26,7 @@
 <path d="M-200 132 L-222 92" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="-176" y="84" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">settles</text>
 <path d="M-218 183 L-372 237" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="-278" y="282" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">is approved by</text>
 <path d="M-468 0 L-620 0" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
-<path d="M-195 208 L-250 350" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
+<path d="M-172 208 L-140 350" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
 <path d="M0 -508 L0 -660" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
 <g transform="translate(-436.8,-279.0) scale(2.231)" fill="#1b1b1b"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></g>
 <text x="-410" y="-207" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Driver</text>
@@ -55,9 +55,9 @@
 <path d="M-725 -35 H-529 L-515 -21 V35 H-725 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
 <text x="-715" y="-10" font-size="15" fill="#1b1b1b">Roughly a fifth of these</text>
 <text x="-715" y="9" font-size="15" fill="#1b1b1b">arrive by email instead.</text>
-<path d="M-355 315 H-159 L-145 329 V385 H-355 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
-<text x="-345" y="340" font-size="15" fill="#1b1b1b">Anything over 500 kr needs</text>
-<text x="-345" y="359" font-size="15" fill="#1b1b1b">a second approver.</text>
+<path d="M-245 315 H-49 L-35 329 V385 H-245 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
+<text x="-235" y="340" font-size="15" fill="#1b1b1b">Anything over 500 kr needs</text>
+<text x="-235" y="359" font-size="15" fill="#1b1b1b">a second approver.</text>
 <path d="M-105 -704 H91 L105 -690 V-616 H-105 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
 <text x="-95" y="-680" font-size="15" fill="#1b1b1b">Takes two banking days, and</text>
 <text x="-95" y="-660" font-size="15" fill="#1b1b1b">the driver is not told</text>
@@ -206,7 +206,7 @@
       "type": "domainStory:textAnnotation",
       "name": "",
       "id": "shape_0016",
-      "x": -355,
+      "x": -245,
       "y": 315,
       "text": "Anything over 500 kr needs a second approver.",
       "number": 70,
@@ -730,10 +730,10 @@
         },
         {
           "original": {
-            "x": -250,
+            "x": -140,
             "y": 350
           },
-          "x": -250,
+          "x": -140,
           "y": 350
         }
       ],

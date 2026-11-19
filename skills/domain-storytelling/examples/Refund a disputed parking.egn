@@ -140,7 +140,7 @@
    "type": "domainStory:textAnnotation",
    "name": "",
    "id": "shape_0016",
-   "x": -355,
+   "x": -245,
    "y": 315,
    "text": "Anything over 500 kr needs a second approver.",
    "number": 70,
@@ -664,10 +664,10 @@
     },
     {
      "original": {
-      "x": -250,
+      "x": -140,
       "y": 350
      },
-     "x": -250,
+     "x": -140,
      "y": 350
     }
    ],

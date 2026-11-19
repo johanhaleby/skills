@@ -1,0 +1,16 @@
+{
+  "title": "Buy a ticket from a seller",
+  "scope": { "granularity": "fine-grained", "time": "TO-BE", "purity": "digitalized" },
+  "description": "A ticket is bought on the strength of property data and a voucher, and the first sale now says so.",
+  "actors": [
+    { "name": "Buyer", "icon": "Person" },
+    { "name": "Seller", "icon": "Person" }
+  ],
+  "sentences": [
+    { "n": 1, "from": "Buyer", "verb": "buys", "object": { "name": "Ticket", "icon": "Document" },
+      "chain": [ { "prep": "based on", "object": { "name": "Property data", "icon": "Folder" } },
+                 { "prep": "with", "object": { "name": "Voucher", "icon": "Receipt" } } ],
+      "prep": "from", "to": "Seller", "changed": true },
+    { "n": 2, "from": "Seller", "verb": "sends", "object": { "name": "Receipt", "icon": "Document" }, "prep": "to", "to": "Buyer" }
+  ]
+}

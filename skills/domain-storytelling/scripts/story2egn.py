@@ -107,7 +107,8 @@ def load_spec(path: Path) -> dict:
 
 SPEC_KEYS = {"title", "scope", "description", "actors", "sentences", "relations", "groups"}
 ACTOR_KEYS = {"name", "icon", "note", "at"}
-SENTENCE_KEYS = {"n", "from", "verb", "object", "prep", "to", "note", "changed"}
+SENTENCE_KEYS = {"n", "from", "verb", "object", "chain", "prep", "to", "note", "changed"}
+CHAIN_KEYS = {"prep", "object"}
 OBJECT_KEYS = {"name", "icon", "id", "at"}
 RELATION_KEYS = {"from", "to", "verb"}
 GROUP_KEYS = {"name", "members"}
@@ -156,8 +157,12 @@ def validate(spec: dict, icons: dict) -> None:
         _require(s.get("from") in seen, f"{where}: 'from' names undeclared actor {s.get('from')!r}")
         if s.get("to") is not None:
             _require(s["to"] in seen, f"{where}: 'to' names undeclared actor {s['to']!r}")
-        obj = s.get("object")
-        if obj is not None:
+        _require(not s.get("chain") or s.get("object"), f"{where}: a chain continues a work object, so it needs one")
+        for h in s.get("chain") or []:
+            _no_strays(h, CHAIN_KEYS, f"{where}: chain")
+            _require(h.get("object"), f"{where}: every chain hop needs a work object")
+        hops = [s.get("object")] + [h.get("object") for h in s.get("chain") or []]
+        for obj in (o for o in hops if o is not None):
             _no_strays(obj, OBJECT_KEYS, f"{where}: work object")
             _require(obj.get("name"), f"{where}: work object needs a name")
             _require(obj.get("icon") in icons, f"{where}: unknown icon {obj.get('icon')!r}")
@@ -172,7 +177,7 @@ def validate(spec: dict, icons: dict) -> None:
                 _require(oid not in wo_ids, f"{where}: work object id {oid!r} is already used")
                 _require(oid not in seen, f"{where}: work object id {oid!r} collides with an actor name")
                 wo_ids[oid] = obj
-        else:
+        if s.get("object") is None:
             _require(s.get("to"), f"{where}: a sentence without a work object must still have a 'to'")
 
     used = {s.get("from") for s in sentences} | {s.get("to") for s in sentences}
@@ -270,6 +275,18 @@ def build(spec):
     for a in spec["actors"]:
         nodes[a["name"]] = Node(a["name"], "actor", a["name"], a["icon"], a.get("at"))
 
+    # An anonymous shape gets a generated key, which must not take one an author declared,
+    # in this sentence or a later one, nor an actor's name.
+    reserved = set(nodes) | {o["id"] for s in spec["sentences"]
+                             for o in [s.get("object")] + [h.get("object") for h in s.get("chain") or []]
+                             if o and o.get("id")}
+
+    def fresh(key):
+        while key in reserved:
+            key += "_"
+        reserved.add(key)
+        return key
+
     for i, s in enumerate(spec["sentences"]):
         n = s.get("n", i + 1)
         src = nodes[s["from"]]
@@ -281,14 +298,26 @@ def build(spec):
         if obj is None:
             edges.append(Edge(src, nodes[s["to"]], s.get("verb", ""), n, changed=changed, step=n))
             continue
-        key = obj.get("id") or f"__wo{i}"
+        key = obj.get("id") or fresh(f"__wo{i}")
         wo = Node(key, "wo", obj["name"], obj["icon"], obj.get("at"), changed=changed)
         wo.spoke = tuple(sorted(k for k in (s["from"], s.get("to")) if k))
         wo.steps.add(n)
         nodes[key] = wo
         edges.append(Edge(src, wo, s.get("verb", ""), n, changed=changed, step=n))
+        # A sentence can pass through several work objects, as in the book's "based on" arrows.
+        # Each hop is a shape of its own, reached by an unnumbered arrow carrying its preposition.
+        last = wo
+        for j, h in enumerate(s.get("chain") or []):
+            o = h["object"]
+            hk = o.get("id") or fresh(f"__wo{i}_{j}")
+            hop = Node(hk, "wo", o["name"], o["icon"], o.get("at"), changed=changed)
+            hop.spoke = wo.spoke
+            hop.steps.add(n)
+            nodes[hk] = hop
+            edges.append(Edge(last, hop, h.get("prep", ""), changed=changed, step=n))
+            last = hop
         if s.get("to"):
-            edges.append(Edge(wo, nodes[s["to"]], s.get("prep", ""), changed=changed, step=n))
+            edges.append(Edge(last, nodes[s["to"]], s.get("prep", ""), changed=changed, step=n))
         if s.get("note"):
             notes.append(Note(f"__note{len(notes)}", s["note"], wo, (n,)))
 
@@ -320,13 +349,25 @@ STRANGER_STEP = 20   # how far each slide moves it
 
 
 def _owners(edges):
-    """Which actors each work object shares a sentence with."""
+    """Which actors each work object shares a sentence with.
+
+    An arrow only names the actor next to it, so a work object in the middle of a chain
+    would own neither end of its sentence. Its spoke names both, which covers every hop.
+    """
     own = {}
+    actors = {}
     for e in edges:
+        for n in (e.src, e.dst):
+            if n.kind == "actor":
+                actors[n.key] = n
         if e.src.kind == "actor" and e.dst.kind != "actor":
             own.setdefault(id(e.dst), set()).add(e.src)
         if e.dst.kind == "actor" and e.src.kind != "actor":
             own.setdefault(id(e.src), set()).add(e.dst)
+    for e in edges:
+        for n in (e.src, e.dst):
+            if n.kind != "actor":
+                own.setdefault(id(n), set()).update(actors[k] for k in n.spoke if k in actors)
     return own
 
 
@@ -670,7 +711,7 @@ def _search(note, nodes, shapes, others, edges):
     a = note.anchor
     span = math.hypot(a.cx, a.cy)
     base = math.atan2(a.cy, a.cx) if span > 1 else math.pi / 2
-    clear = off_arrows = boxes_only = None
+    clear = off_arrows = boxes_only = astray = adrift = loose = None
     candidates = []
     for step in range(0, 1500, 50):
         for turn in _NOTE_TURNS:
@@ -681,6 +722,18 @@ def _search(note, nodes, shapes, others, edges):
                 continue
             # A name hangs under its shape, the anchor's included, and a note must stay off it too.
             if any(_overlap(note.box, s.text_box) for s in shapes):
+                continue
+            # A reader takes a note for one on whatever shape sits nearest, so a spot nearer
+            # another shape is only kept for when the scan finds no spot of the note's own.
+            # A clear leader still says whose note it is, which a note lying on an arrow cannot.
+            if _far_notes(nodes, [note]):
+                if adrift is None:
+                    adrift = (note.cx, note.cy)
+                if not _note_on_edge(note.box, edges):
+                    if loose is None:
+                        loose = (note.cx, note.cy)
+                    if astray is None and _clear_leader(a, note.cx, note.cy, nodes.values(), others, edges):
+                        astray = (note.cx, note.cy)
                 continue
             if boxes_only is None:
                 boxes_only = (note.cx, note.cy)
@@ -695,14 +748,17 @@ def _search(note, nodes, shapes, others, edges):
                 break
         if clear:
             break
-    return clear, off_arrows, boxes_only, candidates
+    return clear, off_arrows or astray or loose, boxes_only or adrift, candidates
 
 
 def _place_one(note, nodes, shapes, others, edges):
     """Put one note where nothing is in the way, and record the leader it gets.
 
-    Three tiers, best first. Nothing in the way beats a crossed leader line, and a
-    crossed leader beats a note overlapping an arrow.
+    Tiers, best first. Nothing in the way beats a crossed leader line, and a crossed
+    leader beats a note overlapping an arrow. A spot nearer another shape reads as that
+    shape's note, but its leader line still says whose note it is, which a note lying on
+    an arrow cannot. So it comes after a spot of the note's own and before any spot on an
+    arrow.
 
     One outward scan, then the stub routes are retried over the near positions that
     scan already found, nearest first. Rescanning every position with the stub
@@ -1137,6 +1193,108 @@ def place(nodes, edges, notes, seating=None):
     assign_labels(nodes, edges, notes)
     if seating is None:
         _keep_the_best_seating(nodes, edges, notes)
+        _make_room_for_notes(nodes, edges, notes)
+
+
+# The widest gap a note may leave to its own shape's box. In the checked-in pictures a note with
+# no nearer shape sits within 110 of its own, so 120 leaves those alone and flags one that floats.
+NOTE_GAP = 120
+# Small steps, so the picture grows only as much as the notes need.
+ROOM_STEP = 1.06
+ROOM_TRIES = 12
+
+
+def _gap(a, b):
+    """The empty space between two boxes, 0 when they touch or overlap."""
+    dx = max(a[0] - (b[0] + b[2]), b[0] - (a[0] + a[2]), 0)
+    dy = max(a[1] - (b[1] + b[3]), b[1] - (a[1] + a[3]), 0)
+    return math.hypot(dx, dy)
+
+
+def _shape_extent(node):
+    """The icon plus the name printed under it, the two boxes an arrow already steers round."""
+    boxes = [node.box, node.text_box]
+    x0, y0 = min(b[0] for b in boxes), min(b[1] for b in boxes)
+    x1, y1 = max(b[0] + b[2] for b in boxes), max(b[1] + b[3] for b in boxes)
+    return (x0, y0, x1 - x0, y1 - y0)
+
+
+def _far_notes(nodes, notes):
+    """The notes that read as belonging to another shape, or to none.
+
+    A note is far when it leaves more than NOTE_GAP to its own shape, or when some other
+    shape is closer to it than its own. Both are gaps between boxes, since centres say
+    little about two shapes of different sizes and a wide note.
+    """
+    far = []
+    for n in notes:
+        own = _gap(n.box, _shape_extent(n.anchor))
+        rest = [_gap(n.box, _shape_extent(o)) for o in nodes.values() if o is not n.anchor]
+        if own > NOTE_GAP or any(g < own for g in rest):
+            far.append(n)
+    return far
+
+
+def _stranded(nodes, edges, notes):
+    """How badly the notes sit, worst fault first: a note over an arrow hides part of a
+    sentence, while one astray still has its leader line to say whose it is."""
+    return (sum(1 for n in notes if _note_on_edge(n.box, edges)), len(_far_notes(nodes, notes)))
+
+
+def _redraw_at(nodes, edges, notes, home, f):
+    # A pin is the author's choice, so it keeps its place while the rest spreads.
+    for n in nodes.values():
+        if not n.pinned:
+            n.cx, n.cy = _snap(home[n.key][0] * f), _snap(home[n.key][1] * f)
+    assign_routes(nodes, edges)
+    _place_notes(nodes, notes, edges)
+    assign_labels(nodes, edges, notes)
+
+
+def _shape_collisions(nodes):
+    """How many pairs of shapes overlap, an icon and its name counted as one. Notes are left out,
+    since the spread is judged on them."""
+    shapes = list(nodes.values())
+    return sum(1 for i, one in enumerate(shapes)
+               for two in shapes[i + 1:] if _overlap(_shape_extent(one), _shape_extent(two), pad=0))
+
+
+def _width(nodes, notes):
+    min_x, _, max_x, _ = canvas_box(nodes, notes)
+    return max_x - min_x
+
+
+def _make_room_for_notes(nodes, edges, notes):
+    """Spread the picture until every note fits beside its own shape and off the arrows.
+
+    In a crowded picture the note search can find no spot of a note's own, and then the
+    note lands nearer another shape or on an arrow. Scaling every position about the centre
+    opens the gaps instead. The first scale with no stranded note wins, and when none gets
+    there the smallest scale with the fewest notes on arrows, then the fewest astray, is
+    kept. Only the shapes that are not pinned scale, so a scale that drops one on a pinned
+    shape is skipped, and so is one that makes the picture too wide to read. A note still
+    astray at the end is left for check_geometry to warn about.
+    """
+    faults = _stranded(nodes, edges, notes) if notes else (0, 0)
+    if faults == (0, 0):
+        return
+    home = {n.key: (n.cx, n.cy) for n in nodes.values()}
+    best = (faults, 1.0)
+    collisions = _shape_collisions(nodes)
+    # A spread that makes the names unreadable trades one fault for a worse one, so it stops
+    # where check_reading would start to complain, or where the picture already was.
+    widest = max(COLUMN * NAME_PT / LEGIBLE, _width(nodes, notes))
+    for i in range(1, ROOM_TRIES + 1):
+        f = ROOM_STEP ** i
+        _redraw_at(nodes, edges, notes, home, f)
+        if _shape_collisions(nodes) > collisions or _width(nodes, notes) > widest:
+            continue
+        faults = _stranded(nodes, edges, notes)
+        if faults < best[0]:
+            best = (faults, f)
+        if faults == (0, 0):
+            return
+    _redraw_at(nodes, edges, notes, home, best[1])
 
 
 def _seatings(nodes, edges):
@@ -1383,6 +1541,15 @@ def check_geometry(nodes, edges, notes, title, quiet=False):
             warnings.append(f"{note.name} has a leader line crossing a shape or an arrow")
         if _note_on_edge(note.box, edges):
             warnings.append(f"{note.name} overlaps an arrow")
+
+    # The spread stops at the reading width, so a note it could not bring home is left where it is
+    # and said out loud, since a reader takes it for a note on whatever sits nearest.
+    for note in _far_notes(nodes, notes):
+        nearest = min(nodes.values(), key=lambda o: _gap(note.box, _shape_extent(o)))
+        if nearest is note.anchor:
+            warnings.append(f"{note.name} sits too far from {note.anchor.name!r} to read as its note")
+        else:
+            warnings.append(f"{note.name} sits nearer {nearest.name!r} than {note.anchor.name!r}")
 
     return warnings if quiet else _report(title, "layout", warnings)
 
@@ -1647,11 +1814,11 @@ def check_icons(spec, actor_icons, title):
     """
     warnings = []
     for i, s in enumerate(spec.get("sentences") or [], 1):
-        obj = s.get("object")
-        if obj is not None and obj.get("icon") in actor_icons:
-            warnings.append(
-                f"work object {obj['name']!r} in sentence {s.get('n', i)} is drawn as "
-                f"{obj['icon']!r}, an actor icon, so it reads as an actor, pick a work-object icon")
+        for obj in [s.get("object")] + [h.get("object") for h in s.get("chain") or []]:
+            if obj is not None and obj.get("icon") in actor_icons:
+                warnings.append(
+                    f"work object {obj['name']!r} in sentence {s.get('n', i)} is drawn as "
+                    f"{obj['icon']!r}, an actor icon, so it reads as an actor, pick a work-object icon")
 
     return _report(title, "icon", warnings)
 

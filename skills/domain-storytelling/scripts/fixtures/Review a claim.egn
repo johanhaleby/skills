@@ -108,8 +108,8 @@
    "type": "domainStory:textAnnotation",
    "name": "",
    "id": "shape_0012",
-   "x": -435,
-   "y": -312,
+   "x": -325,
+   "y": -332,
    "text": "Sent the same day.",
    "number": 65,
    "width": 210,
@@ -468,11 +468,11 @@
     },
     {
      "original": {
-      "x": -330,
-      "y": -280
+      "x": -220,
+      "y": -300
      },
-     "x": -330,
-     "y": -280
+     "x": -220,
+     "y": -300
     }
    ],
    "source": "shape_0008",

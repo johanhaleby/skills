@@ -105,7 +105,38 @@ def convert(path):
     for relation in data["relations"]:
         by_source.setdefault(relation["source"]["id"], []).append(relation)
 
-    ids, consumed, sentences = set(), set(), []
+    numbered_targets = {step["target"]["id"] for step in data["steps"]}
+    # How many work objects point at each shape. The file does not say which of several
+    # arrows is a sentence's own, so the first sentence to reach a shape takes it as a hop
+    # and says so when the choice was not the only one.
+    reached_by = {}
+    for relation in data["relations"]:
+        if not relation["source"]["kind"].startswith("actor"):
+            reached_by.setdefault(relation["target"]["id"], set()).add(relation["source"]["id"])
+    # A generated id may not equal an actor's name, which the generator rejects.
+    ids = {p["name"] for p in data["participants"] if p["kind"].startswith("actor")}
+    consumed, sentences = set(), []
+
+    def eligible_hops(shape, visited=()):
+        return [c for c in by_source.get(shape["id"], []) if id(c) not in consumed
+                and c["target"]["id"] not in visited
+                and not c["target"]["kind"].startswith("actor")
+                and c["target"]["id"] not in numbered_targets and (c["target"]["name"] or "").strip()]
+
+    def leaves_for_actor(shape):
+        return any(c["target"]["kind"].startswith("actor")
+                   for c in by_source.get(shape["id"], []) if id(c) not in consumed)
+
+    def leads_to_actor(shape, seen):
+        if shape["id"] in seen:
+            return False
+        if leaves_for_actor(shape):
+            return True
+        hops = eligible_hops(shape, seen | {shape["id"]})
+        return len(hops) == 1 and leads_to_actor(hops[0]["target"], seen | {shape["id"]})
+
+    # A chain hop is a shape a sentence draws, so a relation can point at it as well.
+    hop_shapes = []
     for step in data["steps"]:
         target = step["target"]
         if not (target["name"] or "").strip() or not (step["source"]["name"] or "").strip():
@@ -117,9 +148,44 @@ def convert(path):
             "verb": step["verb"],
             "object": {"name": target["name"], "icon": icon_for(target["kind"])},
         }
+        # A sentence can pass through further work objects before it reaches an actor, as
+        # in "purchases a ticket based on data from the property from the landlord". A hop
+        # is a work object no numbered arrow points at, reached by the only arrow that
+        # leaves the previous one.
+        last = target
+        # A hop another sentence already imported stays that sentence's, so an arrow
+        # reaching it is left for the relation pass.
+        own = {target["id"]}
+        visited = own | {shape_id for _, shape_id in hop_shapes}
+        while True:
+            # An arrow back to a shape the sentence already passed is a relation, so it does not
+            # count against the one forward hop.
+            hops = eligible_hops(last, visited)
+            # An arrow to an actor ends the chain, unless the single hop still leads to one,
+            # in which case that arrow is a relation somebody drew and the relation pass keeps it.
+            if len(hops) != 1 or (leaves_for_actor(last) and not leads_to_actor(hops[0]["target"], visited)):
+                break
+            hop = hops[0]["target"]
+            visited.add(hop["id"])
+            own.add(hop["id"])
+            link = {"object": {"name": hop["name"], "icon": icon_for(hop["kind"])}}
+            if hops[0]["label"]:
+                link["prep"] = hops[0]["label"]
+            sentence.setdefault("chain", []).append(link)
+            hop_shapes.append((link["object"], hop["id"]))
+            consumed.add(id(hops[0]))
+            if hop["id"] in notes:
+                warnings.append(f"dropped the note on {hop['name']!r} in sentence "
+                                f"{step['number']}, since a note belongs to the sentence's first work object")
+            last = hop
+        for hop_id in own - {target["id"]}:
+            if reached_by.get(hop_id, set()) - own:
+                name = next(o["name"] for o, shape in hop_shapes if shape == hop_id)
+                warnings.append(f"sentence {step['number']} took {name!r} as a hop, but another work "
+                                f"object outside the sentence points at it, so check which sentence it belongs to")
         # The `to` of a sentence is an actor, so an arrow leaving the work object
         # for another work object is a relation somebody drew, not a preposition.
-        candidates = [c for c in by_source.get(target["id"], [])
+        candidates = [c for c in by_source.get(last["id"], [])
                       if c["target"]["kind"].startswith("actor")]
         # The .egn stores a preposition arrow and a drawn relation the same way, so this
         # guesses from the label. A single arrow labelled with a plain preposition, among
@@ -134,9 +200,15 @@ def convert(path):
             consumed.add(id(candidates[0]))
         elif len(candidates) > 1:
             warnings.append(
-                f"sentence {step['number']} leaves {target['name']!r} by "
+                f"sentence {step['number']} leaves {last['name']!r} by "
                 f"{len(candidates)} arrows, so it kept no preposition"
             )
+        # Sentences that start at one work object share what leaves it, and the first sentence takes
+        # it. A later one that finds it already taken keeps nothing after the object, so say so.
+        if "chain" not in sentence and "to" not in sentence and any(
+                id(c) in consumed for c in by_source.get(target["id"], [])):
+            warnings.append(f"sentence {step['number']} starts at {target['name']!r}, which an earlier "
+                            f"sentence already continued from, so it kept no chain or destination")
         if target["id"] in notes:
             sentence["note"] = notes[target["id"]]
         sentences.append((sentence, target["id"]))
@@ -173,18 +245,26 @@ def convert(path):
             return node["name"]
         if node["id"] not in shape_ids:
             shape_ids[node["id"]] = slug(node["name"], ids)
-            for sentence, target_id in sentences:
-                if target_id == node["id"]:
-                    sentence["object"]["id"] = shape_ids[node["id"]]
+            # Sentences can share one drawn shape, but an id names one work object in the
+            # spec, so the first sentence or hop to draw it takes the id and the rest stay bare.
+            drawn_as = [sentence["object"] for sentence, target_id in sentences if target_id == node["id"]]
+            drawn_as += [spec_object for spec_object, shape_id in hop_shapes if shape_id == node["id"]]
+            if drawn_as:
+                drawn_as[0]["id"] = shape_ids[node["id"]]
         return shape_ids[node["id"]]
 
-    drawn = {target_id for _, target_id in sentences}
+    drawn = {target_id for _, target_id in sentences} | {shape_id for _, shape_id in hop_shapes}
+
+    declared = {actor["name"] for actor in spec["actors"]}
 
     def expressible(node):
-        # An actor is addressed by name. A work object only exists in the spec as
-        # some sentence's object, so one that no sentence draws has nothing to
-        # point at and the relation has to go.
-        return node["kind"].startswith("actor") or node["id"] in drawn
+        # An actor is addressed by name, and only one the spec declares, since the
+        # actors no sentence names were dropped above. A work object only exists in
+        # the spec as some sentence's object, so one that no sentence draws has
+        # nothing to point at and the relation has to go.
+        if node["kind"].startswith("actor"):
+            return node["name"] in declared
+        return node["id"] in drawn
 
     leftovers = []
     for relation in data["relations"]:

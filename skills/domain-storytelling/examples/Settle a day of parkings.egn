@@ -27,8 +27,8 @@
    "type": "domainStory:actorPerson",
    "name": "Driver",
    "id": "shape_0001",
-   "x": -548,
-   "y": -218
+   "x": -678,
+   "y": -268
   },
   {
    "type": "domainStory:actorSystem",
@@ -42,84 +42,84 @@
    "name": "Operator",
    "id": "shape_0003",
    "x": -38,
-   "y": 322
+   "y": 412
   },
   {
    "type": "domainStory:actorBusiness",
    "name": "Bank",
    "id": "shape_0004",
-   "x": 472,
-   "y": -218
+   "x": 602,
+   "y": -268
   },
   {
    "type": "domainStory:workObjectTime",
    "name": "Parking",
    "id": "shape_0005",
-   "x": -248,
-   "y": -248
+   "x": -308,
+   "y": -308
   },
   {
    "type": "domainStory:workObjectEuro",
    "name": "Amount",
    "id": "shape_0006",
-   "x": 252,
+   "x": 332,
    "y": -38
   },
   {
    "type": "domainStory:workObjectTime",
    "name": "Parking",
    "id": "shape_0007",
-   "x": -298,
-   "y": -108
+   "x": -368,
+   "y": -128
   },
   {
    "type": "domainStory:workObjectAssessment",
    "name": "Session",
    "id": "shape_0008",
    "x": -38,
-   "y": -228
+   "y": -278
   },
   {
    "type": "domainStory:workObjectCredit-Card",
    "name": "Payment",
    "id": "shape_0009",
-   "x": 202,
-   "y": -178
+   "x": 262,
+   "y": -218
   },
   {
    "type": "domainStory:workObjectReceipt",
    "name": "Receipt",
    "id": "shape_0010",
-   "x": -348,
-   "y": 32
+   "x": -428,
+   "y": 52
   },
   {
    "type": "domainStory:workObjectAssessment",
    "name": "Day report",
    "id": "shape_0011",
-   "x": -208,
-   "y": 142
+   "x": -248,
+   "y": 192
   },
   {
    "type": "domainStory:workObjectProblem",
    "name": "Line item",
    "id": "shape_0012",
-   "x": -58,
-   "y": 142
+   "x": -68,
+   "y": 192
   },
   {
    "type": "domainStory:workObjectEuro",
    "name": "Settlement",
    "id": "shape_0013",
-   "x": 92,
-   "y": 142
+   "x": 122,
+   "y": 192
   },
   {
    "type": "domainStory:textAnnotation",
    "name": "",
    "id": "shape_0014",
-   "x": 65,
-   "y": -274,
+   "x": 75,
+   "y": 15,
    "text": "Everything routes through Platform. That is what makes it hard to change.",
    "number": 89,
    "width": 210,
@@ -133,19 +133,19 @@
    "waypoints": [
     {
      "original": {
-      "x": -510,
-      "y": -180
+      "x": -640,
+      "y": -230
      },
-     "x": -472,
-     "y": -183
+     "x": -602,
+     "y": -234
     },
     {
      "original": {
-      "x": -210,
-      "y": -210
+      "x": -270,
+      "y": -270
      },
-     "x": -248,
-     "y": -206
+     "x": -308,
+     "y": -265
     }
    ],
    "source": "shape_0001",
@@ -161,11 +161,11 @@
    "waypoints": [
     {
      "original": {
-      "x": -210,
-      "y": -210
+      "x": -270,
+      "y": -270
      },
-     "x": -172,
-     "y": -172
+     "x": -232,
+     "y": -232
     },
     {
      "original": {
@@ -196,10 +196,10 @@
     },
     {
      "original": {
-      "x": 290,
+      "x": 370,
       "y": 0
      },
-     "x": 252,
+     "x": 332,
      "y": 0
     }
    ],
@@ -216,19 +216,19 @@
    "waypoints": [
     {
      "original": {
-      "x": 290,
+      "x": 370,
       "y": 0
      },
-     "x": 328,
-     "y": -31
+     "x": 408,
+     "y": -32
     },
     {
      "original": {
-      "x": 510,
-      "y": -180
+      "x": 640,
+      "y": -230
      },
-     "x": 472,
-     "y": -148
+     "x": 602,
+     "y": -197
     }
    ],
    "source": "shape_0006",
@@ -243,19 +243,19 @@
    "waypoints": [
     {
      "original": {
-      "x": -510,
-      "y": -180
+      "x": -640,
+      "y": -230
      },
-     "x": -472,
-     "y": -163
+     "x": -602,
+     "y": -212
     },
     {
      "original": {
-      "x": -260,
-      "y": -70
+      "x": -330,
+      "y": -90
      },
-     "x": -298,
-     "y": -86
+     "x": -368,
+     "y": -107
     }
    ],
    "source": "shape_0001",
@@ -271,11 +271,11 @@
    "waypoints": [
     {
      "original": {
-      "x": -260,
-      "y": -70
+      "x": -330,
+      "y": -90
      },
-     "x": -222,
-     "y": -59
+     "x": -292,
+     "y": -79
     },
     {
      "original": {
@@ -307,10 +307,10 @@
     {
      "original": {
       "x": 0,
-      "y": -190
+      "y": -240
      },
      "x": 0,
-     "y": -138
+     "y": -188
     }
    ],
    "source": "shape_0002",
@@ -334,11 +334,11 @@
     },
     {
      "original": {
-      "x": 240,
-      "y": -140
+      "x": 300,
+      "y": -180
      },
-     "x": 202,
-     "y": -117
+     "x": 262,
+     "y": -157
     }
    ],
    "source": "shape_0002",
@@ -354,19 +354,19 @@
    "waypoints": [
     {
      "original": {
-      "x": 240,
-      "y": -140
+      "x": 300,
+      "y": -180
      },
-     "x": 278,
-     "y": -145
+     "x": 338,
+     "y": -185
     },
     {
      "original": {
-      "x": 510,
-      "y": -180
+      "x": 640,
+      "y": -230
      },
-     "x": 472,
-     "y": -174
+     "x": 602,
+     "y": -224
     }
    ],
    "source": "shape_0009",
@@ -389,11 +389,11 @@
     },
     {
      "original": {
-      "x": -310,
-      "y": 70
+      "x": -390,
+      "y": 90
      },
-     "x": -272,
-     "y": 61
+     "x": -352,
+     "y": 81
     }
    ],
    "source": "shape_0002",
@@ -409,19 +409,19 @@
    "waypoints": [
     {
      "original": {
-      "x": -310,
-      "y": 70
+      "x": -390,
+      "y": 90
      },
-     "x": -340,
-     "y": 32
+     "x": -419,
+     "y": 52
     },
     {
      "original": {
-      "x": -510,
-      "y": -180
+      "x": -640,
+      "y": -230
      },
-     "x": -479,
-     "y": -142
+     "x": -610,
+     "y": -192
     }
    ],
    "source": "shape_0010",
@@ -440,15 +440,15 @@
       "y": 0
      },
      "x": -37,
-     "y": 39
+     "y": 40
     },
     {
      "original": {
-      "x": -170,
-      "y": 180
+      "x": -210,
+      "y": 230
      },
-     "x": -134,
-     "y": 142
+     "x": -175,
+     "y": 192
     }
    ],
    "source": "shape_0002",
@@ -464,19 +464,19 @@
    "waypoints": [
     {
      "original": {
-      "x": -170,
-      "y": 180
+      "x": -210,
+      "y": 230
      },
-     "x": -124,
-     "y": 228
+     "x": -164,
+     "y": 278
     },
     {
      "original": {
       "x": 0,
-      "y": 360
+      "y": 450
      },
-     "x": -35,
-     "y": 322
+     "x": -36,
+     "y": 412
     }
    ],
    "source": "shape_0011",
@@ -492,18 +492,18 @@
     {
      "original": {
       "x": 0,
-      "y": 360
+      "y": 450
      },
-     "x": -4,
-     "y": 322
+     "x": -5,
+     "y": 412
     },
     {
      "original": {
-      "x": -20,
-      "y": 180
+      "x": -30,
+      "y": 230
      },
-     "x": -14,
-     "y": 231
+     "x": -22,
+     "y": 281
     }
    ],
    "source": "shape_0003",
@@ -519,18 +519,18 @@
    "waypoints": [
     {
      "original": {
-      "x": -20,
-      "y": 180
+      "x": -30,
+      "y": 230
      },
-     "x": -15,
-     "y": 142
+     "x": -25,
+     "y": 192
     },
     {
      "original": {
       "x": 0,
       "y": 0
      },
-     "x": -5,
+     "x": -6,
      "y": 51
     }
    ],
@@ -549,16 +549,16 @@
       "x": 0,
       "y": 0
      },
-     "x": 37,
+     "x": 36,
      "y": 51
     },
     {
      "original": {
-      "x": 130,
-      "y": 180
+      "x": 160,
+      "y": 230
      },
-     "x": 102,
-     "y": 142
+     "x": 133,
+     "y": 192
     }
    ],
    "source": "shape_0002",
@@ -574,19 +574,19 @@
    "waypoints": [
     {
      "original": {
-      "x": 130,
-      "y": 180
+      "x": 160,
+      "y": 230
      },
-     "x": 92,
-     "y": 232
+     "x": 121,
+     "y": 282
     },
     {
      "original": {
       "x": 0,
-      "y": 360
+      "y": 450
      },
      "x": 27,
-     "y": 322
+     "y": 412
     }
    ],
    "source": "shape_0013",
@@ -601,19 +601,19 @@
    "waypoints": [
     {
      "original": {
-      "x": -170,
-      "y": 180
+      "x": -210,
+      "y": 230
      },
-     "x": -124,
-     "y": 228
+     "x": -164,
+     "y": 278
     },
     {
      "original": {
       "x": 0,
-      "y": 360
+      "y": 450
      },
-     "x": -35,
-     "y": 322
+     "x": -36,
+     "y": 412
     }
    ],
    "source": "shape_0011",
@@ -635,11 +635,11 @@
     },
     {
      "original": {
-      "x": 170,
-      "y": -230
+      "x": 180,
+      "y": 60
      },
-     "x": 170,
-     "y": -230
+     "x": 180,
+     "y": 60
     }
    ],
    "source": "shape_0002",

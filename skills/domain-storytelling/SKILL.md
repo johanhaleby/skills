@@ -44,7 +44,9 @@ story but is not one.
   "if". Model an important alternative as a *separate story*. Keep a small variation as an
   annotation.
 - **A sentence starts with an actor** and the sequence number goes on that first arrow. The
-  arrow on to a second actor carries a preposition, not a number.
+  arrow on to a second actor carries a preposition, not a number, and so does an arrow on to
+  a further work object the sentence passes through, as in "buys a ticket with a voucher
+  from the cashier".
 - **Sentences that happen at the same time share one number**, and any number of them can.
   Repeat the `n` value across them in the spec. This is the only way the notation says "at
   the same time", since it has no fork and no join, so reach for it whenever neither step

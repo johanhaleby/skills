@@ -1,0 +1,265 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="836" height="834" viewBox="-128 -444 836 834" style="background-color:#ffffff" version="1.2">
+<rect x="-128" y="-444" width="836" height="834" fill="#ffffff"/>
+<defs><marker id="tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1b1b1b"/></marker><marker id="tip-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#c8341b"/></marker></defs>
+<g font-family="Helvetica Neue,Helvetica,Arial,sans-serif">
+<text x="-38" y="-410" font-size="24" font-weight="600" fill="#1b1b1b">Buy a ticket from a seller</text>
+<text x="-38" y="-386" font-size="13" fill="#6b6b6b">A ticket is bought on the strength of property data and a voucher, and the first sale now says so.</text>
+<line x1="-38" y1="-371" x2="-16" y2="-371" stroke="#c8341b" stroke-width="3"/>
+<text x="-8" y="-367" font-size="13" fill="#c8341b">Highlighted: the part of the process this change affects.</text>
+<path d="M38 -29 L252 -191" fill="none" stroke="#c8341b" stroke-width="1.6" marker-end="url(#tip-accent)"/><text x="145" y="-119" font-size="16" text-anchor="middle" fill="#c8341b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">buys</text><circle cx="69" cy="-53" r="14" fill="#c8341b"/><text x="69" y="-48" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">1</text>
+<path d="M290 -168 L290 -118" fill="none" stroke="#c8341b" stroke-width="1.6" marker-end="url(#tip-accent)"/><text x="372" y="-152" font-size="16" text-anchor="middle" fill="#c8341b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">based on</text>
+<path d="M290 -28 L290 42" fill="none" stroke="#c8341b" stroke-width="1.6" marker-end="url(#tip-accent)"/><text x="208" y="-2" font-size="16" text-anchor="middle" fill="#c8341b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">with</text>
+<path d="M328 70 L542 10" fill="none" stroke="#c8341b" stroke-width="1.6" marker-end="url(#tip-accent)"/><text x="435" y="31" font-size="16" text-anchor="middle" fill="#c8341b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">from</text>
+<path d="M542 29 L328 191" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="435" y="101" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">sends</text><circle cx="511" cy="53" r="14" fill="#1b1b1b"/><text x="511" y="58" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">2</text>
+<path d="M252 191 L38 29" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="145" y="101" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
+<g transform="translate(-26.8,-29.0) scale(2.231)" fill="#1b1b1b"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></g>
+<text x="0" y="43" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Buyer</text>
+<g transform="translate(553.2,-29.0) scale(2.231)" fill="#1b1b1b"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></g>
+<text x="580" y="43" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Seller</text>
+<g transform="translate(263.2,-249.0) scale(2.231)" fill="#c8341b"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></g>
+<text x="290" y="-177" font-size="16" text-anchor="middle" fill="#c8341b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Ticket</text>
+<g transform="translate(263.2,-109.0) scale(2.231)" fill="#c8341b"><path fill="none" d="M0,0h24v24H0V0z"/><path d="M9.17,6l2,2H20v10L4,18V6H9.17 M10,4H4C2.9,4,2.01,4.9,2.01,6L2,18c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V8c0-1.1-0.9-2-2-2 h-8L10,4L10,4z"/></g>
+<text x="290" y="-37" font-size="16" text-anchor="middle" fill="#c8341b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Property data</text>
+<g transform="translate(265.1,51.0) scale(2.071)" fill="#c8341b"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M19.5 3.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2l-1.5 1.5zM19 19.09H5V4.91h14v14.18zM6 15h12v2H6zm0-4h12v2H6zm0-4h12v2H6z"/></g>
+<text x="290" y="123" font-size="16" text-anchor="middle" fill="#c8341b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Voucher</text>
+<g transform="translate(263.2,191.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></g>
+<text x="290" y="263" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Receipt</text>
+</g></svg>
+<!-- <DST>
+{
+  "domain": {
+    "name": "default",
+    "actors": {
+      "Person": "<svg viewBox=\"0 0 24 26\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z\"/><path d=\"M0 0h24v24H0z\" fill=\"none\"/></svg>",
+      "Group": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"48\" viewBox=\"0 0 24 26\"><path d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.33 13 1 14.08 1 16.25V19h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-4 4.5h-10v-1.25c0-.54 2.56-1.75 5-1.75s5 1.21 5 1.75v1.25zm9 0H14v-1.25c0-.46-.2-.86-.52-1.22.88-.3 1.96-.53 3.02-.53 2.44 0 5 1.21 5 1.75v1.25zM7.5 12c1.93 0 3.5-1.57 3.5-3.5S9.43 5 7.5 5 4 6.57 4 8.5 5.57 12 7.5 12zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 5.5c1.93 0 3.5-1.57 3.5-3.5S18.43 5 16.5 5 13 6.57 13 8.5s1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z\"/></svg>",
+      "System": "<svg viewBox=\"0 0 24 26\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z\"/></svg>"
+    },
+    "workObjects": {
+      "Document": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 26\"><path fill=\"none\" d=\"M0 0h24v24H0V0z\"/><path d=\"M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z\"/></svg>",
+      "Folder": "<svg viewBox=\"0 0 24 26\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"none\" d=\"M0,0h24v24H0V0z\"/><path d=\"M9.17,6l2,2H20v10L4,18V6H9.17 M10,4H4C2.9,4,2.01,4.9,2.01,6L2,18c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V8c0-1.1-0.9-2-2-2 h-8L10,4L10,4z\"/></svg>",
+      "Call": "<svg viewBox=\"0 0 24 26\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"none\" d=\"M0,0h24v24H0V0z\"/><path d=\"M6.54,5C6.6,5.89,6.75,6.76,6.99,7.59l-1.2,1.2C5.38,7.59,5.12,6.32,5.03,5H6.54 M16.4,17.02c0.85,0.24,1.72,0.39,2.6,0.45 v1.49c-1.32-0.09-2.59-0.35-3.8-0.75L16.4,17.02 M7.5,3H4C3.45,3,3,3.45,3,4c0,9.39,7.61,17,17,17c0.55,0,1-0.45,1-1v-3.49\tc0-0.55-0.45-1-1-1c-1.24,0-2.45-0.2-3.57-0.57c-0.1-0.04-0.21-0.05-0.31-0.05c-0.26,0-0.51,0.1-0.71,0.29l-2.2,2.2 c-2.83-1.45-5.15-3.76-6.59-6.59l2.2-2.2C9.1,8.31,9.18,7.92,9.07,7.57C8.7,6.45,8.5,5.25,8.5,4C8.5,3.45,8.05,3,7.5,3L7.5,3z\"/></svg>",
+      "Email": "<svg viewBox=\"0 0 24 26\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"none\" d=\"M0,0h24v24H0V0z\"/><path fill-opacity=\"0.9\" d=\"M12,1.95c-5.52,0-10,4.48-10,10s4.48,10,10,10h5v-2h-5c-4.34,0-8-3.66-8-8s3.66-8,8-8s8,3.66,8,8v1.43 c0,0.79-0.71,1.57-1.5,1.57S17,14.17,17,13.38v-1.43c0-2.76-2.24-5-5-5s-5,2.24-5,5s2.24,5,5,5c1.38,0,2.64-0.56,3.54-1.47 c0.65,0.89,1.77,1.47,2.96,1.47c1.97,0,3.5-1.6,3.5-3.57v-1.43C22,6.43,17.52,1.95,12,1.95z M12,14.95c-1.66,0-3-1.34-3-3 s1.34-3,3-3s3,1.34,3,3S13.66,14.95,12,14.95z\"/></svg>",
+      "Conversation": "<svg height=\"48\" viewBox=\"0 0 24 26\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 0h24v24H0V0z\" fill=\"none\"/><path d=\"M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z\"/></svg>",
+      "Info": "<svg height=\"48\" viewBox=\"0 0 24 26\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z\"/></svg>",
+      "Receipt": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 28\"><path fill=\"none\" d=\"M0 0h24v24H0V0z\"/><path d=\"M19.5 3.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2l-1.5 1.5zM19 19.09H5V4.91h14v14.18zM6 15h12v2H6zm0-4h12v2H6zm0-4h12v2H6z\"/></svg>"
+    }
+  },
+  "dst": [
+    {
+      "type": "domainStory:actorPerson",
+      "name": "Buyer",
+      "id": "shape_0001",
+      "x": -38,
+      "y": -38
+    },
+    {
+      "type": "domainStory:actorPerson",
+      "name": "Seller",
+      "id": "shape_0002",
+      "x": 542,
+      "y": -38
+    },
+    {
+      "type": "domainStory:workObjectDocument",
+      "name": "Ticket",
+      "id": "shape_0003",
+      "x": 252,
+      "y": -258,
+      "pickedColor": "#c8341bff"
+    },
+    {
+      "type": "domainStory:workObjectFolder",
+      "name": "Property data",
+      "id": "shape_0004",
+      "x": 252,
+      "y": -118,
+      "pickedColor": "#c8341bff"
+    },
+    {
+      "type": "domainStory:workObjectReceipt",
+      "name": "Voucher",
+      "id": "shape_0005",
+      "x": 252,
+      "y": 42,
+      "pickedColor": "#c8341bff"
+    },
+    {
+      "type": "domainStory:workObjectDocument",
+      "name": "Receipt",
+      "id": "shape_0006",
+      "x": 252,
+      "y": 182
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "buys",
+      "id": "connection_0007",
+      "pickedColor": "#c8341bff",
+      "waypoints": [
+        {
+          "original": {
+            "x": 0,
+            "y": 0
+          },
+          "x": 38,
+          "y": -28
+        },
+        {
+          "original": {
+            "x": 290,
+            "y": -220
+          },
+          "x": 252,
+          "y": -191
+        }
+      ],
+      "source": "shape_0001",
+      "target": "shape_0003",
+      "multipleNumberAllowed": false,
+      "number": 1
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "based on",
+      "id": "connection_0008",
+      "pickedColor": "#c8341bff",
+      "waypoints": [
+        {
+          "original": {
+            "x": 290,
+            "y": -220
+          },
+          "x": 290,
+          "y": -168
+        },
+        {
+          "original": {
+            "x": 290,
+            "y": -80
+          },
+          "x": 290,
+          "y": -118
+        }
+      ],
+      "source": "shape_0003",
+      "target": "shape_0004",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "with",
+      "id": "connection_0009",
+      "pickedColor": "#c8341bff",
+      "waypoints": [
+        {
+          "original": {
+            "x": 290,
+            "y": -80
+          },
+          "x": 290,
+          "y": -28
+        },
+        {
+          "original": {
+            "x": 290,
+            "y": 80
+          },
+          "x": 290,
+          "y": 42
+        }
+      ],
+      "source": "shape_0004",
+      "target": "shape_0005",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "from",
+      "id": "connection_0010",
+      "pickedColor": "#c8341bff",
+      "waypoints": [
+        {
+          "original": {
+            "x": 290,
+            "y": 80
+          },
+          "x": 328,
+          "y": 69
+        },
+        {
+          "original": {
+            "x": 580,
+            "y": 0
+          },
+          "x": 542,
+          "y": 10
+        }
+      ],
+      "source": "shape_0005",
+      "target": "shape_0002",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "sends",
+      "id": "connection_0011",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": 580,
+            "y": 0
+          },
+          "x": 542,
+          "y": 28
+        },
+        {
+          "original": {
+            "x": 290,
+            "y": 220
+          },
+          "x": 328,
+          "y": 191
+        }
+      ],
+      "source": "shape_0002",
+      "target": "shape_0006",
+      "multipleNumberAllowed": false,
+      "number": 2
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "to",
+      "id": "connection_0012",
+      "pickedColor": "black",
+      "waypoints": [
+        {
+          "original": {
+            "x": 290,
+            "y": 220
+          },
+          "x": 252,
+          "y": 191
+        },
+        {
+          "original": {
+            "x": 0,
+            "y": 0
+          },
+          "x": 38,
+          "y": 28
+        }
+      ],
+      "source": "shape_0006",
+      "target": "shape_0001",
+      "multipleNumberAllowed": false
+    },
+    {
+      "info": "TO-BE · fine-grained · digitalized\nA ticket is bought on the strength of property data and a voucher, and the first sale now says so."
+    },
+    {
+      "version": "3.0.0"
+    }
+  ]
+}
+ </DST> -->

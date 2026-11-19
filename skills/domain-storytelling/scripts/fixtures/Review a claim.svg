@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1343" height="1161" viewBox="-715 -498 1343 1161" style="background-color:#ffffff" version="1.2">
-<rect x="-715" y="-498" width="1343" height="1161" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1343" height="1181" viewBox="-715 -518 1343 1181" style="background-color:#ffffff" version="1.2">
+<rect x="-715" y="-518" width="1343" height="1181" fill="#ffffff"/>
 <defs><marker id="tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1b1b1b"/></marker></defs>
 <g font-family="Helvetica Neue,Helvetica,Arial,sans-serif">
-<text x="-625" y="-464" font-size="24" font-weight="600" fill="#1b1b1b">Review a claim</text>
-<text x="-625" y="-440" font-size="13" fill="#6b6b6b">Steps 3 and 3 happen at the same time.</text>
+<text x="-625" y="-484" font-size="24" font-weight="600" fill="#1b1b1b">Review a claim</text>
+<text x="-625" y="-460" font-size="13" fill="#6b6b6b">Steps 3 and 3 happen at the same time.</text>
 <rect x="-68" y="272" width="136" height="168" rx="14" fill="none" stroke="#6b6b6b" stroke-width="1.5" stroke-dasharray="7 5"/>
 <text x="-56" y="292" font-size="16" font-weight="600" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Front office</text>
 <rect x="-68" y="-258" width="636" height="348" rx="14" fill="none" stroke="#6b6b6b" stroke-width="1.5" stroke-dasharray="7 5"/>
@@ -20,7 +20,7 @@
 <path d="M-312 180 L-58 180" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="-185" y="171" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">is part of</text>
 <path d="M206 -72 L14 142" fill="none" stroke="#6b6b6b" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#tip)"/><text x="110" y="26" font-size="16" text-anchor="middle" fill="#6b6b6b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">mirrors</text>
 <path d="M-388 200 L-520 270" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
-<path d="M-260 -148 L-330 -280" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
+<path d="M-236 -148 L-220 -300" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
 <path d="M0 388 L0 540" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
 <g transform="translate(-526.8,-209.0) scale(2.231)" fill="#1b1b1b"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></g>
 <text x="-500" y="-137" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Claimant</text>
@@ -41,8 +41,8 @@
 <path d="M-625 235 H-429 L-415 249 V305 H-625 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
 <text x="-615" y="260" font-size="15" fill="#1b1b1b">Paper forms are scanned</text>
 <text x="-615" y="279" font-size="15" fill="#1b1b1b">first.</text>
-<path d="M-435 -312 H-239 L-225 -298 V-248 H-435 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
-<text x="-425" y="-288" font-size="15" fill="#1b1b1b">Sent the same day.</text>
+<path d="M-325 -332 H-129 L-115 -318 V-268 H-325 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
+<text x="-315" y="-308" font-size="15" fill="#1b1b1b">Sent the same day.</text>
 <path d="M-105 508 H91 L105 522 V572 H-105 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
 <text x="-95" y="532" font-size="15" fill="#1b1b1b">Staffed on weekdays only.</text>
 </g></svg>

@@ -18,6 +18,12 @@ is wrong, not the reader.
 - **Annotations** hold what does not fit: variations, definitions, assumptions.
 - **Groups** ring a part of the picture: a team, a location, a subdomain, a bounded context.
 
+A sentence can pass through more than one work object before it reaches the second actor.
+"Moviegoer **buys** a *ticket* **with** a *voucher* **from** the cashier." Every arrow after
+the first carries a preposition and no number, and every work object on the way is a shape
+of its own for that sentence. The book's Alphorn risk assessment stories use `based on` and
+`with information from` this way.
+
 ## The two rules that surprise people
 
 **An actor appears once.** However many sentences a system takes part in, it is one shape.

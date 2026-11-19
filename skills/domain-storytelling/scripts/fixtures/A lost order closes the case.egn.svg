@@ -1,78 +1,78 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1475" height="1378" viewBox="-744 -818 1475 1378" style="background-color:#ffffff" version="1.2">
-<rect x="-744" y="-818" width="1475" height="1378" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1615" height="1364" viewBox="-814 -754 1615 1364" style="background-color:#ffffff" version="1.2">
+<rect x="-814" y="-754" width="1615" height="1364" fill="#ffffff"/>
 <defs><marker id="tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1b1b1b"/></marker></defs>
 <g font-family="Helvetica Neue,Helvetica,Arial,sans-serif">
-<text x="-654" y="-784" font-size="24" font-weight="600" fill="#1b1b1b">A lost order closes the case</text>
-<text x="-654" y="-760" font-size="13" fill="#6b6b6b">Typical case: an order is canceled while the customer has an open case.</text>
-<path d="M0 -38 L0 -138" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="0" y="-89" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">removes</text><circle cx="0" cy="-53" r="14" fill="#1b1b1b"/><text x="0" y="-48" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">1</text>
-<path d="M38 -19 L158 -79" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="98" y="-58" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">publishes</text><circle cx="34" cy="-53" r="14" fill="#1b1b1b"/><text x="34" y="-48" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">2</text>
-<path d="M248 -148 L341 -271" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="295" y="-219" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
-<path d="M399 -269 L483 -148" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="423" y="-205" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">delivers</text><circle cx="426" cy="-261" r="14" fill="#1b1b1b"/><text x="426" y="-256" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">3</text>
-<path d="M530 -58 L585 82" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="558" y="3" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
-<path d="M332 -311 L38 -319" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="185" y="-324" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">delivers</text><circle cx="289" cy="-312" r="14" fill="#1b1b1b"/><text x="289" y="-307" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">3</text>
-<path d="M-38 -319 L-332 -311" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-185" y="-324" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
-<path d="M554 144 L348 250" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="451" y="188" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">emails</text><circle cx="524" cy="159" r="14" fill="#1b1b1b"/><text x="524" y="164" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">4</text>
-<path d="M272 285 L38 375" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="155" y="321" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
-<path d="M-316 -273 L-208 -197" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-262" y="-244" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">terminates</text><circle cx="-297" cy="-281" r="14" fill="#1b1b1b"/><text x="-297" y="-276" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">5</text>
-<path d="M-132 -132 L-38 -38" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-85" y="-94" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">in</text>
-<path d="M5 52 L16 152" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="70" y="87" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">sets</text><circle cx="-8" cy="98" r="14" fill="#1b1b1b"/><text x="-8" y="103" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">6</text>
-<path d="M15 242 L4 352" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="31" y="290" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">for</text>
-<path d="M20 -38 L93 -178" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="100" y="-89" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">publishes</text><circle cx="103" cy="-128" r="14" fill="#1b1b1b"/><text x="103" y="-123" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">7</text>
-<path d="M158 -242 L332 -298" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="245" y="-279" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
-<path d="M-38 5 L-272 35" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-155" y="11" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">books</text><circle cx="-72" cy="9" r="14" fill="#1b1b1b"/><text x="-72" y="14" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">8</text>
-<path d="M-348 50 L-562 110" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-455" y="71" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">in</text>
-<path d="M-332 -326 L-62 -443" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-197" y="-394" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">acknowledges</text><circle cx="-293" cy="-343" r="14" fill="#1b1b1b"/><text x="-293" y="-338" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">9</text>
-<path d="M62 -443 L332 -326" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="197" y="-394" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
-<path d="M-38 -168 L-210 -70" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
-<path d="M258 -86 L380 -10" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
-<path d="M8 -358 L60 -358 L60 -600" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
-<path d="M-208 -168 L-360 -160" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
-<path d="M-18 218 L-130 300" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
-<path d="M126 -192 L160 -192 L160 10" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
+<text x="-724" y="-720" font-size="24" font-weight="600" fill="#1b1b1b">A lost order closes the case</text>
+<text x="-724" y="-696" font-size="13" fill="#6b6b6b">Typical case: an order is canceled while the customer has an open case.</text>
+<path d="M0 -38 L0 -158" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="0" y="-107" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">removes</text><circle cx="0" cy="-56" r="14" fill="#1b1b1b"/><text x="0" y="-50" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">1</text>
+<path d="M38 -18 L188 -90" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="113" y="-63" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">publishes</text><circle cx="60" cy="-29" r="14" fill="#1b1b1b"/><text x="60" y="-24" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">2</text>
+<path d="M278 -158 L391 -310" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="334" y="-243" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
+<path d="M449 -305 L545 -158" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="497" y="-241" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">delivers</text><circle cx="478" cy="-294" r="14" fill="#1b1b1b"/><text x="478" y="-289" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">3</text>
+<path d="M591 -68 L655 92" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="623" y="3" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
+<path d="M382 -351 L38 -359" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="210" y="-364" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">delivers</text><circle cx="332" cy="-352" r="14" fill="#1b1b1b"/><text x="332" y="-347" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">3</text>
+<path d="M-38 -359 L-382 -351" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-210" y="-364" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
+<path d="M624 154 L388 280" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="506" y="208" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">emails</text><circle cx="590" cy="173" r="14" fill="#1b1b1b"/><text x="590" y="178" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">4</text>
+<path d="M312 315 L38 425" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="175" y="361" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
+<path d="M-366 -313 L-228 -216" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-320" y="-241" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">terminates</text><circle cx="-346" cy="-299" r="14" fill="#1b1b1b"/><text x="-346" y="-294" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">5</text>
+<path d="M-152 -152 L-38 -38" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-95" y="-104" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">in</text>
+<path d="M5 52 L16 172" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="11" y="103" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">sets</text><circle cx="-20" cy="125" r="14" fill="#1b1b1b"/><text x="-20" y="130" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">6</text>
+<path d="M15 262 L3 402" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="9" y="323" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">for</text>
+<path d="M19 -38 L104 -208" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="110" y="-139" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">publishes</text><circle cx="38" cy="-77" r="14" fill="#1b1b1b"/><text x="38" y="-72" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">7</text>
+<path d="M168 -272 L382 -338" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="275" y="-314" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
+<path d="M-38 4 L-312 36" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-175" y="11" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">books</text><circle cx="-78" cy="9" r="14" fill="#1b1b1b"/><text x="-78" y="14" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">8</text>
+<path d="M-388 51 L-632 119" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-510" y="76" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">in</text>
+<path d="M-382 -366 L-62 -503" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="-222" y="-444" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">acknowledges</text><circle cx="-335" cy="-386" r="14" fill="#1b1b1b"/><text x="-335" y="-381" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">9</text>
+<path d="M62 -503 L382 -366" fill="none" stroke="#1b1b1b" stroke-width="1.6" marker-end="url(#tip)"/><text x="222" y="-444" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">to</text>
+<path d="M-38 -189 L-250 -70" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
+<path d="M288 -94 L410 -10" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
+<path d="M-38 -347 L-180 -300" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
+<path d="M-228 -188 L-380 -180" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
+<path d="M-18 238 L-130 320" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
+<path d="M149 -298 L260 -520" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
 <g transform="translate(-26.8,-29.0) scale(2.231)" fill="#1b1b1b"><path d="M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/></g>
 <text x="0" y="43" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Hub</text>
-<g transform="translate(343.2,-339.0) scale(2.231)" fill="#1b1b1b"><path d="M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/></g>
-<text x="370" y="-267" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Broker</text>
-<g transform="translate(573.2,91.0) scale(2.231)" fill="#1b1b1b"><path d="M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/></g>
-<text x="600" y="163" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Mail relay</text>
-<g transform="translate(-396.8,-339.0) scale(2.231)" fill="#1b1b1b"><path d="M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/></g>
-<text x="-370" y="-267" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Stop handler</text>
-<g transform="translate(-626.8,91.0) scale(2.231)" fill="#1b1b1b"><path d="M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/></g>
-<text x="-600" y="163" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Timer service</text>
-<g transform="translate(-26.8,361.0) scale(2.231)" fill="#1b1b1b"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></g>
-<text x="0" y="433" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Customer</text>
-<g transform="translate(-26.8,-219.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></g>
-<text x="0" y="-147" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Standing order</text>
-<g transform="translate(193.2,-139.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0,0h24v24H0V0z"/><path fill-opacity="0.9" d="M12,1.95c-5.52,0-10,4.48-10,10s4.48,10,10,10h5v-2h-5c-4.34,0-8-3.66-8-8s3.66-8,8-8s8,3.66,8,8v1.43 c0,0.79-0.71,1.57-1.5,1.57S17,14.17,17,13.38v-1.43c0-2.76-2.24-5-5-5s-5,2.24-5,5s2.24,5,5,5c1.38,0,2.64-0.56,3.54-1.47 c0.65,0.89,1.77,1.47,2.96,1.47c1.97,0,3.5-1.6,3.5-3.57v-1.43C22,6.43,17.52,1.95,12,1.95z M12,14.95c-1.66,0-3-1.34-3-3 s1.34-3,3-3s3,1.34,3,3S13.66,14.95,12,14.95z"/></g>
-<text x="220" y="-67" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Order canceled</text>
-<g transform="translate(483.2,-139.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0,0h24v24H0V0z"/><path fill-opacity="0.9" d="M12,1.95c-5.52,0-10,4.48-10,10s4.48,10,10,10h5v-2h-5c-4.34,0-8-3.66-8-8s3.66-8,8-8s8,3.66,8,8v1.43 c0,0.79-0.71,1.57-1.5,1.57S17,14.17,17,13.38v-1.43c0-2.76-2.24-5-5-5s-5,2.24-5,5s2.24,5,5,5c1.38,0,2.64-0.56,3.54-1.47 c0.65,0.89,1.77,1.47,2.96,1.47c1.97,0,3.5-1.6,3.5-3.57v-1.43C22,6.43,17.52,1.95,12,1.95z M12,14.95c-1.66,0-3-1.34-3-3 s1.34-3,3-3s3,1.34,3,3S13.66,14.95,12,14.95z"/></g>
-<text x="510" y="-67" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Order canceled</text>
-<g transform="translate(-26.8,-349.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0,0h24v24H0V0z"/><path fill-opacity="0.9" d="M12,1.95c-5.52,0-10,4.48-10,10s4.48,10,10,10h5v-2h-5c-4.34,0-8-3.66-8-8s3.66-8,8-8s8,3.66,8,8v1.43 c0,0.79-0.71,1.57-1.5,1.57S17,14.17,17,13.38v-1.43c0-2.76-2.24-5-5-5s-5,2.24-5,5s2.24,5,5,5c1.38,0,2.64-0.56,3.54-1.47 c0.65,0.89,1.77,1.47,2.96,1.47c1.97,0,3.5-1.6,3.5-3.57v-1.43C22,6.43,17.52,1.95,12,1.95z M12,14.95c-1.66,0-3-1.34-3-3 s1.34-3,3-3s3,1.34,3,3S13.66,14.95,12,14.95z"/></g>
-<text x="0" y="-277" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Order canceled</text>
-<g transform="translate(283.2,241.0) scale(2.231)" fill="#1b1b1b"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></g>
-<text x="310" y="313" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Notice</text>
-<g transform="translate(-196.8,-199.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></g>
-<text x="-170" y="-127" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Case</text>
-<g transform="translate(-6.8,161.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-5.99h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"/></g>
-<text x="20" y="233" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Closing time</text>
-<g transform="translate(95.1,-259.0) scale(2.071)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z"/><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm0 12l-4.34 4.34L12 14H3v-2l3-7h9v10zm4-12h4v12h-4z"/></g>
-<text x="120" y="-187" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Case closed</text>
-<g transform="translate(-336.8,11.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0z" /><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zm0-12H5V5h14v2zM7 11h5v5H7z" /></g>
-<text x="-310" y="83" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Deadline</text>
-<g transform="translate(-26.8,-499.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0,0h24v24H0V0z"/><path fill-opacity="0.9" d="M12,1.95c-5.52,0-10,4.48-10,10s4.48,10,10,10h5v-2h-5c-4.34,0-8-3.66-8-8s3.66-8,8-8s8,3.66,8,8v1.43 c0,0.79-0.71,1.57-1.5,1.57S17,14.17,17,13.38v-1.43c0-2.76-2.24-5-5-5s-5,2.24-5,5s2.24,5,5,5c1.38,0,2.64-0.56,3.54-1.47 c0.65,0.89,1.77,1.47,2.96,1.47c1.97,0,3.5-1.6,3.5-3.57v-1.43C22,6.43,17.52,1.95,12,1.95z M12,14.95c-1.66,0-3-1.34-3-3 s1.34-3,3-3s3,1.34,3,3S13.66,14.95,12,14.95z"/></g>
-<text x="0" y="-427" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Order canceled</text>
-<path d="M-315 -102 H-119 L-105 -88 V-38 H-315 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
-<text x="-305" y="-78" font-size="15" fill="#1b1b1b">Note 1.</text>
-<path d="M275 -42 H471 L485 -28 V22 H275 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
-<text x="285" y="-18" font-size="15" fill="#1b1b1b">Note 2.</text>
-<path d="M-45 -632 H151 L165 -618 V-568 H-45 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
-<text x="-35" y="-608" font-size="15" fill="#1b1b1b">Note 3.</text>
-<path d="M-465 -192 H-269 L-255 -178 V-128 H-465 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
-<text x="-455" y="-168" font-size="15" fill="#1b1b1b">Note 4.</text>
-<path d="M-235 268 H-39 L-25 282 V332 H-235 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
-<text x="-225" y="292" font-size="15" fill="#1b1b1b">Note 5.</text>
-<path d="M55 -22 H251 L265 -8 V42 H55 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
-<text x="65" y="2" font-size="15" fill="#1b1b1b">Note 6.</text>
+<g transform="translate(393.2,-379.0) scale(2.231)" fill="#1b1b1b"><path d="M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/></g>
+<text x="420" y="-307" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Broker</text>
+<g transform="translate(643.2,101.0) scale(2.231)" fill="#1b1b1b"><path d="M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/></g>
+<text x="670" y="173" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Mail relay</text>
+<g transform="translate(-446.8,-379.0) scale(2.231)" fill="#1b1b1b"><path d="M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/></g>
+<text x="-420" y="-307" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Stop handler</text>
+<g transform="translate(-696.8,101.0) scale(2.231)" fill="#1b1b1b"><path d="M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/></g>
+<text x="-670" y="173" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Timer service</text>
+<g transform="translate(-26.8,411.0) scale(2.231)" fill="#1b1b1b"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></g>
+<text x="0" y="483" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Customer</text>
+<g transform="translate(-26.8,-239.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></g>
+<text x="0" y="-167" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Standing order</text>
+<g transform="translate(223.2,-149.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0,0h24v24H0V0z"/><path fill-opacity="0.9" d="M12,1.95c-5.52,0-10,4.48-10,10s4.48,10,10,10h5v-2h-5c-4.34,0-8-3.66-8-8s3.66-8,8-8s8,3.66,8,8v1.43 c0,0.79-0.71,1.57-1.5,1.57S17,14.17,17,13.38v-1.43c0-2.76-2.24-5-5-5s-5,2.24-5,5s2.24,5,5,5c1.38,0,2.64-0.56,3.54-1.47 c0.65,0.89,1.77,1.47,2.96,1.47c1.97,0,3.5-1.6,3.5-3.57v-1.43C22,6.43,17.52,1.95,12,1.95z M12,14.95c-1.66,0-3-1.34-3-3 s1.34-3,3-3s3,1.34,3,3S13.66,14.95,12,14.95z"/></g>
+<text x="250" y="-77" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Order canceled</text>
+<g transform="translate(543.2,-149.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0,0h24v24H0V0z"/><path fill-opacity="0.9" d="M12,1.95c-5.52,0-10,4.48-10,10s4.48,10,10,10h5v-2h-5c-4.34,0-8-3.66-8-8s3.66-8,8-8s8,3.66,8,8v1.43 c0,0.79-0.71,1.57-1.5,1.57S17,14.17,17,13.38v-1.43c0-2.76-2.24-5-5-5s-5,2.24-5,5s2.24,5,5,5c1.38,0,2.64-0.56,3.54-1.47 c0.65,0.89,1.77,1.47,2.96,1.47c1.97,0,3.5-1.6,3.5-3.57v-1.43C22,6.43,17.52,1.95,12,1.95z M12,14.95c-1.66,0-3-1.34-3-3 s1.34-3,3-3s3,1.34,3,3S13.66,14.95,12,14.95z"/></g>
+<text x="570" y="-77" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Order canceled</text>
+<g transform="translate(-26.8,-389.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0,0h24v24H0V0z"/><path fill-opacity="0.9" d="M12,1.95c-5.52,0-10,4.48-10,10s4.48,10,10,10h5v-2h-5c-4.34,0-8-3.66-8-8s3.66-8,8-8s8,3.66,8,8v1.43 c0,0.79-0.71,1.57-1.5,1.57S17,14.17,17,13.38v-1.43c0-2.76-2.24-5-5-5s-5,2.24-5,5s2.24,5,5,5c1.38,0,2.64-0.56,3.54-1.47 c0.65,0.89,1.77,1.47,2.96,1.47c1.97,0,3.5-1.6,3.5-3.57v-1.43C22,6.43,17.52,1.95,12,1.95z M12,14.95c-1.66,0-3-1.34-3-3 s1.34-3,3-3s3,1.34,3,3S13.66,14.95,12,14.95z"/></g>
+<text x="0" y="-317" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Order canceled</text>
+<g transform="translate(323.2,271.0) scale(2.231)" fill="#1b1b1b"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></g>
+<text x="350" y="343" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Notice</text>
+<g transform="translate(-216.8,-219.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></g>
+<text x="-190" y="-147" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Case</text>
+<g transform="translate(-6.8,181.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-5.99h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"/></g>
+<text x="20" y="253" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Closing time</text>
+<g transform="translate(105.1,-289.0) scale(2.071)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z"/><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm0 12l-4.34 4.34L12 14H3v-2l3-7h9v10zm4-12h4v12h-4z"/></g>
+<text x="130" y="-217" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Case closed</text>
+<g transform="translate(-376.8,11.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0 0h24v24H0V0z" /><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zm0-12H5V5h14v2zM7 11h5v5H7z" /></g>
+<text x="-350" y="83" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Deadline</text>
+<g transform="translate(-26.8,-559.0) scale(2.231)" fill="#1b1b1b"><path fill="none" d="M0,0h24v24H0V0z"/><path fill-opacity="0.9" d="M12,1.95c-5.52,0-10,4.48-10,10s4.48,10,10,10h5v-2h-5c-4.34,0-8-3.66-8-8s3.66-8,8-8s8,3.66,8,8v1.43 c0,0.79-0.71,1.57-1.5,1.57S17,14.17,17,13.38v-1.43c0-2.76-2.24-5-5-5s-5,2.24-5,5s2.24,5,5,5c1.38,0,2.64-0.56,3.54-1.47 c0.65,0.89,1.77,1.47,2.96,1.47c1.97,0,3.5-1.6,3.5-3.57v-1.43C22,6.43,17.52,1.95,12,1.95z M12,14.95c-1.66,0-3-1.34-3-3 s1.34-3,3-3s3,1.34,3,3S13.66,14.95,12,14.95z"/></g>
+<text x="0" y="-487" font-size="16" text-anchor="middle" fill="#1b1b1b" paint-order="stroke" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">Order canceled</text>
+<path d="M-355 -102 H-159 L-145 -88 V-38 H-355 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
+<text x="-345" y="-78" font-size="15" fill="#1b1b1b">Note 1.</text>
+<path d="M305 -42 H501 L515 -28 V22 H305 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
+<text x="315" y="-18" font-size="15" fill="#1b1b1b">Note 2.</text>
+<path d="M-285 -332 H-89 L-75 -318 V-268 H-285 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
+<text x="-275" y="-308" font-size="15" fill="#1b1b1b">Note 3.</text>
+<path d="M-485 -212 H-289 L-275 -198 V-148 H-485 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
+<text x="-475" y="-188" font-size="15" fill="#1b1b1b">Note 4.</text>
+<path d="M-235 288 H-39 L-25 302 V352 H-235 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
+<text x="-225" y="312" font-size="15" fill="#1b1b1b">Note 5.</text>
+<path d="M155 -552 H351 L365 -538 V-488 H155 Z" fill="#fffbe6" stroke="#6b6b6b" stroke-width="1.2"/>
+<text x="165" y="-528" font-size="15" fill="#1b1b1b">Note 6.</text>
 </g></svg>
 <!-- <DST>
 {
@@ -108,98 +108,98 @@
       "type": "domainStory:actorSystem",
       "name": "Broker",
       "id": "shape_0002",
-      "x": 332,
-      "y": -348
+      "x": 382,
+      "y": -388
     },
     {
       "type": "domainStory:actorSystem",
       "name": "Mail relay",
       "id": "shape_0003",
-      "x": 562,
-      "y": 82
+      "x": 632,
+      "y": 92
     },
     {
       "type": "domainStory:actorSystem",
       "name": "Stop handler",
       "id": "shape_0004",
-      "x": -408,
-      "y": -348
+      "x": -458,
+      "y": -388
     },
     {
       "type": "domainStory:actorSystem",
       "name": "Timer service",
       "id": "shape_0005",
-      "x": -638,
-      "y": 82
+      "x": -708,
+      "y": 92
     },
     {
       "type": "domainStory:actorPerson",
       "name": "Customer",
       "id": "shape_0006",
       "x": -38,
-      "y": 352
+      "y": 402
     },
     {
       "type": "domainStory:workObjectTime",
       "name": "Standing order",
       "id": "shape_0007",
       "x": -38,
-      "y": -228
+      "y": -248
     },
     {
       "type": "domainStory:workObjectEmail",
       "name": "Order canceled",
       "id": "shape_0008",
-      "x": 182,
-      "y": -148
+      "x": 212,
+      "y": -158
     },
     {
       "type": "domainStory:workObjectEmail",
       "name": "Order canceled",
       "id": "shape_0009",
-      "x": 472,
-      "y": -148
+      "x": 532,
+      "y": -158
     },
     {
       "type": "domainStory:workObjectEmail",
       "name": "Order canceled",
       "id": "shape_0010",
       "x": -38,
-      "y": -358
+      "y": -398
     },
     {
       "type": "domainStory:workObjectConversation",
       "name": "Notice",
       "id": "shape_0011",
-      "x": 272,
-      "y": 232
+      "x": 312,
+      "y": 262
     },
     {
       "type": "domainStory:workObjectDocument",
       "name": "Case",
       "id": "shape_0012",
-      "x": -208,
-      "y": -208
+      "x": -228,
+      "y": -228
     },
     {
       "type": "domainStory:workObjectHourglass",
       "name": "Closing time",
       "id": "shape_0013",
       "x": -18,
-      "y": 152
+      "y": 172
     },
     {
       "type": "domainStory:workObjectThumb-down",
       "name": "Case closed",
       "id": "shape_0014",
-      "x": 82,
-      "y": -268
+      "x": 92,
+      "y": -298
     },
     {
       "type": "domainStory:workObjectCalendar",
       "name": "Deadline",
       "id": "shape_0015",
-      "x": -348,
+      "x": -388,
       "y": 2
     },
     {
@@ -207,13 +207,13 @@
       "name": "Order canceled",
       "id": "shape_0016",
       "x": -38,
-      "y": -508
+      "y": -568
     },
     {
       "type": "domainStory:textAnnotation",
       "name": "",
       "id": "shape_0017",
-      "x": -315,
+      "x": -355,
       "y": -102,
       "text": "Note 1.",
       "number": 65,
@@ -224,7 +224,7 @@
       "type": "domainStory:textAnnotation",
       "name": "",
       "id": "shape_0018",
-      "x": 275,
+      "x": 305,
       "y": -42,
       "text": "Note 2.",
       "number": 65,
@@ -235,8 +235,8 @@
       "type": "domainStory:textAnnotation",
       "name": "",
       "id": "shape_0019",
-      "x": -45,
-      "y": -632,
+      "x": -285,
+      "y": -332,
       "text": "Note 3.",
       "number": 65,
       "width": 210,
@@ -246,8 +246,8 @@
       "type": "domainStory:textAnnotation",
       "name": "",
       "id": "shape_0020",
-      "x": -465,
-      "y": -192,
+      "x": -485,
+      "y": -212,
       "text": "Note 4.",
       "number": 65,
       "width": 210,
@@ -258,7 +258,7 @@
       "name": "",
       "id": "shape_0021",
       "x": -235,
-      "y": 267,
+      "y": 287,
       "text": "Note 5.",
       "number": 65,
       "width": 210,
@@ -268,8 +268,8 @@
       "type": "domainStory:textAnnotation",
       "name": "",
       "id": "shape_0022",
-      "x": 55,
-      "y": -22,
+      "x": 155,
+      "y": -552,
       "text": "Note 6.",
       "number": 65,
       "width": 210,
@@ -292,10 +292,10 @@
         {
           "original": {
             "x": 0,
-            "y": -190
+            "y": -210
           },
           "x": 0,
-          "y": -138
+          "y": -158
         }
       ],
       "source": "shape_0001",
@@ -315,15 +315,15 @@
             "y": 0
           },
           "x": 38,
-          "y": -19
+          "y": -18
         },
         {
           "original": {
-            "x": 220,
-            "y": -110
+            "x": 250,
+            "y": -120
           },
-          "x": 157,
-          "y": -78
+          "x": 187,
+          "y": -90
         }
       ],
       "source": "shape_0001",
@@ -339,19 +339,19 @@
       "waypoints": [
         {
           "original": {
-            "x": 220,
-            "y": -110
+            "x": 250,
+            "y": -120
           },
-          "x": 248,
-          "y": -148
+          "x": 278,
+          "y": -158
         },
         {
           "original": {
-            "x": 370,
-            "y": -310
+            "x": 420,
+            "y": -350
           },
-          "x": 340,
-          "y": -271
+          "x": 390,
+          "y": -310
         }
       ],
       "source": "shape_0008",
@@ -366,19 +366,19 @@
       "waypoints": [
         {
           "original": {
-            "x": 370,
-            "y": -310
+            "x": 420,
+            "y": -350
           },
-          "x": 398,
-          "y": -268
+          "x": 449,
+          "y": -305
         },
         {
           "original": {
-            "x": 510,
-            "y": -110
+            "x": 570,
+            "y": -120
           },
-          "x": 483,
-          "y": -148
+          "x": 545,
+          "y": -158
         }
       ],
       "source": "shape_0002",
@@ -394,19 +394,19 @@
       "waypoints": [
         {
           "original": {
-            "x": 510,
-            "y": -110
+            "x": 570,
+            "y": -120
           },
-          "x": 530,
-          "y": -58
+          "x": 590,
+          "y": -68
         },
         {
           "original": {
-            "x": 600,
-            "y": 120
+            "x": 670,
+            "y": 130
           },
-          "x": 585,
-          "y": 82
+          "x": 654,
+          "y": 92
         }
       ],
       "source": "shape_0009",
@@ -421,19 +421,19 @@
       "waypoints": [
         {
           "original": {
-            "x": 370,
-            "y": -310
+            "x": 420,
+            "y": -350
           },
-          "x": 332,
-          "y": -311
+          "x": 382,
+          "y": -350
         },
         {
           "original": {
             "x": 0,
-            "y": -320
+            "y": -360
           },
           "x": 38,
-          "y": -318
+          "y": -359
         }
       ],
       "source": "shape_0002",
@@ -450,18 +450,18 @@
         {
           "original": {
             "x": 0,
-            "y": -320
+            "y": -360
           },
           "x": -38,
-          "y": -318
+          "y": -359
         },
         {
           "original": {
-            "x": -370,
-            "y": -310
+            "x": -420,
+            "y": -350
           },
-          "x": -332,
-          "y": -311
+          "x": -382,
+          "y": -350
         }
       ],
       "source": "shape_0010",
@@ -476,19 +476,19 @@
       "waypoints": [
         {
           "original": {
-            "x": 600,
-            "y": 120
+            "x": 670,
+            "y": 130
           },
-          "x": 554,
-          "y": 143
+          "x": 624,
+          "y": 154
         },
         {
           "original": {
-            "x": 310,
-            "y": 270
+            "x": 350,
+            "y": 300
           },
-          "x": 348,
-          "y": 250
+          "x": 388,
+          "y": 279
         }
       ],
       "source": "shape_0003",
@@ -504,19 +504,19 @@
       "waypoints": [
         {
           "original": {
-            "x": 310,
-            "y": 270
+            "x": 350,
+            "y": 300
           },
-          "x": 272,
-          "y": 284
+          "x": 312,
+          "y": 315
         },
         {
           "original": {
             "x": 0,
-            "y": 390
+            "y": 440
           },
           "x": 38,
-          "y": 375
+          "y": 424
         }
       ],
       "source": "shape_0011",
@@ -531,19 +531,19 @@
       "waypoints": [
         {
           "original": {
-            "x": -370,
-            "y": -310
+            "x": -420,
+            "y": -350
           },
-          "x": -316,
-          "y": -272
+          "x": -366,
+          "y": -312
         },
         {
           "original": {
-            "x": -170,
-            "y": -170
+            "x": -190,
+            "y": -190
           },
-          "x": -208,
-          "y": -196
+          "x": -228,
+          "y": -216
         }
       ],
       "source": "shape_0004",
@@ -559,11 +559,11 @@
       "waypoints": [
         {
           "original": {
-            "x": -170,
-            "y": -170
+            "x": -190,
+            "y": -190
           },
-          "x": -132,
-          "y": -132
+          "x": -152,
+          "y": -152
         },
         {
           "original": {
@@ -589,16 +589,16 @@
             "x": 0,
             "y": 0
           },
-          "x": 5,
+          "x": 4,
           "y": 51
         },
         {
           "original": {
             "x": 20,
-            "y": 190
+            "y": 210
           },
           "x": 16,
-          "y": 152
+          "y": 172
         }
       ],
       "source": "shape_0001",
@@ -615,18 +615,18 @@
         {
           "original": {
             "x": 20,
-            "y": 190
+            "y": 210
           },
-          "x": 14,
-          "y": 241
+          "x": 15,
+          "y": 261
         },
         {
           "original": {
             "x": 0,
-            "y": 390
+            "y": 440
           },
           "x": 3,
-          "y": 352
+          "y": 402
         }
       ],
       "source": "shape_0013",
@@ -649,11 +649,11 @@
         },
         {
           "original": {
-            "x": 120,
-            "y": -230
+            "x": 130,
+            "y": -260
           },
-          "x": 92,
-          "y": -177
+          "x": 103,
+          "y": -207
         }
       ],
       "source": "shape_0001",
@@ -669,19 +669,19 @@
       "waypoints": [
         {
           "original": {
-            "x": 120,
-            "y": -230
+            "x": 130,
+            "y": -260
           },
-          "x": 158,
-          "y": -242
+          "x": 168,
+          "y": -271
         },
         {
           "original": {
-            "x": 370,
-            "y": -310
+            "x": 420,
+            "y": -350
           },
-          "x": 332,
-          "y": -297
+          "x": 382,
+          "y": -338
         }
       ],
       "source": "shape_0014",
@@ -704,10 +704,10 @@
         },
         {
           "original": {
-            "x": -310,
+            "x": -350,
             "y": 40
           },
-          "x": -272,
+          "x": -312,
           "y": 35
         }
       ],
@@ -724,19 +724,19 @@
       "waypoints": [
         {
           "original": {
-            "x": -310,
+            "x": -350,
             "y": 40
           },
-          "x": -348,
+          "x": -388,
           "y": 50
         },
         {
           "original": {
-            "x": -600,
-            "y": 120
+            "x": -670,
+            "y": 130
           },
-          "x": -562,
-          "y": 109
+          "x": -632,
+          "y": 119
         }
       ],
       "source": "shape_0015",
@@ -751,19 +751,19 @@
       "waypoints": [
         {
           "original": {
-            "x": -370,
-            "y": -310
+            "x": -420,
+            "y": -350
           },
-          "x": -332,
-          "y": -326
+          "x": -382,
+          "y": -366
         },
         {
           "original": {
             "x": 0,
-            "y": -470
+            "y": -530
           },
           "x": -61,
-          "y": -443
+          "y": -503
         }
       ],
       "source": "shape_0004",
@@ -780,18 +780,18 @@
         {
           "original": {
             "x": 0,
-            "y": -470
+            "y": -530
           },
           "x": 61,
-          "y": -443
+          "y": -503
         },
         {
           "original": {
-            "x": 370,
-            "y": -310
+            "x": 420,
+            "y": -350
           },
-          "x": 332,
-          "y": -326
+          "x": 382,
+          "y": -366
         }
       ],
       "source": "shape_0016",
@@ -806,17 +806,17 @@
         {
           "original": {
             "x": 0,
-            "y": -190
+            "y": -210
           },
           "x": 0,
-          "y": -190
+          "y": -210
         },
         {
           "original": {
-            "x": -210,
+            "x": -250,
             "y": -70
           },
-          "x": -210,
+          "x": -250,
           "y": -70
         }
       ],
@@ -830,18 +830,18 @@
       "waypoints": [
         {
           "original": {
-            "x": 220,
-            "y": -110
+            "x": 250,
+            "y": -120
           },
-          "x": 220,
-          "y": -110
+          "x": 250,
+          "y": -120
         },
         {
           "original": {
-            "x": 380,
+            "x": 410,
             "y": -10
           },
-          "x": 380,
+          "x": 410,
           "y": -10
         }
       ],
@@ -856,18 +856,18 @@
         {
           "original": {
             "x": 0,
-            "y": -320
+            "y": -360
           },
           "x": 0,
-          "y": -320
+          "y": -360
         },
         {
           "original": {
-            "x": 60,
-            "y": -600
+            "x": -180,
+            "y": -300
           },
-          "x": 60,
-          "y": -600
+          "x": -180,
+          "y": -300
         }
       ],
       "source": "shape_0010",
@@ -880,19 +880,19 @@
       "waypoints": [
         {
           "original": {
-            "x": -170,
-            "y": -170
+            "x": -190,
+            "y": -190
           },
-          "x": -170,
-          "y": -170
+          "x": -190,
+          "y": -190
         },
         {
           "original": {
-            "x": -360,
-            "y": -160
+            "x": -380,
+            "y": -180
           },
-          "x": -360,
-          "y": -160
+          "x": -380,
+          "y": -180
         }
       ],
       "source": "shape_0012",
@@ -906,18 +906,18 @@
         {
           "original": {
             "x": 20,
-            "y": 190
+            "y": 210
           },
           "x": 20,
-          "y": 190
+          "y": 210
         },
         {
           "original": {
             "x": -130,
-            "y": 300
+            "y": 320
           },
           "x": -130,
-          "y": 300
+          "y": 320
         }
       ],
       "source": "shape_0013",
@@ -930,19 +930,19 @@
       "waypoints": [
         {
           "original": {
-            "x": 120,
-            "y": -230
+            "x": 130,
+            "y": -260
           },
-          "x": 120,
-          "y": -230
+          "x": 130,
+          "y": -260
         },
         {
           "original": {
-            "x": 160,
-            "y": 10
+            "x": 260,
+            "y": -520
           },
-          "x": 160,
-          "y": 10
+          "x": 260,
+          "y": -520
         }
       ],
       "source": "shape_0014",
