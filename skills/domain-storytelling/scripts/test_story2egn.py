@@ -1655,6 +1655,19 @@ class ReadsAChainBackFromADrawnStory(unittest.TestCase):
                                                                "verb": "refers to"}]),
                          (chain, warnings, spec["relations"]))
 
+    def test_a_relation_from_an_actor_no_sentence_names_is_dropped_even_when_it_points_at_a_hop(self):
+        elements = self.drawn(("actor", "buys", "ticket", "1"),
+                              ("ticket", "with", "voucher", None),
+                              ("voucher", "for", "seller", None),
+                              ("checker", "owns", "voucher", None))
+        elements += [{"type": "domainStory:workObjectDocument", "id": "voucher", "name": "Voucher"},
+                     {"type": "domainStory:actorPerson", "id": "checker", "name": "Checker"}]
+        spec, warnings = self.convert_elements(elements)
+        self.assertEqual((None, ["dropped the actor 'Checker', which no sentence names",
+                                 "dropped the relation 'Checker' to 'Voucher', which no sentence draws"]),
+                         (spec.get("relations"), warnings))
+        S.validate(spec, ICONS["icons"])
+
     def test_a_hop_another_sentence_imported_is_not_copied(self):
         import egn2spec
         elements = self.drawn(("actor", "buys", "ticket", "1"),

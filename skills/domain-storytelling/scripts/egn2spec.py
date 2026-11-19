@@ -255,11 +255,16 @@ def convert(path):
 
     drawn = {target_id for _, target_id in sentences} | {shape_id for _, shape_id in hop_shapes}
 
+    declared = {actor["name"] for actor in spec["actors"]}
+
     def expressible(node):
-        # An actor is addressed by name. A work object only exists in the spec as
-        # some sentence's object, so one that no sentence draws has nothing to
-        # point at and the relation has to go.
-        return node["kind"].startswith("actor") or node["id"] in drawn
+        # An actor is addressed by name, and only one the spec declares, since the
+        # actors no sentence names were dropped above. A work object only exists in
+        # the spec as some sentence's object, so one that no sentence draws has
+        # nothing to point at and the relation has to go.
+        if node["kind"].startswith("actor"):
+            return node["name"] in declared
+        return node["id"] in drawn
 
     leftovers = []
     for relation in data["relations"]:
