@@ -106,6 +106,13 @@ def convert(path):
         by_source.setdefault(relation["source"]["id"], []).append(relation)
 
     numbered_targets = {step["target"]["id"] for step in data["steps"]}
+    # How many work objects point at each shape. The file does not say which of several
+    # arrows is a sentence's own, so the first sentence to reach a shape takes it as a hop
+    # and says so when the choice was not the only one.
+    reached_by = {}
+    for relation in data["relations"]:
+        if not relation["source"]["kind"].startswith("actor"):
+            reached_by.setdefault(relation["target"]["id"], set()).add(relation["source"]["id"])
     ids, consumed, sentences = set(), set(), []
     # A chain hop is a shape a sentence draws, so a relation can point at it as well.
     hop_shapes = []
@@ -127,7 +134,8 @@ def convert(path):
         last = target
         # A hop another sentence already imported stays that sentence's, so an arrow
         # reaching it is left for the relation pass.
-        visited = {target["id"]} | {shape_id for _, shape_id in hop_shapes}
+        own = {target["id"]}
+        visited = own | {shape_id for _, shape_id in hop_shapes}
         while True:
             outgoing = [c for c in by_source.get(last["id"], []) if id(c) not in consumed]
             if any(c["target"]["kind"].startswith("actor") for c in outgoing):
@@ -140,6 +148,7 @@ def convert(path):
             if hop["id"] in visited:
                 break
             visited.add(hop["id"])
+            own.add(hop["id"])
             link = {"object": {"name": hop["name"], "icon": icon_for(hop["kind"])}}
             if hops[0]["verb"]:
                 link["prep"] = hops[0]["verb"]
@@ -150,6 +159,11 @@ def convert(path):
                 warnings.append(f"dropped the note on {hop['name']!r} in sentence "
                                 f"{step['number']}, since a note belongs to the sentence's first work object")
             last = hop
+        for hop_id in own - {target["id"]}:
+            if reached_by.get(hop_id, set()) - own:
+                name = next(o["name"] for o, shape in hop_shapes if shape == hop_id)
+                warnings.append(f"sentence {step['number']} took {name!r} as a hop, but another work "
+                                f"object outside the sentence points at it, so check which sentence it belongs to")
         # The `to` of a sentence is an actor, so an arrow leaving the work object
         # for another work object is a relation somebody drew, not a preposition.
         candidates = [c for c in by_source.get(last["id"], [])

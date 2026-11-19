@@ -1601,8 +1601,27 @@ class ReadsAChainBackFromADrawnStory(unittest.TestCase):
         names = [s["object"]["name"] for s in spec["sentences"]] + \
                 [h["object"]["name"] for s in spec["sentences"] for h in s.get("chain") or []]
         hops = {h["object"]["name"]: h["object"].get("id") for s in spec["sentences"] for h in s.get("chain") or []}
-        self.assertEqual((1, [], [{"from": hops["Voucher"], "to": hops["Property data"], "verb": "refers to"}]),
+        self.assertEqual((1, ["sentence 1 took 'Property data' as a hop, but another work object outside "
+                              "the sentence points at it, so check which sentence it belongs to"],
+                          [{"from": hops["Voucher"], "to": hops["Property data"], "verb": "refers to"}]),
                          (names.count("Property data"), warnings, spec["relations"]))
+
+    def test_a_hop_several_work_objects_point_at_is_reported(self):
+        import egn2spec
+        elements = self.drawn(("seller", "sends", "invoice", "1"),
+                              ("invoice", "with", "voucher", None),
+                              ("voucher", "refers to", "data", None),
+                              ("data", "from", "seller", None),
+                              ("actor", "buys", "ticket", "2"),
+                              ("ticket", "based on", "data", None))
+        elements += [{"type": "domainStory:workObjectDocument", "id": "voucher", "name": "Voucher"},
+                     {"type": "domainStory:workObjectDocument", "id": "invoice", "name": "Invoice"}]
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "Buy a ticket.egn"
+            path.write_text(json.dumps({"dst": elements}), encoding="utf-8")
+            _, warnings = egn2spec.convert(path)
+        self.assertEqual(["sentence 1 took 'Property data' as a hop, but another work object outside the "
+                          "sentence points at it, so check which sentence it belongs to"], warnings)
 
     def test_a_note_on_a_hop_is_dropped_with_a_warning(self):
         import egn2spec
