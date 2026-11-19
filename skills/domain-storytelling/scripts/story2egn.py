@@ -1231,10 +1231,11 @@ def _redraw_at(nodes, edges, notes, home, f):
 
 
 def _shape_collisions(nodes):
-    """How many pairs of shapes overlap. Notes are left out, since the spread is judged on them."""
+    """How many pairs of shapes overlap, an icon and its name counted as one. Notes are left out,
+    since the spread is judged on them."""
     shapes = list(nodes.values())
     return sum(1 for i, one in enumerate(shapes)
-               for two in shapes[i + 1:] if _overlap(one.box, two.box, pad=0))
+               for two in shapes[i + 1:] if _overlap(_shape_extent(one), _shape_extent(two), pad=0))
 
 
 def _width(nodes, notes):

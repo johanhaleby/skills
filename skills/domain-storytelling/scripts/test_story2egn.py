@@ -1910,6 +1910,28 @@ class MakesRoomForNotesInACrowdedPicture(unittest.TestCase):
             S._make_room_for_notes(nodes, edges, notes)
         self.assertGreaterEqual(seen["f"], 1.3)
 
+    def test_a_scale_that_drops_a_shape_on_a_pinned_ones_name_is_skipped(self):
+        spec = json.loads(json.dumps(self.CROWDED))
+        spec["sentences"][2]["object"]["at"] = [-1, -1]
+        S.validate(spec, ICONS["icons"])
+        nodes, edges, notes, _ = S.build(spec)
+        S.place(nodes, edges, notes)
+        pinned = next(n for n in nodes.values() if n.pinned)
+        mover = next(n for n in nodes.values() if n.kind == "wo" and not n.pinned)
+        name = pinned.text_box
+        seen = {}
+
+        def redraw(nodes_, edges_, notes_, home, f):
+            seen["f"] = f
+            # Clear of the pinned icon, but with its own icon on the pinned name.
+            mover.cx = pinned.cx
+            mover.cy = name[1] + name[3] / 2 + S.HALF + 10 if f < 1.3 else pinned.cy + 900
+
+        with mock.patch.object(S, "_redraw_at", redraw), \
+                mock.patch.object(S, "_far_notes", lambda nodes_, ns: [] if "f" in seen and seen["f"] > 1 else [notes[0]]):
+            S._make_room_for_notes(nodes, edges, notes)
+        self.assertGreaterEqual(seen["f"], 1.3)
+
     def drawn(self, spec):
         spec = json.loads(json.dumps(spec))
         S.validate(spec, ICONS["icons"])
