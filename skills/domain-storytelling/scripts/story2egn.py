@@ -1179,21 +1179,32 @@ def _redraw_at(nodes, edges, notes, home, f):
     assign_labels(nodes, edges, notes)
 
 
+def _shape_collisions(nodes):
+    """How many pairs of shapes overlap. Notes are left out, since the spread is judged on them."""
+    shapes = list(nodes.values())
+    return sum(1 for i, one in enumerate(shapes)
+               for two in shapes[i + 1:] if _overlap(one.box, two.box, pad=0))
+
+
 def _make_room_for_notes(nodes, edges, notes):
     """Spread the picture until every note fits beside its own shape.
 
     The note search walks outwards until a leader line is clear, so in a crowded picture it
     can put a note on the far side, next to shapes it has nothing to do with. Scaling every
     position about the centre opens the gaps instead. The first scale with no far note wins,
-    and when none gets there the smallest scale with the fewest far notes is kept.
+    and when none gets there the smallest scale with the fewest far notes is kept. Only the
+    shapes that are not pinned scale, so a scale that drops one on a pinned shape is skipped.
     """
     if not notes or not _far_notes(notes):
         return
     home = {n.key: (n.cx, n.cy) for n in nodes.values()}
     best = (len(_far_notes(notes)), 1.0)
+    collisions = _shape_collisions(nodes)
     for i in range(1, ROOM_TRIES + 1):
         f = ROOM_STEP ** i
         _redraw_at(nodes, edges, notes, home, f)
+        if _shape_collisions(nodes) > collisions:
+            continue
         far = len(_far_notes(notes))
         if far < best[0]:
             best = (far, f)

@@ -107,6 +107,8 @@ def convert(path):
 
     numbered_targets = {step["target"]["id"] for step in data["steps"]}
     ids, consumed, sentences = set(), set(), []
+    # A chain hop is a shape a sentence draws, so a relation can point at it as well.
+    hop_shapes = []
     for step in data["steps"]:
         target = step["target"]
         if not (target["name"] or "").strip() or not (step["source"]["name"] or "").strip():
@@ -136,6 +138,7 @@ def convert(path):
             if hops[0]["verb"]:
                 link["prep"] = hops[0]["verb"]
             sentence.setdefault("chain", []).append(link)
+            hop_shapes.append((link["object"], hop["id"]))
             consumed.add(id(hops[0]))
             if hop["id"] in notes:
                 warnings.append(f"dropped the note on {hop['name']!r} in sentence "
@@ -200,9 +203,12 @@ def convert(path):
             for sentence, target_id in sentences:
                 if target_id == node["id"]:
                     sentence["object"]["id"] = shape_ids[node["id"]]
+            for spec_object, shape_id in hop_shapes:
+                if shape_id == node["id"]:
+                    spec_object["id"] = shape_ids[node["id"]]
         return shape_ids[node["id"]]
 
-    drawn = {target_id for _, target_id in sentences}
+    drawn = {target_id for _, target_id in sentences} | {shape_id for _, shape_id in hop_shapes}
 
     def expressible(node):
         # An actor is addressed by name. A work object only exists in the spec as

@@ -1557,6 +1557,15 @@ class ReadsAChainBackFromADrawnStory(unittest.TestCase):
                                ("ticket", "based on data from", "data", None))
         self.assertNotIn("chain", spec["sentences"][0])
 
+    def test_a_relation_to_a_hop_is_kept_and_points_at_it(self):
+        spec, warnings = self.convert(("actor", "buys", "ticket", "1"),
+                                      ("ticket", "based on", "data", None),
+                                      ("data", "from", "seller", None),
+                                      ("seller", "owns", "data", None))
+        hop = spec["sentences"][0]["chain"][0]["object"]
+        self.assertEqual(([], [{"from": "Seller", "to": hop["id"], "verb": "owns"}]),
+                         (warnings, spec["relations"]))
+
     def test_a_note_on_a_hop_is_dropped_with_a_warning(self):
         import egn2spec
         elements = self.drawn(("actor", "buys", "ticket", "1"),
@@ -1644,6 +1653,27 @@ class MakesRoomForNotesInACrowdedPicture(unittest.TestCase):
         self.assertEqual(
             (self.positions(crowded)[pinned], True),
             ((spread[pinned].cx, spread[pinned].cy), self.positions(crowded) != self.positions(spread)))
+
+    def test_a_scale_that_drops_a_shape_on_a_pinned_one_is_skipped(self):
+        spec = json.loads(json.dumps(self.CROWDED))
+        spec["sentences"][2]["object"]["at"] = [-1, -1]
+        spec = json.loads(json.dumps(spec))
+        S.validate(spec, ICONS["icons"])
+        nodes, edges, notes, _ = S.build(spec)
+        S.place(nodes, edges, notes)
+        pinned = next(n for n in nodes.values() if n.pinned)
+        mover = next(n for n in nodes.values() if n.kind == "wo" and not n.pinned)
+        seen = {}
+
+        def redraw(nodes_, edges_, notes_, home, f):
+            seen["f"] = f
+            mover.cx, mover.cy = (pinned.cx, pinned.cy) if f < 1.3 else (pinned.cx + 900, pinned.cy)
+
+        far_before = [notes[0]]
+        with mock.patch.object(S, "_redraw_at", redraw), \
+                mock.patch.object(S, "_far_notes", lambda ns: [] if "f" in seen and seen["f"] > 1 else far_before):
+            S._make_room_for_notes(nodes, edges, notes)
+        self.assertGreaterEqual(seen["f"], 1.3)
 
     def test_a_story_whose_notes_already_fit_is_not_spread(self):
         fitting, _ = self.placed(STORY)
