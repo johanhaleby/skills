@@ -1879,10 +1879,36 @@ class MakesRoomForNotesInACrowdedPicture(unittest.TestCase):
         self.assertEqual((True, True), (max_x - min_x <= S.COLUMN * S.NAME_PT / S.LEGIBLE,
                                         S._far_notes(nodes, notes) != []))
 
+    def test_a_note_the_spread_could_not_bring_home_is_warned_about(self):
+        spec = json.loads(json.dumps(self.CROWDED))
+        spec["sentences"][3]["note"] = self.NOTE
+        S.validate(spec, ICONS["icons"])
+        nodes, edges, notes, _ = S.build(spec)
+        S.place(nodes, edges, notes)
+        far = {n.name for n in S._far_notes(nodes, notes)}
+        warned = {w.split(" sits ")[0] for w in S.check_geometry(nodes, edges, notes, "t", quiet=True)
+                  if w.startswith("note on ") and (" sits nearer " in w or " to read as its note" in w)}
+        self.assertEqual((True, far), (far != set(), warned))
+
+    def test_a_note_beside_its_shape_is_not_warned_about(self):
+        nodes, edges, notes = self.drawn(self.CROWDED)
+        S._make_room_for_notes(nodes, edges, notes)
+        self.assertEqual([], [w for w in S.check_geometry(nodes, edges, notes, "t", quiet=True)
+                              if w.startswith("note on ")])
+
     def test_a_pinned_shape_keeps_its_position_when_the_picture_spreads(self):
         spec = json.loads(json.dumps(self.CROWDED))
         spec["sentences"][4]["object"]["at"] = [-1, -1]
-        spread, notes = self.placed(spec)
+        # With a shape pinned the notes all find a spot of their own, so a stranded note is
+        # made up here to get a spread at all. Only the unspread picture has it.
+        looks = []
+
+        def stranded(*_):
+            looks.append(None)
+            return (0, 1 if len(looks) == 1 else 0)
+
+        with mock.patch.object(S, "_stranded", stranded):
+            spread, notes = self.placed(spec)
         crowded, _ = self.placed(spec, room=False)
         pinned = next(key for key, n in spread.items() if n.pinned)
         self.assertEqual(
@@ -1932,6 +1958,33 @@ class MakesRoomForNotesInACrowdedPicture(unittest.TestCase):
             S._make_room_for_notes(nodes, edges, notes)
         self.assertGreaterEqual(seen["f"], 1.3)
 
+    def searched(self, far, on_arrow):
+        """Run the note search on the first note alone, with whose-note-is-it and on-an-arrow faked
+        by how far out a spot is, so the ranking is all that is tested. The scan walks outwards,
+        so the nearest ring is what it finds first and the spot it would keep without the ranking."""
+        nodes, edges, notes = self.drawn(self.CROWDED)
+        note, a = notes[0], notes[0].anchor
+
+        def out(x, y):
+            return math.hypot(x - a.cx, y - a.cy)
+
+        with mock.patch.object(S, "_far_notes", lambda nodes_, ns: list(ns) if far(out(ns[0].cx, ns[0].cy)) else []), \
+                mock.patch.object(S, "_note_on_edge",
+                                  lambda box, edges_: on_arrow(out(box[0] + box[2] / 2, box[1] + box[3] / 2))), \
+                mock.patch.object(S, "_clear_leader", lambda *args, **kw: True):
+            clear, fallback, _, _ = S._search(note, {a.key: a}, [], [], edges)
+        return [None if spot is None else round(out(*spot)) for spot in (clear, fallback)]
+
+    def test_a_spot_of_the_notes_own_beats_a_nearer_one_beside_another_shape(self):
+        first_ring = S.SOLO_REACH + 25
+        clear, _ = self.searched(far=lambda out: out < first_ring, on_arrow=lambda out: False)
+        self.assertEqual(S.SOLO_REACH + 50, clear)
+
+    def test_a_note_astray_but_off_the_arrows_beats_one_on_an_arrow(self):
+        first_ring = S.SOLO_REACH + 25
+        clear, fallback = self.searched(far=lambda out: True, on_arrow=lambda out: out < first_ring)
+        self.assertEqual((None, S.SOLO_REACH + 50), (clear, fallback))
+
     def drawn(self, spec):
         spec = json.loads(json.dumps(spec))
         S.validate(spec, ICONS["icons"])
@@ -1945,7 +1998,10 @@ class MakesRoomForNotesInACrowdedPicture(unittest.TestCase):
                 [e.label_at for e in edges], [(n.cx, n.cy) for n in notes])
 
     def spread_when(self, far_at_step):
-        """Spread with the far-note count dictated per scale step, and say which scales were tried."""
+        """Spread with the far-note count dictated per scale step, and say which scales were tried.
+
+        The count stands in for how badly the notes sit and not for _far_notes itself, because the
+        note search asks _far_notes too, and a faked answer there would move the notes being drawn."""
         nodes, edges, notes = self.drawn(self.CROWDED)
         real, tried = S._redraw_at, []
 
@@ -1953,10 +2009,10 @@ class MakesRoomForNotesInACrowdedPicture(unittest.TestCase):
             tried.append(f)
             real(nodes_, edges_, notes_, home, f)
 
-        def far(*_):
-            return [None] * far_at_step(round(math.log(tried[-1], S.ROOM_STEP)) if tried else 0)
+        def stranded(*_):
+            return (0, far_at_step(round(math.log(tried[-1], S.ROOM_STEP)) if tried else 0))
 
-        with mock.patch.object(S, "_redraw_at", redraw), mock.patch.object(S, "_far_notes", far), \
+        with mock.patch.object(S, "_redraw_at", redraw), mock.patch.object(S, "_stranded", stranded), \
                 mock.patch.object(S, "_shape_collisions", lambda _: 0):
             S._make_room_for_notes(nodes, edges, notes)
         return self.geometry(nodes, edges, notes), tried

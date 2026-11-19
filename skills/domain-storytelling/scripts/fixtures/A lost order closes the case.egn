@@ -180,8 +180,8 @@
    "type": "domainStory:textAnnotation",
    "name": "",
    "id": "shape_0021",
-   "x": -215,
-   "y": 317,
+   "x": -235,
+   "y": 287,
    "text": "Note 5.",
    "number": 65,
    "width": 210,
@@ -191,8 +191,8 @@
    "type": "domainStory:textAnnotation",
    "name": "",
    "id": "shape_0022",
-   "x": 75,
-   "y": -2,
+   "x": 155,
+   "y": -552,
    "text": "Note 6.",
    "number": 65,
    "width": 210,
@@ -836,11 +836,11 @@
     },
     {
      "original": {
-      "x": -110,
-      "y": 350
+      "x": -130,
+      "y": 320
      },
-     "x": -110,
-     "y": 350
+     "x": -130,
+     "y": 320
     }
    ],
    "source": "shape_0013",
@@ -861,11 +861,11 @@
     },
     {
      "original": {
-      "x": 180,
-      "y": 30
+      "x": 260,
+      "y": -520
      },
-     "x": 180,
-     "y": 30
+     "x": 260,
+     "y": -520
     }
    ],
    "source": "shape_0014",

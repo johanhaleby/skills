@@ -711,7 +711,7 @@ def _search(note, nodes, shapes, others, edges):
     a = note.anchor
     span = math.hypot(a.cx, a.cy)
     base = math.atan2(a.cy, a.cx) if span > 1 else math.pi / 2
-    clear = off_arrows = boxes_only = None
+    clear = off_arrows = boxes_only = astray = adrift = loose = None
     candidates = []
     for step in range(0, 1500, 50):
         for turn in _NOTE_TURNS:
@@ -722,6 +722,18 @@ def _search(note, nodes, shapes, others, edges):
                 continue
             # A name hangs under its shape, the anchor's included, and a note must stay off it too.
             if any(_overlap(note.box, s.text_box) for s in shapes):
+                continue
+            # A reader takes a note for one on whatever shape sits nearest, so a spot nearer
+            # another shape is only kept for when the scan finds no spot of the note's own.
+            # A clear leader still says whose note it is, which a note lying on an arrow cannot.
+            if _far_notes(nodes, [note]):
+                if adrift is None:
+                    adrift = (note.cx, note.cy)
+                if not _note_on_edge(note.box, edges):
+                    if loose is None:
+                        loose = (note.cx, note.cy)
+                    if astray is None and _clear_leader(a, note.cx, note.cy, nodes.values(), others, edges):
+                        astray = (note.cx, note.cy)
                 continue
             if boxes_only is None:
                 boxes_only = (note.cx, note.cy)
@@ -736,14 +748,17 @@ def _search(note, nodes, shapes, others, edges):
                 break
         if clear:
             break
-    return clear, off_arrows, boxes_only, candidates
+    return clear, off_arrows or astray or loose, boxes_only or adrift, candidates
 
 
 def _place_one(note, nodes, shapes, others, edges):
     """Put one note where nothing is in the way, and record the leader it gets.
 
-    Three tiers, best first. Nothing in the way beats a crossed leader line, and a
-    crossed leader beats a note overlapping an arrow.
+    Tiers, best first. Nothing in the way beats a crossed leader line, and a crossed
+    leader beats a note overlapping an arrow. A spot nearer another shape reads as that
+    shape's note, but its leader line still says whose note it is, which a note lying on
+    an arrow cannot. So it comes after a spot of the note's own and before any spot on an
+    arrow.
 
     One outward scan, then the stub routes are retried over the near positions that
     scan already found, nearest first. Rescanning every position with the stub
@@ -1220,6 +1235,12 @@ def _far_notes(nodes, notes):
     return far
 
 
+def _stranded(nodes, edges, notes):
+    """How badly the notes sit, worst fault first: a note over an arrow hides part of a
+    sentence, while one astray still has its leader line to say whose it is."""
+    return (sum(1 for n in notes if _note_on_edge(n.box, edges)), len(_far_notes(nodes, notes)))
+
+
 def _redraw_at(nodes, edges, notes, home, f):
     # A pin is the author's choice, so it keeps its place while the rest spreads.
     for n in nodes.values():
@@ -1244,19 +1265,21 @@ def _width(nodes, notes):
 
 
 def _make_room_for_notes(nodes, edges, notes):
-    """Spread the picture until every note fits beside its own shape.
+    """Spread the picture until every note fits beside its own shape and off the arrows.
 
-    The note search walks outwards until a leader line is clear, so in a crowded picture it
-    can put a note on the far side, next to shapes it has nothing to do with. Scaling every
-    position about the centre opens the gaps instead. The first scale with no far note wins,
-    and when none gets there the smallest scale with the fewest far notes is kept. Only the
-    shapes that are not pinned scale, so a scale that drops one on a pinned shape is skipped,
-    and so is one that makes the picture too wide to read.
+    In a crowded picture the note search can find no spot of a note's own, and then the
+    note lands nearer another shape or on an arrow. Scaling every position about the centre
+    opens the gaps instead. The first scale with no stranded note wins, and when none gets
+    there the smallest scale with the fewest notes on arrows, then the fewest astray, is
+    kept. Only the shapes that are not pinned scale, so a scale that drops one on a pinned
+    shape is skipped, and so is one that makes the picture too wide to read. A note still
+    astray at the end is left for check_geometry to warn about.
     """
-    if not notes or not _far_notes(nodes, notes):
+    faults = _stranded(nodes, edges, notes) if notes else (0, 0)
+    if faults == (0, 0):
         return
     home = {n.key: (n.cx, n.cy) for n in nodes.values()}
-    best = (len(_far_notes(nodes, notes)), 1.0)
+    best = (faults, 1.0)
     collisions = _shape_collisions(nodes)
     # A spread that makes the names unreadable trades one fault for a worse one, so it stops
     # where check_reading would start to complain, or where the picture already was.
@@ -1266,10 +1289,10 @@ def _make_room_for_notes(nodes, edges, notes):
         _redraw_at(nodes, edges, notes, home, f)
         if _shape_collisions(nodes) > collisions or _width(nodes, notes) > widest:
             continue
-        far = len(_far_notes(nodes, notes))
-        if far < best[0]:
-            best = (far, f)
-        if far == 0:
+        faults = _stranded(nodes, edges, notes)
+        if faults < best[0]:
+            best = (faults, f)
+        if faults == (0, 0):
             return
     _redraw_at(nodes, edges, notes, home, best[1])
 
@@ -1518,6 +1541,15 @@ def check_geometry(nodes, edges, notes, title, quiet=False):
             warnings.append(f"{note.name} has a leader line crossing a shape or an arrow")
         if _note_on_edge(note.box, edges):
             warnings.append(f"{note.name} overlaps an arrow")
+
+    # The spread stops at the reading width, so a note it could not bring home is left where it is
+    # and said out loud, since a reader takes it for a note on whatever sits nearest.
+    for note in _far_notes(nodes, notes):
+        nearest = min(nodes.values(), key=lambda o: _gap(note.box, _shape_extent(o)))
+        if nearest is note.anchor:
+            warnings.append(f"{note.name} sits too far from {note.anchor.name!r} to read as its note")
+        else:
+            warnings.append(f"{note.name} sits nearer {nearest.name!r} than {note.anchor.name!r}")
 
     return warnings if quiet else _report(title, "layout", warnings)
 

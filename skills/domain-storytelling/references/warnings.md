@@ -4,7 +4,8 @@ It routes arrows around shapes and, where possible, around other activity arrows
 to stderr when a shape overlaps another, a label has nowhere clear to sit, an arrow crosses
 a shape it does not connect, a verb or number has another arrow running through it or sits
 nearer another arrow than its own, a work object sits nearer an actor whose sentence it is not in,
-a manual pin makes arrows cross, a note overlaps an arrow, or a note's leader line crosses
+a manual pin makes arrows cross, a note overlaps an arrow, a note sits nearer another shape
+than its own or too far from its own to read as its note, or a note's leader line crosses
 something it could have avoided. It also writes a `name:` line for two things, a name too
 long for the two lines under its icon, because the rest of it is replaced by an ellipsis and
 leaves the picture, and a work object carrying an actor's name, because two shapes then
@@ -66,6 +67,17 @@ because the one in the middle stays on the short side of every triangle the slid
 Both together leave only the crowded ring, where the fix is to split the story.
 `Grant a building permit` in `examples/` is the worked case, at 20 sentences where this
 file says split at fifteen.
+
+A reader also attributes a note to the shape it sits nearest, so a note beside the wrong
+shape reads as a note on that shape. Placement looks for a spot nearer the note's own shape
+first. When the picture is too crowded for one, it takes a spot nearer another shape but
+off the arrows, where the leader line still says whose note it is, before a spot on an
+arrow. Then it spreads the whole picture, and it stops at the width where names get too
+small to read, because a picture that wide is the method telling you to split the story. A
+warning about a note sitting nearer another shape, or too far from its own, is what is left
+after both. Shorten the note, move its text into the description when it is about the whole
+story, or split the story. A pin rarely helps here, because it takes room from the spread.
+`scripts/fixtures/A lost order closes the case` is the worked case, with two such notes left.
 
 Placement will not exile a note to avoid a crossing, and this is the one case where a
 picture still ships with a dashed line over a solid one. The nearest clear position is often
