@@ -1187,6 +1187,14 @@ class SaysWhenAWorkObjectLooksLikeAnActor(unittest.TestCase):
         spec["sentences"][3]["object"]["icon"] = "Business"
         self.assertEqual([], self.icons(spec))
 
+    def test_a_chain_hop_drawn_as_an_actor_is_reported_like_the_first_object(self):
+        spec = {"sentences": [{"n": 2, "object": {"name": "Ticket", "icon": "Document"},
+                               "chain": [{"prep": "with", "object": {"name": "Pass holder", "icon": "Person"}}]}]}
+        self.assertEqual(
+            ["work object 'Pass holder' in sentence 2 is drawn as 'Person', an actor "
+             "icon, so it reads as an actor, pick a work-object icon"],
+            self.icons(spec))
+
     def test_rendering_the_story_still_succeeds(self):
         with redirect_stderr(StringIO()):
             written = render(INACTIVE_DRIVER)
@@ -1533,6 +1541,13 @@ class ReadsAChainBackFromADrawnStory(unittest.TestCase):
             path.write_text(json.dumps({"dst": self.drawn(*activities)}), encoding="utf-8")
             return egn2spec.convert(path)
 
+    def convert_elements(self, elements):
+        import egn2spec
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "Buy a ticket.egn"
+            path.write_text(json.dumps({"dst": elements}), encoding="utf-8")
+            return egn2spec.convert(path)
+
     def chained(self):
         return self.convert(("actor", "buys", "ticket", "1"),
                             ("ticket", "based on data from", "data", None),
@@ -1565,6 +1580,62 @@ class ReadsAChainBackFromADrawnStory(unittest.TestCase):
         hop = spec["sentences"][0]["chain"][0]["object"]
         self.assertEqual(([], [{"from": "Seller", "to": hop["id"], "verb": "owns"}]),
                          (warnings, spec["relations"]))
+
+    def test_a_relation_out_of_the_first_object_keeps_the_whole_chain(self):
+        spec, _ = self.convert(("actor", "buys", "ticket", "1"),
+                               ("ticket", "based on", "data", None),
+                               ("data", "from", "seller", None),
+                               ("ticket", "is checked by", "seller", None))
+        sentence = spec["sentences"][0]
+        self.assertEqual((["Property data"], "Seller"),
+                         ([h["object"]["name"] for h in sentence["chain"]], sentence["to"]))
+        self.assertEqual([{"from": sentence["object"]["id"], "to": "Seller", "verb": "is checked by"}],
+                         spec["relations"])
+
+    def test_a_relation_out_of_a_hop_keeps_the_chain_and_its_last_arrow(self):
+        elements = self.drawn(("actor", "buys", "ticket", "1"),
+                              ("ticket", "based on", "data", None),
+                              ("data", "with", "voucher", None),
+                              ("voucher", "from", "seller", None),
+                              ("data", "is checked by", "actor", None))
+        elements.append({"type": "domainStory:workObjectDocument", "id": "voucher", "name": "Voucher"})
+        spec = self.convert_elements(elements)[0]
+        sentence = spec["sentences"][0]
+        self.assertEqual((["Property data", "Voucher"], ("from", "Seller")),
+                         ([h["object"]["name"] for h in sentence["chain"]],
+                          (sentence["prep"], sentence["to"])))
+        self.assertEqual([{"from": sentence["chain"][0]["object"]["id"], "to": "Buyer", "verb": "is checked by"}],
+                         spec["relations"])
+
+    def test_an_arrow_to_an_actor_still_ends_a_chain_that_leads_nowhere_else(self):
+        elements = self.drawn(("actor", "buys", "ticket", "1"),
+                              ("ticket", "for", "seller", None),
+                              ("ticket", "with", "voucher", None))
+        elements.append({"type": "domainStory:workObjectDocument", "id": "voucher", "name": "Voucher"})
+        spec, _ = self.convert_elements(elements)
+        self.assertEqual(("for", "Seller", False), (spec["sentences"][0]["prep"], spec["sentences"][0]["to"],
+                                                    "chain" in spec["sentences"][0]))
+
+    def test_sentences_sharing_one_drawn_shape_give_a_relation_one_id_between_them(self):
+        elements = self.drawn(("actor", "buys", "ticket", "1"),
+                              ("ticket", "based on", "data", None),
+                              ("data", "from", "seller", None),
+                              ("seller", "sends", "offer", "2"),
+                              ("actor", "reads", "offer", "3"),
+                              ("data", "updates", "offer", None))
+        elements.append({"type": "domainStory:workObjectDocument", "id": "offer", "name": "Offer"})
+        spec, _ = self.convert_elements(elements)
+        ids = [s["object"].get("id") for s in spec["sentences"] if s["object"]["name"] == "Offer"]
+        self.assertEqual(([ids[0], None], 1), (ids, len(spec["relations"])))
+        self.assertEqual(spec["relations"][0]["to"], ids[0])
+        S.validate(spec, ICONS["icons"])
+
+    def test_a_chain_through_an_unnamed_shape_is_not_a_chain(self):
+        elements = self.drawn(("actor", "buys", "ticket", "1"),
+                              ("ticket", "with", "blank", None))
+        elements.append({"type": "domainStory:workObjectDocument", "id": "blank", "name": ""})
+        spec, _ = self.convert_elements(elements)
+        self.assertNotIn("chain", spec["sentences"][0])
 
     def test_an_arrow_back_to_an_earlier_hop_is_a_relation_and_not_another_hop(self):
         import egn2spec
@@ -1748,6 +1819,72 @@ class MakesRoomForNotesInACrowdedPicture(unittest.TestCase):
                 mock.patch.object(S, "_far_notes", lambda ns: [] if "f" in seen and seen["f"] > 1 else far_before):
             S._make_room_for_notes(nodes, edges, notes)
         self.assertGreaterEqual(seen["f"], 1.3)
+
+    def drawn(self, spec):
+        spec = json.loads(json.dumps(spec))
+        S.validate(spec, ICONS["icons"])
+        nodes, edges, notes, _ = S.build(spec)
+        with mock.patch.object(S, "_make_room_for_notes"):
+            S.place(nodes, edges, notes)
+        return nodes, edges, notes
+
+    def geometry(self, nodes, edges, notes):
+        return ({k: (n.cx, n.cy) for k, n in nodes.items()}, [e.path for e in edges],
+                [e.label_at for e in edges], [(n.cx, n.cy) for n in notes])
+
+    def spread_when(self, far_at_step):
+        """Spread with the far-note count dictated per scale step, and say which scales were tried."""
+        nodes, edges, notes = self.drawn(self.CROWDED)
+        real, tried = S._redraw_at, []
+
+        def redraw(nodes_, edges_, notes_, home, f):
+            tried.append(f)
+            real(nodes_, edges_, notes_, home, f)
+
+        def far(_):
+            return [None] * far_at_step(round(math.log(tried[-1], S.ROOM_STEP)) if tried else 0)
+
+        with mock.patch.object(S, "_redraw_at", redraw), mock.patch.object(S, "_far_notes", far), \
+                mock.patch.object(S, "_shape_collisions", lambda _: 0):
+            S._make_room_for_notes(nodes, edges, notes)
+        return self.geometry(nodes, edges, notes), tried
+
+    def at_scale(self, step):
+        nodes, edges, notes = self.drawn(self.CROWDED)
+        home = {n.key: (n.cx, n.cy) for n in nodes.values()}
+        S._redraw_at(nodes, edges, notes, home, S.ROOM_STEP ** step)
+        return self.geometry(nodes, edges, notes)
+
+    def test_when_no_scale_clears_every_note_the_smallest_best_one_is_drawn_in_full(self):
+        # Steps 3 and 6 both leave two far notes, so the smaller is kept, and every arrow,
+        # label and note is the one that scale draws and not what the last scale tried left behind.
+        geometry, tried = self.spread_when(lambda step: 2 if step in (3, 6) else 4)
+        self.assertEqual((S.ROOM_STEP ** 3, self.at_scale(3)), (tried[-1], geometry))
+
+    def test_when_no_scale_helps_the_picture_goes_back_to_where_it_was(self):
+        geometry, tried = self.spread_when(lambda step: 4)
+        self.assertEqual((1.0, self.at_scale(0)), (tried[-1], geometry))
+
+    def test_every_arrow_still_meets_its_shapes_after_a_spread(self):
+        nodes, edges, notes = self.drawn(self.CROWDED)
+        S._make_room_for_notes(nodes, edges, notes)
+        far = []
+        for e in edges:
+            points = S.sample(e.path)
+            for point, shape in ((points[0], e.src), (points[-1], e.dst)):
+                x, y, w, h = shape.box
+                gap = math.hypot(max(x - point[0], 0, point[0] - x - w), max(y - point[1], 0, point[1] - y - h))
+                # An arrowhead stops a little short of the shape it points at
+                if gap > 20:
+                    far.append((e.src.name, e.dst.name, round(gap)))
+        self.assertEqual([], far)
+
+    def test_every_verb_still_sits_beside_its_arrow_after_a_spread(self):
+        nodes, edges, notes = self.drawn(self.CROWDED)
+        S._make_room_for_notes(nodes, edges, notes)
+        away = [(e.src.name, e.dst.name) for e in edges if e.label_at and min(
+            math.hypot(e.label_at[0] - x, e.label_at[1] - y) for x, y in S.sample(e.path)) > 70]
+        self.assertEqual([], away)
 
     def test_every_work_object_in_a_chain_shares_its_sentence_with_both_actors(self):
         spec = json.loads(json.dumps(DrawsASentenceThroughSeveralWorkObjects.BASED_ON))

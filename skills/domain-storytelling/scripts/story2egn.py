@@ -1745,11 +1745,11 @@ def check_icons(spec, actor_icons, title):
     """
     warnings = []
     for i, s in enumerate(spec.get("sentences") or [], 1):
-        obj = s.get("object")
-        if obj is not None and obj.get("icon") in actor_icons:
-            warnings.append(
-                f"work object {obj['name']!r} in sentence {s.get('n', i)} is drawn as "
-                f"{obj['icon']!r}, an actor icon, so it reads as an actor, pick a work-object icon")
+        for obj in [s.get("object")] + [h.get("object") for h in s.get("chain") or []]:
+            if obj is not None and obj.get("icon") in actor_icons:
+                warnings.append(
+                    f"work object {obj['name']!r} in sentence {s.get('n', i)} is drawn as "
+                    f"{obj['icon']!r}, an actor icon, so it reads as an actor, pick a work-object icon")
 
     return _report(title, "icon", warnings)
 

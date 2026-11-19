@@ -116,6 +116,24 @@ def convert(path):
     # A generated id may not equal an actor's name, which the generator rejects.
     ids = {p["name"] for p in data["participants"] if p["kind"].startswith("actor")}
     consumed, sentences = set(), []
+
+    def eligible_hops(shape):
+        return [c for c in by_source.get(shape["id"], []) if id(c) not in consumed
+                and not c["target"]["kind"].startswith("actor")
+                and c["target"]["id"] not in numbered_targets and (c["target"]["name"] or "").strip()]
+
+    def leaves_for_actor(shape):
+        return any(c["target"]["kind"].startswith("actor")
+                   for c in by_source.get(shape["id"], []) if id(c) not in consumed)
+
+    def leads_to_actor(shape, seen):
+        if shape["id"] in seen:
+            return False
+        if leaves_for_actor(shape):
+            return True
+        hops = eligible_hops(shape)
+        return len(hops) == 1 and leads_to_actor(hops[0]["target"], seen | {shape["id"]})
+
     # A chain hop is a shape a sentence draws, so a relation can point at it as well.
     hop_shapes = []
     for step in data["steps"]:
@@ -139,12 +157,10 @@ def convert(path):
         own = {target["id"]}
         visited = own | {shape_id for _, shape_id in hop_shapes}
         while True:
-            outgoing = [c for c in by_source.get(last["id"], []) if id(c) not in consumed]
-            if any(c["target"]["kind"].startswith("actor") for c in outgoing):
-                break
-            hops = [c for c in outgoing if c["target"]["id"] not in numbered_targets
-                    and (c["target"]["name"] or "").strip()]
-            if len(hops) != 1 or len(outgoing) != 1:
+            hops = eligible_hops(last)
+            # An arrow to an actor ends the chain, unless the single hop still leads to one,
+            # in which case that arrow is a relation somebody drew and the relation pass keeps it.
+            if len(hops) != 1 or (leaves_for_actor(last) and not leads_to_actor(hops[0]["target"], visited)):
                 break
             hop = hops[0]["target"]
             if hop["id"] in visited:
@@ -222,12 +238,12 @@ def convert(path):
             return node["name"]
         if node["id"] not in shape_ids:
             shape_ids[node["id"]] = slug(node["name"], ids)
-            for sentence, target_id in sentences:
-                if target_id == node["id"]:
-                    sentence["object"]["id"] = shape_ids[node["id"]]
-            for spec_object, shape_id in hop_shapes:
-                if shape_id == node["id"]:
-                    spec_object["id"] = shape_ids[node["id"]]
+            # Sentences can share one drawn shape, but an id names one work object in the
+            # spec, so the first sentence or hop to draw it takes the id and the rest stay bare.
+            drawn_as = [sentence["object"] for sentence, target_id in sentences if target_id == node["id"]]
+            drawn_as += [spec_object for spec_object, shape_id in hop_shapes if shape_id == node["id"]]
+            if drawn_as:
+                drawn_as[0]["id"] = shape_ids[node["id"]]
         return shape_ids[node["id"]]
 
     drawn = {target_id for _, target_id in sentences} | {shape_id for _, shape_id in hop_shapes}
