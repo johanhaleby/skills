@@ -1756,7 +1756,7 @@ class MakesRoomForNotesInACrowdedPicture(unittest.TestCase):
             {"n": 3, "from": "A1", "verb": "does", "object": {"name": "Thing 2", "icon": "Place"},
              "note": NOTE, "to": "A2", "prep": "to"},
             {"n": 4, "from": "A1", "verb": "does", "object": {"name": "Thing 3", "icon": "Folder"},
-             "note": NOTE, "to": "A0", "prep": "to"},
+             "to": "A0", "prep": "to"},
             {"n": 5, "from": "A0", "verb": "does", "object": {"name": "Thing 4", "icon": "Key"},
              "note": NOTE, "to": "A1", "prep": "to"},
         ],
@@ -1773,25 +1773,64 @@ class MakesRoomForNotesInACrowdedPicture(unittest.TestCase):
                 S.place(nodes, edges, notes)
         return nodes, notes
 
+    @staticmethod
+    def gap_between(note, shape):
+        """Empty space from the note's rectangle to a shape's icon and the name under it, measured here."""
+        icon, name = shape.box, shape.text_box
+        left = min(icon[0], name[0])
+        top = min(icon[1], name[1])
+        right = max(icon[0] + icon[2], name[0] + name[2])
+        bottom = max(icon[1] + icon[3], name[1] + name[3])
+        nx, ny, nw, nh = note.box
+        dx = max(left - (nx + nw), nx - right, 0)
+        dy = max(top - (ny + nh), ny - bottom, 0)
+        return math.hypot(dx, dy)
+
     def positions(self, nodes):
         return {key: (n.cx, n.cy) for key, n in nodes.items()}
 
     def test_the_story_crowds_a_note_away_when_nothing_makes_room(self):
-        _, notes = self.placed(self.CROWDED, room=False)
-        self.assertNotEqual([], S._far_notes(notes))
+        nodes, notes = self.placed(self.CROWDED, room=False)
+        self.assertNotEqual([], S._far_notes(nodes, notes))
 
-    def test_every_note_sits_beside_its_own_shape(self):
-        _, notes = self.placed(self.CROWDED)
-        self.assertEqual([], [n.name for n in S._far_notes(notes)])
+    def test_every_note_is_nearest_to_its_own_shape(self):
+        nodes, notes = self.placed(self.CROWDED)
+        nearest = {n.name: min(nodes.values(), key=lambda s: self.gap_between(n, s)).name for n in notes}
+        self.assertEqual({n.name: n.anchor.name for n in notes}, nearest)
+
+    def test_every_note_keeps_within_the_gap_of_its_own_shape(self):
+        nodes, notes = self.placed(self.CROWDED)
+        self.assertEqual([], [n.name for n in notes if self.gap_between(n, n.anchor) > S.NOTE_GAP])
+
+    def test_a_note_nearer_another_shape_is_far_however_close_its_own_is(self):
+        nodes, notes = self.placed(self.CROWDED, room=False)
+        note = notes[0]
+        other = next(s for s in nodes.values() if s is not note.anchor)
+        note.cx, note.cy = other.cx + 120, other.cy
+        self.assertIn(note, S._far_notes(nodes, [note]))
+
+    def test_a_note_beside_its_shape_is_not_far(self):
+        nodes, notes = self.placed(self.CROWDED)
+        note = notes[0]
+        self.assertEqual([], S._far_notes({note.anchor.key: note.anchor}, [note]))
 
     def test_the_shapes_move_apart_to_make_the_room(self):
         spread, _ = self.placed(self.CROWDED)
         crowded, _ = self.placed(self.CROWDED, room=False)
         self.assertNotEqual(self.positions(crowded), self.positions(spread))
 
+    def test_the_spread_stops_where_the_names_would_stop_being_readable(self):
+        # Clearing the fourth note takes a scale that leaves the picture wider than a column reads.
+        spec = json.loads(json.dumps(self.CROWDED))
+        spec["sentences"][3]["note"] = self.NOTE
+        nodes, notes = self.placed(spec)
+        min_x, _, max_x, _ = S.canvas_box(nodes, notes)
+        self.assertEqual((True, True), (max_x - min_x <= S.COLUMN * S.NAME_PT / S.LEGIBLE,
+                                        S._far_notes(nodes, notes) != []))
+
     def test_a_pinned_shape_keeps_its_position_when_the_picture_spreads(self):
         spec = json.loads(json.dumps(self.CROWDED))
-        spec["sentences"][2]["object"]["at"] = [-1, -1]
+        spec["sentences"][4]["object"]["at"] = [-1, -1]
         spread, notes = self.placed(spec)
         crowded, _ = self.placed(spec, room=False)
         pinned = next(key for key, n in spread.items() if n.pinned)
@@ -1816,7 +1855,7 @@ class MakesRoomForNotesInACrowdedPicture(unittest.TestCase):
 
         far_before = [notes[0]]
         with mock.patch.object(S, "_redraw_at", redraw), \
-                mock.patch.object(S, "_far_notes", lambda ns: [] if "f" in seen and seen["f"] > 1 else far_before):
+                mock.patch.object(S, "_far_notes", lambda nodes_, ns: [] if "f" in seen and seen["f"] > 1 else far_before):
             S._make_room_for_notes(nodes, edges, notes)
         self.assertGreaterEqual(seen["f"], 1.3)
 
@@ -1841,7 +1880,7 @@ class MakesRoomForNotesInACrowdedPicture(unittest.TestCase):
             tried.append(f)
             real(nodes_, edges_, notes_, home, f)
 
-        def far(_):
+        def far(*_):
             return [None] * far_at_step(round(math.log(tried[-1], S.ROOM_STEP)) if tried else 0)
 
         with mock.patch.object(S, "_redraw_at", redraw), mock.patch.object(S, "_far_notes", far), \

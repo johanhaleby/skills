@@ -21,15 +21,15 @@
    "type": "domainStory:actorPerson",
    "name": "Claimant",
    "id": "shape_0001",
-   "x": -538,
-   "y": -218
+   "x": -708,
+   "y": -278
   },
   {
    "type": "domainStory:actorGroup",
    "name": "Intake desk",
    "id": "shape_0002",
    "x": -38,
-   "y": 312
+   "y": 432
   },
   {
    "type": "domainStory:actorPerson",
@@ -42,36 +42,36 @@
    "type": "domainStory:actorSystem",
    "name": "Archive",
    "id": "shape_0004",
-   "x": 462,
-   "y": -218
+   "x": 632,
+   "y": -278
   },
   {
    "type": "domainStory:workObjectDocument",
    "name": "Claim form",
    "id": "shape_0005",
-   "x": -388,
-   "y": 142
+   "x": -508,
+   "y": 202
   },
   {
    "type": "domainStory:workObjectFolder",
    "name": "Case file",
    "id": "shape_0006",
-   "x": -58,
-   "y": 142
+   "x": -68,
+   "y": 202
   },
   {
    "type": "domainStory:workObjectPrinter",
    "name": "Copy",
    "id": "shape_0007",
-   "x": 202,
-   "y": -148
+   "x": 282,
+   "y": -188
   },
   {
    "type": "domainStory:workObjectEmail",
    "name": "Decision",
    "id": "shape_0008",
-   "x": -278,
-   "y": -148
+   "x": -358,
+   "y": -188
   },
   {
    "type": "domainStory:group",
@@ -79,7 +79,7 @@
    "id": "shape_0009",
    "pickedColor": "black",
    "x": -68,
-   "y": 272,
+   "y": 392,
    "width": 136,
    "height": 168
   },
@@ -89,16 +89,16 @@
    "id": "shape_0010",
    "pickedColor": "black",
    "x": -68,
-   "y": -258,
-   "width": 636,
-   "height": 348
+   "y": -318,
+   "width": 806,
+   "height": 408
   },
   {
    "type": "domainStory:textAnnotation",
    "name": "",
    "id": "shape_0011",
-   "x": -625,
-   "y": 235,
+   "x": -745,
+   "y": 295,
    "text": "Paper forms are scanned first.",
    "number": 70,
    "width": 210,
@@ -108,8 +108,8 @@
    "type": "domainStory:textAnnotation",
    "name": "",
    "id": "shape_0012",
-   "x": -435,
-   "y": -312,
+   "x": -575,
+   "y": -292,
    "text": "Sent the same day.",
    "number": 65,
    "width": 210,
@@ -120,7 +120,7 @@
    "name": "",
    "id": "shape_0013",
    "x": -105,
-   "y": 507,
+   "y": 627,
    "text": "Staffed on weekdays only.",
    "number": 65,
    "width": 210,
@@ -134,19 +134,19 @@
    "waypoints": [
     {
      "original": {
-      "x": -500,
-      "y": -180
+      "x": -670,
+      "y": -240
      },
-     "x": -478,
-     "y": -128
+     "x": -648,
+     "y": -188
     },
     {
      "original": {
-      "x": -350,
-      "y": 180
+      "x": -470,
+      "y": 240
      },
-     "x": -365,
-     "y": 142
+     "x": -485,
+     "y": 202
     }
    ],
    "source": "shape_0001",
@@ -162,19 +162,19 @@
    "waypoints": [
     {
      "original": {
-      "x": -350,
-      "y": 180
+      "x": -470,
+      "y": 240
      },
-     "x": -312,
-     "y": 198
+     "x": -432,
+     "y": 258
     },
     {
      "original": {
       "x": 0,
-      "y": 350
+      "y": 470
      },
      "x": -38,
-     "y": 331
+     "y": 451
     }
    ],
    "source": "shape_0005",
@@ -190,18 +190,18 @@
     {
      "original": {
       "x": 0,
-      "y": 350
+      "y": 470
      },
      "x": -4,
-     "y": 312
+     "y": 432
     },
     {
      "original": {
-      "x": -20,
-      "y": 180
+      "x": -30,
+      "y": 240
      },
-     "x": -13,
-     "y": 231
+     "x": -23,
+     "y": 291
     }
    ],
    "source": "shape_0002",
@@ -217,18 +217,18 @@
    "waypoints": [
     {
      "original": {
-      "x": -20,
-      "y": 180
+      "x": -30,
+      "y": 240
      },
-     "x": -15,
-     "y": 142
+     "x": -25,
+     "y": 202
     },
     {
      "original": {
       "x": 0,
       "y": 0
      },
-     "x": -5,
+     "x": -6,
      "y": 51
     }
    ],
@@ -252,11 +252,11 @@
     },
     {
      "original": {
-      "x": 240,
-      "y": -110
+      "x": 320,
+      "y": -150
      },
-     "x": 202,
-     "y": -92
+     "x": 282,
+     "y": -132
     }
    ],
    "source": "shape_0003",
@@ -272,19 +272,19 @@
    "waypoints": [
     {
      "original": {
-      "x": 240,
-      "y": -110
+      "x": 320,
+      "y": -150
      },
-     "x": 278,
-     "y": -120
+     "x": 358,
+     "y": -159
     },
     {
      "original": {
-      "x": 500,
-      "y": -180
+      "x": 670,
+      "y": -240
      },
-     "x": 462,
-     "y": -169
+     "x": 632,
+     "y": -230
     }
    ],
    "source": "shape_0007",
@@ -307,11 +307,11 @@
     },
     {
      "original": {
-      "x": -240,
-      "y": -110
+      "x": -320,
+      "y": -150
      },
-     "x": -202,
-     "y": -92
+     "x": -282,
+     "y": -132
     }
    ],
    "source": "shape_0003",
@@ -327,19 +327,19 @@
    "waypoints": [
     {
      "original": {
-      "x": -240,
-      "y": -110
+      "x": -320,
+      "y": -150
      },
-     "x": -278,
-     "y": -120
+     "x": -358,
+     "y": -159
     },
     {
      "original": {
-      "x": -500,
-      "y": -180
+      "x": -670,
+      "y": -240
      },
-     "x": -462,
-     "y": -169
+     "x": -632,
+     "y": -230
     }
    ],
    "source": "shape_0008",
@@ -354,11 +354,11 @@
    "waypoints": [
     {
      "original": {
-      "x": -500,
-      "y": -180
+      "x": -670,
+      "y": -240
      },
-     "x": -462,
-     "y": -166
+     "x": -632,
+     "y": -226
     },
     {
      "original": {
@@ -382,19 +382,19 @@
    "waypoints": [
     {
      "original": {
-      "x": -350,
-      "y": 180
+      "x": -470,
+      "y": 240
      },
-     "x": -312,
-     "y": 180
+     "x": -432,
+     "y": 240
     },
     {
      "original": {
-      "x": -20,
-      "y": 180
+      "x": -30,
+      "y": 240
      },
-     "x": -58,
-     "y": 180
+     "x": -68,
+     "y": 240
     }
    ],
    "source": "shape_0005",
@@ -409,19 +409,19 @@
    "waypoints": [
     {
      "original": {
-      "x": 240,
-      "y": -110
+      "x": 320,
+      "y": -150
      },
-     "x": 205,
-     "y": -72
+     "x": 285,
+     "y": -112
     },
     {
      "original": {
-      "x": -20,
-      "y": 180
+      "x": -30,
+      "y": 240
      },
-     "x": 14,
-     "y": 142
+     "x": 4,
+     "y": 202
     }
    ],
    "source": "shape_0007",
@@ -435,19 +435,19 @@
    "waypoints": [
     {
      "original": {
-      "x": -350,
-      "y": 180
+      "x": -470,
+      "y": 240
      },
-     "x": -350,
-     "y": 180
+     "x": -470,
+     "y": 240
     },
     {
      "original": {
-      "x": -520,
-      "y": 270
+      "x": -640,
+      "y": 330
      },
-     "x": -520,
-     "y": 270
+     "x": -640,
+     "y": 330
     }
    ],
    "source": "shape_0005",
@@ -460,19 +460,19 @@
    "waypoints": [
     {
      "original": {
-      "x": -240,
-      "y": -110
+      "x": -320,
+      "y": -150
      },
-     "x": -240,
-     "y": -110
+     "x": -320,
+     "y": -150
     },
     {
      "original": {
-      "x": -330,
-      "y": -280
+      "x": -470,
+      "y": -260
      },
-     "x": -330,
-     "y": -280
+     "x": -470,
+     "y": -260
     }
    ],
    "source": "shape_0008",
@@ -486,18 +486,18 @@
     {
      "original": {
       "x": 0,
-      "y": 350
+      "y": 470
      },
      "x": 0,
-     "y": 350
+     "y": 470
     },
     {
      "original": {
       "x": 0,
-      "y": 540
+      "y": 660
      },
      "x": 0,
-     "y": 540
+     "y": 660
     }
    ],
    "source": "shape_0002",

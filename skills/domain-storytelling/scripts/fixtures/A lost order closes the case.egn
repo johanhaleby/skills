@@ -31,98 +31,98 @@
    "type": "domainStory:actorSystem",
    "name": "Broker",
    "id": "shape_0002",
-   "x": 332,
-   "y": -348
+   "x": 382,
+   "y": -388
   },
   {
    "type": "domainStory:actorSystem",
    "name": "Mail relay",
    "id": "shape_0003",
-   "x": 562,
-   "y": 82
+   "x": 632,
+   "y": 92
   },
   {
    "type": "domainStory:actorSystem",
    "name": "Stop handler",
    "id": "shape_0004",
-   "x": -408,
-   "y": -348
+   "x": -458,
+   "y": -388
   },
   {
    "type": "domainStory:actorSystem",
    "name": "Timer service",
    "id": "shape_0005",
-   "x": -638,
-   "y": 82
+   "x": -708,
+   "y": 92
   },
   {
    "type": "domainStory:actorPerson",
    "name": "Customer",
    "id": "shape_0006",
    "x": -38,
-   "y": 352
+   "y": 402
   },
   {
    "type": "domainStory:workObjectTime",
    "name": "Standing order",
    "id": "shape_0007",
    "x": -38,
-   "y": -228
+   "y": -248
   },
   {
    "type": "domainStory:workObjectEmail",
    "name": "Order canceled",
    "id": "shape_0008",
-   "x": 182,
-   "y": -148
+   "x": 212,
+   "y": -158
   },
   {
    "type": "domainStory:workObjectEmail",
    "name": "Order canceled",
    "id": "shape_0009",
-   "x": 472,
-   "y": -148
+   "x": 532,
+   "y": -158
   },
   {
    "type": "domainStory:workObjectEmail",
    "name": "Order canceled",
    "id": "shape_0010",
    "x": -38,
-   "y": -358
+   "y": -398
   },
   {
    "type": "domainStory:workObjectConversation",
    "name": "Notice",
    "id": "shape_0011",
-   "x": 272,
-   "y": 232
+   "x": 312,
+   "y": 262
   },
   {
    "type": "domainStory:workObjectDocument",
    "name": "Case",
    "id": "shape_0012",
-   "x": -208,
-   "y": -208
+   "x": -228,
+   "y": -228
   },
   {
    "type": "domainStory:workObjectHourglass",
    "name": "Closing time",
    "id": "shape_0013",
    "x": -18,
-   "y": 152
+   "y": 172
   },
   {
    "type": "domainStory:workObjectThumb-down",
    "name": "Case closed",
    "id": "shape_0014",
-   "x": 82,
-   "y": -268
+   "x": 92,
+   "y": -298
   },
   {
    "type": "domainStory:workObjectCalendar",
    "name": "Deadline",
    "id": "shape_0015",
-   "x": -348,
+   "x": -388,
    "y": 2
   },
   {
@@ -130,13 +130,13 @@
    "name": "Order canceled",
    "id": "shape_0016",
    "x": -38,
-   "y": -508
+   "y": -568
   },
   {
    "type": "domainStory:textAnnotation",
    "name": "",
    "id": "shape_0017",
-   "x": -315,
+   "x": -355,
    "y": -102,
    "text": "Note 1.",
    "number": 65,
@@ -147,7 +147,7 @@
    "type": "domainStory:textAnnotation",
    "name": "",
    "id": "shape_0018",
-   "x": 275,
+   "x": 305,
    "y": -42,
    "text": "Note 2.",
    "number": 65,
@@ -158,8 +158,8 @@
    "type": "domainStory:textAnnotation",
    "name": "",
    "id": "shape_0019",
-   "x": -45,
-   "y": -632,
+   "x": -285,
+   "y": -332,
    "text": "Note 3.",
    "number": 65,
    "width": 210,
@@ -169,8 +169,8 @@
    "type": "domainStory:textAnnotation",
    "name": "",
    "id": "shape_0020",
-   "x": -465,
-   "y": -192,
+   "x": -485,
+   "y": -212,
    "text": "Note 4.",
    "number": 65,
    "width": 210,
@@ -180,8 +180,8 @@
    "type": "domainStory:textAnnotation",
    "name": "",
    "id": "shape_0021",
-   "x": -235,
-   "y": 267,
+   "x": -215,
+   "y": 317,
    "text": "Note 5.",
    "number": 65,
    "width": 210,
@@ -191,8 +191,8 @@
    "type": "domainStory:textAnnotation",
    "name": "",
    "id": "shape_0022",
-   "x": 55,
-   "y": -22,
+   "x": 75,
+   "y": -2,
    "text": "Note 6.",
    "number": 65,
    "width": 210,
@@ -215,10 +215,10 @@
     {
      "original": {
       "x": 0,
-      "y": -190
+      "y": -210
      },
      "x": 0,
-     "y": -138
+     "y": -158
     }
    ],
    "source": "shape_0001",
@@ -238,15 +238,15 @@
       "y": 0
      },
      "x": 38,
-     "y": -19
+     "y": -18
     },
     {
      "original": {
-      "x": 220,
-      "y": -110
+      "x": 250,
+      "y": -120
      },
-     "x": 157,
-     "y": -78
+     "x": 187,
+     "y": -90
     }
    ],
    "source": "shape_0001",
@@ -262,19 +262,19 @@
    "waypoints": [
     {
      "original": {
-      "x": 220,
-      "y": -110
+      "x": 250,
+      "y": -120
      },
-     "x": 248,
-     "y": -148
+     "x": 278,
+     "y": -158
     },
     {
      "original": {
-      "x": 370,
-      "y": -310
+      "x": 420,
+      "y": -350
      },
-     "x": 340,
-     "y": -271
+     "x": 390,
+     "y": -310
     }
    ],
    "source": "shape_0008",
@@ -289,19 +289,19 @@
    "waypoints": [
     {
      "original": {
-      "x": 370,
-      "y": -310
+      "x": 420,
+      "y": -350
      },
-     "x": 398,
-     "y": -268
+     "x": 449,
+     "y": -305
     },
     {
      "original": {
-      "x": 510,
-      "y": -110
+      "x": 570,
+      "y": -120
      },
-     "x": 483,
-     "y": -148
+     "x": 545,
+     "y": -158
     }
    ],
    "source": "shape_0002",
@@ -317,19 +317,19 @@
    "waypoints": [
     {
      "original": {
-      "x": 510,
-      "y": -110
+      "x": 570,
+      "y": -120
      },
-     "x": 530,
-     "y": -58
+     "x": 590,
+     "y": -68
     },
     {
      "original": {
-      "x": 600,
-      "y": 120
+      "x": 670,
+      "y": 130
      },
-     "x": 585,
-     "y": 82
+     "x": 654,
+     "y": 92
     }
    ],
    "source": "shape_0009",
@@ -344,19 +344,19 @@
    "waypoints": [
     {
      "original": {
-      "x": 370,
-      "y": -310
+      "x": 420,
+      "y": -350
      },
-     "x": 332,
-     "y": -311
+     "x": 382,
+     "y": -350
     },
     {
      "original": {
       "x": 0,
-      "y": -320
+      "y": -360
      },
      "x": 38,
-     "y": -318
+     "y": -359
     }
    ],
    "source": "shape_0002",
@@ -373,18 +373,18 @@
     {
      "original": {
       "x": 0,
-      "y": -320
+      "y": -360
      },
      "x": -38,
-     "y": -318
+     "y": -359
     },
     {
      "original": {
-      "x": -370,
-      "y": -310
+      "x": -420,
+      "y": -350
      },
-     "x": -332,
-     "y": -311
+     "x": -382,
+     "y": -350
     }
    ],
    "source": "shape_0010",
@@ -399,19 +399,19 @@
    "waypoints": [
     {
      "original": {
-      "x": 600,
-      "y": 120
+      "x": 670,
+      "y": 130
      },
-     "x": 554,
-     "y": 143
+     "x": 624,
+     "y": 154
     },
     {
      "original": {
-      "x": 310,
-      "y": 270
+      "x": 350,
+      "y": 300
      },
-     "x": 348,
-     "y": 250
+     "x": 388,
+     "y": 279
     }
    ],
    "source": "shape_0003",
@@ -427,19 +427,19 @@
    "waypoints": [
     {
      "original": {
-      "x": 310,
-      "y": 270
+      "x": 350,
+      "y": 300
      },
-     "x": 272,
-     "y": 284
+     "x": 312,
+     "y": 315
     },
     {
      "original": {
       "x": 0,
-      "y": 390
+      "y": 440
      },
      "x": 38,
-     "y": 375
+     "y": 424
     }
    ],
    "source": "shape_0011",
@@ -454,19 +454,19 @@
    "waypoints": [
     {
      "original": {
-      "x": -370,
-      "y": -310
+      "x": -420,
+      "y": -350
      },
-     "x": -316,
-     "y": -272
+     "x": -366,
+     "y": -312
     },
     {
      "original": {
-      "x": -170,
-      "y": -170
+      "x": -190,
+      "y": -190
      },
-     "x": -208,
-     "y": -196
+     "x": -228,
+     "y": -216
     }
    ],
    "source": "shape_0004",
@@ -482,11 +482,11 @@
    "waypoints": [
     {
      "original": {
-      "x": -170,
-      "y": -170
+      "x": -190,
+      "y": -190
      },
-     "x": -132,
-     "y": -132
+     "x": -152,
+     "y": -152
     },
     {
      "original": {
@@ -512,16 +512,16 @@
       "x": 0,
       "y": 0
      },
-     "x": 5,
+     "x": 4,
      "y": 51
     },
     {
      "original": {
       "x": 20,
-      "y": 190
+      "y": 210
      },
      "x": 16,
-     "y": 152
+     "y": 172
     }
    ],
    "source": "shape_0001",
@@ -538,18 +538,18 @@
     {
      "original": {
       "x": 20,
-      "y": 190
+      "y": 210
      },
-     "x": 14,
-     "y": 241
+     "x": 15,
+     "y": 261
     },
     {
      "original": {
       "x": 0,
-      "y": 390
+      "y": 440
      },
      "x": 3,
-     "y": 352
+     "y": 402
     }
    ],
    "source": "shape_0013",
@@ -572,11 +572,11 @@
     },
     {
      "original": {
-      "x": 120,
-      "y": -230
+      "x": 130,
+      "y": -260
      },
-     "x": 92,
-     "y": -177
+     "x": 103,
+     "y": -207
     }
    ],
    "source": "shape_0001",
@@ -592,19 +592,19 @@
    "waypoints": [
     {
      "original": {
-      "x": 120,
-      "y": -230
+      "x": 130,
+      "y": -260
      },
-     "x": 158,
-     "y": -242
+     "x": 168,
+     "y": -271
     },
     {
      "original": {
-      "x": 370,
-      "y": -310
+      "x": 420,
+      "y": -350
      },
-     "x": 332,
-     "y": -297
+     "x": 382,
+     "y": -338
     }
    ],
    "source": "shape_0014",
@@ -627,10 +627,10 @@
     },
     {
      "original": {
-      "x": -310,
+      "x": -350,
       "y": 40
      },
-     "x": -272,
+     "x": -312,
      "y": 35
     }
    ],
@@ -647,19 +647,19 @@
    "waypoints": [
     {
      "original": {
-      "x": -310,
+      "x": -350,
       "y": 40
      },
-     "x": -348,
+     "x": -388,
      "y": 50
     },
     {
      "original": {
-      "x": -600,
-      "y": 120
+      "x": -670,
+      "y": 130
      },
-     "x": -562,
-     "y": 109
+     "x": -632,
+     "y": 119
     }
    ],
    "source": "shape_0015",
@@ -674,19 +674,19 @@
    "waypoints": [
     {
      "original": {
-      "x": -370,
-      "y": -310
+      "x": -420,
+      "y": -350
      },
-     "x": -332,
-     "y": -326
+     "x": -382,
+     "y": -366
     },
     {
      "original": {
       "x": 0,
-      "y": -470
+      "y": -530
      },
      "x": -61,
-     "y": -443
+     "y": -503
     }
    ],
    "source": "shape_0004",
@@ -703,18 +703,18 @@
     {
      "original": {
       "x": 0,
-      "y": -470
+      "y": -530
      },
      "x": 61,
-     "y": -443
+     "y": -503
     },
     {
      "original": {
-      "x": 370,
-      "y": -310
+      "x": 420,
+      "y": -350
      },
-     "x": 332,
-     "y": -326
+     "x": 382,
+     "y": -366
     }
    ],
    "source": "shape_0016",
@@ -729,17 +729,17 @@
     {
      "original": {
       "x": 0,
-      "y": -190
+      "y": -210
      },
      "x": 0,
-     "y": -190
+     "y": -210
     },
     {
      "original": {
-      "x": -210,
+      "x": -250,
       "y": -70
      },
-     "x": -210,
+     "x": -250,
      "y": -70
     }
    ],
@@ -753,18 +753,18 @@
    "waypoints": [
     {
      "original": {
-      "x": 220,
-      "y": -110
+      "x": 250,
+      "y": -120
      },
-     "x": 220,
-     "y": -110
+     "x": 250,
+     "y": -120
     },
     {
      "original": {
-      "x": 380,
+      "x": 410,
       "y": -10
      },
-     "x": 380,
+     "x": 410,
      "y": -10
     }
    ],
@@ -779,18 +779,18 @@
     {
      "original": {
       "x": 0,
-      "y": -320
+      "y": -360
      },
      "x": 0,
-     "y": -320
+     "y": -360
     },
     {
      "original": {
-      "x": 60,
-      "y": -600
+      "x": -180,
+      "y": -300
      },
-     "x": 60,
-     "y": -600
+     "x": -180,
+     "y": -300
     }
    ],
    "source": "shape_0010",
@@ -803,19 +803,19 @@
    "waypoints": [
     {
      "original": {
-      "x": -170,
-      "y": -170
+      "x": -190,
+      "y": -190
      },
-     "x": -170,
-     "y": -170
+     "x": -190,
+     "y": -190
     },
     {
      "original": {
-      "x": -360,
-      "y": -160
+      "x": -380,
+      "y": -180
      },
-     "x": -360,
-     "y": -160
+     "x": -380,
+     "y": -180
     }
    ],
    "source": "shape_0012",
@@ -829,18 +829,18 @@
     {
      "original": {
       "x": 20,
-      "y": 190
+      "y": 210
      },
      "x": 20,
-     "y": 190
+     "y": 210
     },
     {
      "original": {
-      "x": -130,
-      "y": 300
+      "x": -110,
+      "y": 350
      },
-     "x": -130,
-     "y": 300
+     "x": -110,
+     "y": 350
     }
    ],
    "source": "shape_0013",
@@ -853,19 +853,19 @@
    "waypoints": [
     {
      "original": {
-      "x": 120,
-      "y": -230
+      "x": 130,
+      "y": -260
      },
-     "x": 120,
-     "y": -230
+     "x": 130,
+     "y": -260
     },
     {
      "original": {
-      "x": 160,
-      "y": 10
+      "x": 180,
+      "y": 30
      },
-     "x": 160,
-     "y": 10
+     "x": 180,
+     "y": 30
     }
    ],
    "source": "shape_0014",

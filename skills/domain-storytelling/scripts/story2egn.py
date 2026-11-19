@@ -1181,16 +1181,43 @@ def place(nodes, edges, notes, seating=None):
         _make_room_for_notes(nodes, edges, notes)
 
 
-# A note whose centre sits further than this from its shape's centre reads as a note on
-# whichever shape is nearest to it.
-NOTE_NEAR = SOLO_REACH + 160
+# The widest gap a note may leave to its own shape's box. In the checked-in pictures a note with
+# no nearer shape sits within 110 of its own, so 120 leaves those alone and flags one that floats.
+NOTE_GAP = 120
 # Small steps, so the picture grows only as much as the notes need.
 ROOM_STEP = 1.06
 ROOM_TRIES = 12
 
 
-def _far_notes(notes):
-    return [n for n in notes if math.hypot(n.cx - n.anchor.cx, n.cy - n.anchor.cy) > NOTE_NEAR]
+def _gap(a, b):
+    """The empty space between two boxes, 0 when they touch or overlap."""
+    dx = max(a[0] - (b[0] + b[2]), b[0] - (a[0] + a[2]), 0)
+    dy = max(a[1] - (b[1] + b[3]), b[1] - (a[1] + a[3]), 0)
+    return math.hypot(dx, dy)
+
+
+def _shape_extent(node):
+    """The icon plus the name printed under it, the two boxes an arrow already steers round."""
+    boxes = [node.box, node.text_box]
+    x0, y0 = min(b[0] for b in boxes), min(b[1] for b in boxes)
+    x1, y1 = max(b[0] + b[2] for b in boxes), max(b[1] + b[3] for b in boxes)
+    return (x0, y0, x1 - x0, y1 - y0)
+
+
+def _far_notes(nodes, notes):
+    """The notes that read as belonging to another shape, or to none.
+
+    A note is far when it leaves more than NOTE_GAP to its own shape, or when some other
+    shape is closer to it than its own. Both are gaps between boxes, since centres say
+    little about two shapes of different sizes and a wide note.
+    """
+    far = []
+    for n in notes:
+        own = _gap(n.box, _shape_extent(n.anchor))
+        rest = [_gap(n.box, _shape_extent(o)) for o in nodes.values() if o is not n.anchor]
+        if own > NOTE_GAP or any(g < own for g in rest):
+            far.append(n)
+    return far
 
 
 def _redraw_at(nodes, edges, notes, home, f):
@@ -1210,6 +1237,11 @@ def _shape_collisions(nodes):
                for two in shapes[i + 1:] if _overlap(one.box, two.box, pad=0))
 
 
+def _width(nodes, notes):
+    min_x, _, max_x, _ = canvas_box(nodes, notes)
+    return max_x - min_x
+
+
 def _make_room_for_notes(nodes, edges, notes):
     """Spread the picture until every note fits beside its own shape.
 
@@ -1217,19 +1249,23 @@ def _make_room_for_notes(nodes, edges, notes):
     can put a note on the far side, next to shapes it has nothing to do with. Scaling every
     position about the centre opens the gaps instead. The first scale with no far note wins,
     and when none gets there the smallest scale with the fewest far notes is kept. Only the
-    shapes that are not pinned scale, so a scale that drops one on a pinned shape is skipped.
+    shapes that are not pinned scale, so a scale that drops one on a pinned shape is skipped,
+    and so is one that makes the picture too wide to read.
     """
-    if not notes or not _far_notes(notes):
+    if not notes or not _far_notes(nodes, notes):
         return
     home = {n.key: (n.cx, n.cy) for n in nodes.values()}
-    best = (len(_far_notes(notes)), 1.0)
+    best = (len(_far_notes(nodes, notes)), 1.0)
     collisions = _shape_collisions(nodes)
+    # A spread that makes the names unreadable trades one fault for a worse one, so it stops
+    # where check_reading would start to complain, or where the picture already was.
+    widest = max(COLUMN * NAME_PT / LEGIBLE, _width(nodes, notes))
     for i in range(1, ROOM_TRIES + 1):
         f = ROOM_STEP ** i
         _redraw_at(nodes, edges, notes, home, f)
-        if _shape_collisions(nodes) > collisions:
+        if _shape_collisions(nodes) > collisions or _width(nodes, notes) > widest:
             continue
-        far = len(_far_notes(notes))
+        far = len(_far_notes(nodes, notes))
         if far < best[0]:
             best = (far, f)
         if far == 0:
