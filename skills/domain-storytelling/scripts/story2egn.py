@@ -821,10 +821,27 @@ def border(node, tx, ty):
     return node.cx + dx * s, node.cy + dy * s
 
 
+def _box_exit(box, x, y, tx, ty):
+    """Where the line from (x, y) towards (tx, ty) leaves box, or (x, y) when it starts outside."""
+    bx, by, bw, bh = box
+    if not (bx < x < bx + bw and by < y < by + bh):
+        return x, y
+    t = 1.0
+    for p, d, lo, hi in ((x, tx - x, bx, bx + bw), (y, ty - y, by, by + bh)):
+        if d:
+            t = min(t, ((hi if d > 0 else lo) - p) / d)
+    return x + (tx - x) * t, y + (ty - y) * t
+
+
 def _below_the_name(node, tx, ty):
     """Where an arrow towards (tx, ty) leaves node: the icon's border, or the point past the
     name when the line runs through the text under the icon."""
-    x, y = border(node, tx, ty)
+    return _past_the_name(node, *border(node, tx, ty), tx, ty)
+
+
+def _past_the_name(node, x, y, tx, ty):
+    """(x, y), or the point past node's name when the line from there towards (tx, ty) runs
+    through the text under the icon."""
     bx, by, bw, bh = node.text_box
     bx, by, bw, bh = bx - NAME_GAP, by - NAME_GAP, bw + 2 * NAME_GAP, bh + 2 * NAME_GAP
     span = math.hypot(tx - x, ty - y)
@@ -838,6 +855,19 @@ def _below_the_name(node, tx, ty):
         return x, y
     d = inside[-1] + 1
     return x + ux * d, y + uy * d
+
+
+def note_line(note):
+    """The waypoints of note's line, its leader stopped at the anchor's icon and name and at
+    the note's edge. Egon draws a note without a fill, so a line run to either centre shows
+    through the icon and the note's text."""
+    a = note.anchor
+    route = note.leader or [(a.cx, a.cy), (note.cx, note.cy)]
+    (x, y), (tx, ty) = route[0], route[1]
+    start = _past_the_name(a, *_box_exit(a.box, x, y, tx, ty), tx, ty)
+    (x, y), (tx, ty) = route[-1], route[-2]
+    end = _box_exit(note.box, x, y, tx, ty)
+    return [start, *route[1:-1], end]
 
 
 def endpoints(edge):
@@ -1878,13 +1908,13 @@ def build_egn(spec, nodes, edges, notes, groups, icons):
 
     for note in notes:
         a = note.anchor
+        points = [{"x": int(x), "y": int(y)} for x, y in note_line(note)]
+        # Egon crops a line to the shapes it joins and keeps the centres it was aimed at,
+        # as the activities above do
+        points[0] = {"original": {"x": int(a.cx), "y": int(a.cy)}, **points[0]}
+        points[-1] = {"original": {"x": int(note.cx), "y": int(note.cy)}, **points[-1]}
         els.append({"type": "domainStory:connection", "name": "", "id": next_id("connection"),
-                    "waypoints": [
-                        {"original": {"x": int(a.cx), "y": int(a.cy)},
-                         "x": int(a.cx), "y": int(a.cy)},
-                        {"original": {"x": int(note.cx), "y": int(note.cy)},
-                         "x": int(note.cx), "y": int(note.cy)}],
-                    "source": a.eid, "target": note.eid})
+                    "waypoints": points, "source": a.eid, "target": note.eid})
 
     els.append({"info": description_of(spec)})
     els.append({"version": EGN_VERSION})
