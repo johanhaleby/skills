@@ -821,11 +821,16 @@ def border(node, tx, ty):
     return node.cx + dx * s, node.cy + dy * s
 
 
+def _inside(box, x, y):
+    bx, by, bw, bh = box
+    return bx < x < bx + bw and by < y < by + bh
+
+
 def _box_exit(box, x, y, tx, ty):
     """Where the line from (x, y) towards (tx, ty) leaves box, or (x, y) when it starts outside."""
-    bx, by, bw, bh = box
-    if not (bx < x < bx + bw and by < y < by + bh):
+    if not _inside(box, x, y):
         return x, y
+    bx, by, bw, bh = box
     t = 1.0
     for p, d, lo, hi in ((x, tx - x, bx, bx + bw), (y, ty - y, by, by + bh)):
         if d:
@@ -863,11 +868,14 @@ def note_line(note):
     through the icon and the note's text."""
     a = note.anchor
     route = note.leader or [(a.cx, a.cy), (note.cx, note.cy)]
-    (x, y), (tx, ty) = route[0], route[1]
-    start = _past_the_name(a, *_box_exit(a.box, x, y, tx, ty), tx, ty)
-    (x, y), (tx, ty) = route[-1], route[-2]
-    end = _box_exit(note.box, x, y, tx, ty)
-    return [start, *route[1:-1], end]
+    # An elbow can already lie inside the note, so the line ends where it first enters it
+    i = next(i for i in range(1, len(route)) if _inside(note.box, *route[i]) or i == len(route) - 1)
+    end = _box_exit(note.box, *route[i], *route[i - 1])
+    start = _box_exit(a.box, *route[0], *route[1])
+    named = _past_the_name(a, *start, *route[1])
+    if not _inside(note.box, *named):
+        start = named
+    return [start, *route[1:i], end]
 
 
 def endpoints(edge):

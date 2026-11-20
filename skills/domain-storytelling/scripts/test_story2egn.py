@@ -2119,6 +2119,7 @@ class StopsANotesLineAtItsShapes(unittest.TestCase):
         for dx in (-300, 300):
             with self.subTest(dx=dx):
                 anchor, note = self.noted(dx, 0)
+                note.leader = S._leader_shapes(anchor, note.cx, note.cy)[0]
                 (sx, sy), *_, (ex, ey) = S.note_line(note)
                 self.assertTrue(self.on_border(anchor.box, sx, sy))
                 self.assertTrue(self.on_border(note.box, ex, ey))
@@ -2196,6 +2197,31 @@ class StopsANotesLineAtItsShapes(unittest.TestCase):
         self.assertEqual(3, len(line["waypoints"]))
         mid = line["waypoints"][1]
         self.assertEqual((int(elbow[0]), int(elbow[1])), (mid["x"], mid["y"]))
+        last = line["waypoints"][-1]
+        self.assertTrue(self.on_border(note.box, last["x"], last["y"]))
+        for w in line["waypoints"]:
+            self.assertFalse(self.inside(note.box, w["x"], w["y"], slack=self.SLACK))
+
+    def test_an_elbow_already_inside_the_note_ends_the_line_where_it_enters_the_note(self):
+        anchor, note = self.noted(50, 200, leader=[(409.5, 438.0), (409.5, 600.0), (450.0, 600.0)])
+        points = S.note_line(note)
+        self.assertEqual(2, len(points))
+        (sx, sy), (ex, ey) = points
+        self.assertAlmostEqual(409.5, sx, delta=self.SLACK)
+        self.assertAlmostEqual(452.0, sy, delta=self.SLACK)
+        self.assertAlmostEqual(409.5, ex, delta=self.SLACK)
+        self.assertAlmostEqual(note.box[1], ey, delta=self.SLACK)
+        for x, y in points:
+            self.assertFalse(self.inside(note.box, x, y, slack=self.SLACK))
+
+    def test_skipping_the_name_does_not_carry_the_line_into_a_note_close_below(self):
+        text = " ".join(f"word{i}" for i in range(80))
+        anchor, note = self.noted(0, 0, text=text)
+        note.cy = 451 + note.height / 2
+        (sx, sy), (ex, ey) = S.note_line(note)
+        self.assertAlmostEqual(438.0, sy, delta=self.SLACK)
+        self.assertAlmostEqual(451.0, ey, delta=self.SLACK)
+        self.assertLess(sy, ey)
 
 
 if __name__ == "__main__":
