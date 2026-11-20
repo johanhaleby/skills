@@ -2224,5 +2224,52 @@ class StopsANotesLineAtItsShapes(unittest.TestCase):
         self.assertLess(sy, ey)
 
 
+# A garage rental in eight sentences, five of them with a note. The generator before the spread step
+# left the first note about 1250 away from its work object and nearer the Barrier.
+GARAGE_RENTAL = json.loads("""
+{
+  "title": "Renter hires a fee-free space in their own building's garage",
+  "scope": {"granularity": "coarse-grained", "time": "TO-BE", "purity": "digitalized"},
+  "description": "Redrawn from an image, check it. The typical case: a citizen rents a space in the garage that belongs to their own building.",
+  "actors": [
+    {"name": "Renter", "icon": "Person"},
+    {"name": "Lotshare", "icon": "System"},
+    {"name": "Citizen directory", "icon": "System"},
+    {"name": "Keymaker", "icon": "System"},
+    {"name": "Building owner", "icon": "Business"}
+  ],
+  "sentences": [
+    {"n": 1, "from": "Renter", "verb": "searches on", "object": {"name": "Street address", "icon": "Info"}, "prep": "in", "to": "Lotshare",
+     "note": "Garages are named after the block today, so the search hits the wrong one."},
+    {"n": 2, "from": "Lotshare", "verb": "checks", "object": {"name": "Citizen status", "icon": "Thumb-up"}, "prep": "in", "to": "Citizen directory",
+     "note": "Assumption: the register decides the fee."},
+    {"n": 3, "from": "Lotshare", "verb": "shows", "object": {"name": "Garage", "icon": "View-List"}, "prep": "to", "to": "Renter",
+     "note": "Only garages where the renter counts as a citizen, so fee-free ones."},
+    {"n": 4, "from": "Renter", "verb": "buys", "object": {"name": "Citizen permit", "icon": "Document"}, "prep": "in", "to": "Lotshare",
+     "note": "Fee-free today. May carry fee from around April."},
+    {"n": 5, "from": "Lotshare", "verb": "orders", "object": {"name": "Key", "icon": "Document"}, "prep": "from", "to": "Keymaker"},
+    {"n": 6, "from": "Keymaker", "verb": "sends", "object": {"name": "Key", "icon": "Document"}, "prep": "to", "to": "Renter"},
+    {"n": 7, "from": "Renter", "verb": "opens", "object": {"name": "Barrier", "icon": "Info"}},
+    {"n": 8, "from": "Lotshare", "verb": "sends", "object": {"name": "Self-invoice", "icon": "Euro"}, "prep": "to", "to": "Building owner",
+     "note": "One per garage cost centre."}
+  ]
+}
+""")
+
+
+class KeepsEveryNoteBesideItsOwnShapeInAGarageRental(unittest.TestCase):
+    NEXT_TO = 120
+
+    def test_every_note_sits_next_to_its_own_shape_and_no_other_shape_is_nearer(self):
+        nodes, _, notes, _ = model(GARAGE_RENTAL)
+        gap = MakesRoomForNotesInACrowdedPicture.gap_between
+        own = {n.name: gap(n, n.anchor) for n in notes}
+        nearest = {n.name: min(nodes.values(), key=lambda s: gap(n, s)).name for n in notes}
+        self.assertEqual(
+            ({n.name: n.anchor.name for n in notes}, []),
+            (nearest, [name for name, g in own.items() if g > self.NEXT_TO]),
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
