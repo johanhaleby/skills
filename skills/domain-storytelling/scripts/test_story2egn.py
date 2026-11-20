@@ -2089,5 +2089,187 @@ class MakesRoomForNotesInACrowdedPicture(unittest.TestCase):
         self.assertEqual(self.positions(untouched), self.positions(fitting))
 
 
+class StopsANotesLineAtItsShapes(unittest.TestCase):
+    """Egon draws a note without a fill, so a line run to the centres shows through its text."""
+
+    SLACK = 1
+
+    @staticmethod
+    def inside(box, x, y, slack=0):
+        bx, by, bw, bh = box
+        return bx + slack < x < bx + bw - slack and by + slack < y < by + bh - slack
+
+    @staticmethod
+    def on_border(box, x, y, slack=1):
+        bx, by, bw, bh = box
+        within = bx - slack <= x <= bx + bw + slack and by - slack <= y <= by + bh + slack
+        edge = (min(abs(x - bx), abs(x - bx - bw)) <= slack
+                or min(abs(y - by), abs(y - by - bh)) <= slack)
+        return within and edge
+
+    def noted(self, dx, dy, text="Staffed on weekdays only.", leader=None):
+        anchor = S.Node("A", "actor", "Anchor", "Person", None)
+        anchor.cx, anchor.cy = 400.0, 400.0
+        note = S.Note("__n0", text, anchor)
+        note.cx, note.cy = anchor.cx + dx, anchor.cy + dy
+        note.leader = leader
+        return anchor, note
+
+    def test_a_note_to_the_left_or_right_is_met_on_the_side_facing_the_anchor(self):
+        for dx in (-300, 300):
+            with self.subTest(dx=dx):
+                anchor, note = self.noted(dx, 0)
+                note.leader = S._leader_shapes(anchor, note.cx, note.cy)[0]
+                (sx, sy), *_, (ex, ey) = S.note_line(note)
+                self.assertTrue(self.on_border(anchor.box, sx, sy))
+                self.assertTrue(self.on_border(note.box, ex, ey))
+                bx, _, bw, _ = note.box
+                self.assertAlmostEqual(bx + bw if dx < 0 else bx, ex, delta=self.SLACK)
+
+    def test_a_note_above_the_anchor_is_met_on_its_bottom_edge(self):
+        anchor, note = self.noted(0, -200)
+        (sx, sy), *_, (ex, ey) = S.note_line(note)
+        self.assertTrue(self.on_border(anchor.box, sx, sy))
+        _, by, _, bh = note.box
+        self.assertAlmostEqual(by + bh, ey, delta=self.SLACK)
+
+    def test_a_note_below_the_anchor_starts_past_the_name_and_ends_on_its_top_edge(self):
+        anchor, note = self.noted(0, 200)
+        (sx, sy), *_, (ex, ey) = S.note_line(note)
+        _, ty, _, th = anchor.text_box
+        self.assertGreaterEqual(sy, ty + th - self.SLACK)
+        self.assertLess(sy, note.box[1])
+        _, by, _, _ = note.box
+        self.assertAlmostEqual(by, ey, delta=self.SLACK)
+
+    def test_the_line_does_not_start_at_either_centre(self):
+        for dx, dy in ((-300, 0), (300, 0), (0, -200), (0, 200)):
+            with self.subTest(dx=dx, dy=dy):
+                anchor, note = self.noted(dx, dy)
+                (sx, sy), *_, (ex, ey) = S.note_line(note)
+                self.assertNotEqual((anchor.cx, anchor.cy), (sx, sy))
+                self.assertNotEqual((note.cx, note.cy), (ex, ey))
+
+    def test_a_tall_note_is_met_on_its_real_edge_and_no_waypoint_lies_inside_it(self):
+        text = " ".join(f"word{i}" for i in range(120))
+        for dx, dy in ((-300, 0), (300, 0), (0, -400), (0, 400)):
+            with self.subTest(dx=dx, dy=dy):
+                anchor, note = self.noted(dx, dy, text=text)
+                self.assertGreater(note.height, 3 * S.NOTE_MIN_H)
+                points = S.note_line(note)
+                self.assertTrue(self.on_border(note.box, *points[-1]))
+                for x, y in points:
+                    self.assertFalse(self.inside(note.box, x, y, slack=self.SLACK))
+                    self.assertFalse(self.inside(anchor.box, x, y, slack=self.SLACK))
+        anchor, note = self.noted(300, 0, text=text)
+        self.assertAlmostEqual(note.cx - S.NOTE_W / 2, S.note_line(note)[-1][0], delta=self.SLACK)
+        anchor, note = self.noted(0, 400, text=text)
+        self.assertAlmostEqual(note.cy - note.height / 2, S.note_line(note)[-1][1], delta=self.SLACK)
+
+    def test_no_waypoint_of_a_real_stories_note_lines_lies_inside_a_note_or_an_icon(self):
+        spec = json.loads((Path(__file__).resolve().parent / "fixtures" / "review-a-claim.story.json").read_text())
+        nodes, edges, notes, groups = model(spec)
+        els = S.build_egn(spec, nodes, edges, notes, groups, ICONS)
+        elements = els["dst"]
+        by_id = {n.eid: n for n in notes}
+        lines = [e for e in elements if e.get("type") == "domainStory:connection"]
+        self.assertEqual(len(notes), len(lines))
+        for line in lines:
+            note = by_id[line["target"]]
+            anchor = note.anchor
+            for w in line["waypoints"]:
+                self.assertFalse(self.inside(note.box, w["x"], w["y"], slack=self.SLACK), line)
+                self.assertFalse(self.inside(anchor.box, w["x"], w["y"], slack=self.SLACK), line)
+            first, last = line["waypoints"][0], line["waypoints"][-1]
+            self.assertEqual({"x": int(anchor.cx), "y": int(anchor.cy)}, first["original"])
+            self.assertEqual({"x": int(note.cx), "y": int(note.cy)}, last["original"])
+            self.assertNotEqual(first["original"], {"x": first["x"], "y": first["y"]})
+
+    def test_an_elbow_in_a_leader_stays_in_the_waypoints(self):
+        nodes, edges, notes, groups = model(STORY)
+        note = notes[0]
+        elbow = (note.anchor.cx + 500.0, note.anchor.cy + 321.0)
+        note.leader = [(note.anchor.cx, note.anchor.cy), elbow, (note.cx, note.cy)]
+        els = S.build_egn(STORY, nodes, edges, notes, groups, ICONS)
+        elements = els["dst"]
+        line = next(e for e in elements if e.get("type") == "domainStory:connection"
+                    and e["target"] == note.eid)
+        self.assertEqual(3, len(line["waypoints"]))
+        mid = line["waypoints"][1]
+        self.assertEqual((int(elbow[0]), int(elbow[1])), (mid["x"], mid["y"]))
+        last = line["waypoints"][-1]
+        self.assertTrue(self.on_border(note.box, last["x"], last["y"]))
+        for w in line["waypoints"]:
+            self.assertFalse(self.inside(note.box, w["x"], w["y"], slack=self.SLACK))
+
+    def test_an_elbow_already_inside_the_note_ends_the_line_where_it_enters_the_note(self):
+        anchor, note = self.noted(50, 200, leader=[(409.5, 438.0), (409.5, 600.0), (450.0, 600.0)])
+        points = S.note_line(note)
+        self.assertEqual(2, len(points))
+        (sx, sy), (ex, ey) = points
+        self.assertAlmostEqual(409.5, sx, delta=self.SLACK)
+        self.assertAlmostEqual(452.0, sy, delta=self.SLACK)
+        self.assertAlmostEqual(409.5, ex, delta=self.SLACK)
+        self.assertAlmostEqual(note.box[1], ey, delta=self.SLACK)
+        for x, y in points:
+            self.assertFalse(self.inside(note.box, x, y, slack=self.SLACK))
+
+    def test_skipping_the_name_does_not_carry_the_line_into_a_note_close_below(self):
+        text = " ".join(f"word{i}" for i in range(80))
+        anchor, note = self.noted(0, 0, text=text)
+        note.cy = 451 + note.height / 2
+        (sx, sy), (ex, ey) = S.note_line(note)
+        self.assertAlmostEqual(438.0, sy, delta=self.SLACK)
+        self.assertAlmostEqual(451.0, ey, delta=self.SLACK)
+        self.assertLess(sy, ey)
+
+
+# A garage rental in eight sentences, five of them with a note. The generator before the spread step
+# left the first note about 1250 away from its work object and nearer the Barrier.
+GARAGE_RENTAL = json.loads("""
+{
+  "title": "Renter hires a fee-free space in their own building's garage",
+  "scope": {"granularity": "coarse-grained", "time": "TO-BE", "purity": "digitalized"},
+  "description": "Redrawn from an image, check it. The typical case: a citizen rents a space in the garage that belongs to their own building.",
+  "actors": [
+    {"name": "Renter", "icon": "Person"},
+    {"name": "Lotshare", "icon": "System"},
+    {"name": "Citizen directory", "icon": "System"},
+    {"name": "Keymaker", "icon": "System"},
+    {"name": "Building owner", "icon": "Business"}
+  ],
+  "sentences": [
+    {"n": 1, "from": "Renter", "verb": "searches on", "object": {"name": "Street address", "icon": "Info"}, "prep": "in", "to": "Lotshare",
+     "note": "Garages are named after the block today, so the search hits the wrong one."},
+    {"n": 2, "from": "Lotshare", "verb": "checks", "object": {"name": "Citizen status", "icon": "Thumb-up"}, "prep": "in", "to": "Citizen directory",
+     "note": "Assumption: the register decides the fee."},
+    {"n": 3, "from": "Lotshare", "verb": "shows", "object": {"name": "Garage", "icon": "View-List"}, "prep": "to", "to": "Renter",
+     "note": "Only garages where the renter counts as a citizen, so fee-free ones."},
+    {"n": 4, "from": "Renter", "verb": "buys", "object": {"name": "Citizen permit", "icon": "Document"}, "prep": "in", "to": "Lotshare",
+     "note": "Fee-free today. May carry fee from around April."},
+    {"n": 5, "from": "Lotshare", "verb": "orders", "object": {"name": "Key", "icon": "Document"}, "prep": "from", "to": "Keymaker"},
+    {"n": 6, "from": "Keymaker", "verb": "sends", "object": {"name": "Key", "icon": "Document"}, "prep": "to", "to": "Renter"},
+    {"n": 7, "from": "Renter", "verb": "opens", "object": {"name": "Barrier", "icon": "Info"}},
+    {"n": 8, "from": "Lotshare", "verb": "sends", "object": {"name": "Self-invoice", "icon": "Euro"}, "prep": "to", "to": "Building owner",
+     "note": "One per garage cost centre."}
+  ]
+}
+""")
+
+
+class KeepsEveryNoteBesideItsOwnShapeInAGarageRental(unittest.TestCase):
+    NEXT_TO = 120
+
+    def test_every_note_sits_next_to_its_own_shape_and_no_other_shape_is_nearer(self):
+        nodes, _, notes, _ = model(GARAGE_RENTAL)
+        gap = MakesRoomForNotesInACrowdedPicture.gap_between
+        own = {n.name: gap(n, n.anchor) for n in notes}
+        nearest = {n.name: min(nodes.values(), key=lambda s: gap(n, s)).name for n in notes}
+        self.assertEqual(
+            ({n.name: n.anchor.name for n in notes}, []),
+            (nearest, [name for name, g in own.items() if g > self.NEXT_TO]),
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
