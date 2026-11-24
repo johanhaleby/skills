@@ -8,6 +8,13 @@
       "source": "./",
       "strict": false,
       "skills": ["./skills/domain-storytelling", "./skills/egn-to-text"]
+    },
+    {
+      "name": "executive-summary",
+      "description": "Write a short executive summary of what a piece of work does and why, for a reader who never saw the code.",
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/executive-summary"]
     }
   ]
 }
