@@ -5,6 +5,7 @@
 | --- | --- |
 | [`domain-storytelling`](skills/domain-storytelling/SKILL.md) | Turns a described business process into one or more [Domain Stories](https://domainstorytelling.org), written as Egon.io files that open at [egon.io](https://egon.io) and as pictures. |
 | [`egn-to-text`](skills/egn-to-text/SKILL.md) | Reads an Egon.io file (`.egn`, `.egn.svg`, and the older `.dst` and `.dst.svg`) and prints the story as text, so an agent can read a diagram it was handed. |
+| [`executive-summary`](skills/executive-summary/SKILL.md) | Writes a short summary of what a piece of work does and why, such as a pull request or a step in a plan, for a reader who never saw the code, so the person who asked for it can explain the work to others. |
 
 `domain-storytelling` uses `egn-to-text` to read stories that already exist, so install both.
 
@@ -14,16 +15,17 @@ This is what `domain-storytelling` draws for [`coffee-order.story.json`](skills/
 
 ## Installing
 
-In Claude Code, add this repository as a plugin marketplace and install the plugin:
+In Claude Code, add this repository as a plugin marketplace and install the plugins you want:
 
 ```sh
 /plugin marketplace add johanhaleby/skills
 /plugin install domain-storytelling@johanhaleby-skills
+/plugin install executive-summary@johanhaleby-skills
 ```
 
-For any other agent, copy or symlink both folders under `skills/` into the agent's skills directory, for example `~/.claude/skills`, `~/.agents/skills` or `~/.codex/skills`. Keep the two folders next to each other, because `domain-storytelling` finds `egn-to-text` as a sibling folder.
+For any other agent, copy or symlink the folders under `skills/` into the agent's skills directory, for example `~/.claude/skills`, `~/.agents/skills` or `~/.codex/skills`. Keep `domain-storytelling` and `egn-to-text` next to each other, because `domain-storytelling` finds `egn-to-text` as a sibling folder.
 
-The scripts need Python 3 and nothing outside the standard library.
+The `domain-storytelling` and `egn-to-text` scripts need Python 3 and nothing outside the standard library. `executive-summary` has no scripts.
 
 ## Running the tests
 

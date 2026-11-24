@@ -1,0 +1,7 @@
+interface:
+  display_name: "Executive Summary"
+  short_description: "Explain a piece of work to someone who wasn't there"
+  default_prompt: "Use $executive-summary to write an executive summary of this pull request."
+
+policy:
+  allow_implicit_invocation: true
